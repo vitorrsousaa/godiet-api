@@ -2,7 +2,7 @@
   const toPascalCase = (str) =>
     str
       .replace(/(?:^\w|[A-Z]|\b\w)/g, (fl) => fl.toUpperCase())
-      .replace(/\W+/g, '');
+      .replace(/\W+/g, "");
 
   const toCamelCase = (str) =>
     toPascalCase(str).replace(/^./, (firstLetter) => firstLetter.toLowerCase());
@@ -10,34 +10,34 @@
   return {
     userInputs: [
       {
-        title: 'Controller Name',
-        argumentName: 'name',
-        defaultValue: 'Sample',
+        title: "Controller Name",
+        argumentName: "name",
+        defaultValue: "Sample",
       },
     ],
     template: [
       {
-        type: 'folder',
+        type: "folder",
         name: (inputs) => `${toPascalCase(inputs.name)}`,
         children: [
           {
-            type: 'file',
-            name: 'index.ts',
+            type: "file",
+            name: "index.ts",
             content: (inputs) => `import { ${toPascalCase(
               inputs.name
             )}Controller } from './controller';
 
-export default ${toPascalCase(inputs.name)}Controller;
+export { ${toPascalCase(inputs.name)}Controller };
 `,
           },
           {
-            type: 'file',
-            name: 'controller.ts',
+            type: "file",
+            name: "controller.ts",
             content: (inputs) => `import {
   IController,
   IRequest,
   IResponse,
-} from '../../../../interfaces/controller';
+} from '@/interfaces/controller';
 
 export class ${toPascalCase(inputs.name)}Controller implements IController {
   constructor() {}
@@ -71,8 +71,8 @@ export class ${toPascalCase(inputs.name)}Controller implements IController {
 `,
           },
           {
-            type: 'file',
-            name: 'controller.spec.ts',
+            type: "file",
+            name: "controller.spec.ts",
             content: (inputs) =>
               `import { IRequest } from '../../../../interfaces/controller';
 

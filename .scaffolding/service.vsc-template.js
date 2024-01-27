@@ -37,7 +37,7 @@ export type { I${toPascalCase(inputs.name)}Service, I${toPascalCase(
 
 export  { ${toPascalCase(inputs.name)}ServiceSchema };
 
-export default ${toPascalCase(inputs.name)}Service;
+export { ${toPascalCase(inputs.name)}Service };
 `,
           },
           {
@@ -53,18 +53,18 @@ export type T${toPascalCase(inputs.name)} = z.infer<typeof ${toPascalCase(
               inputs.name
             )}ServiceSchema>;
 
-export interface I${toPascalCase(inputs.name)}Service {
-  execute(${toCamelCase(inputs.name)}Input: I${toPascalCase(
-              inputs.name
-            )}Input): Promise<I${toPascalCase(inputs.name)}Output>;
-}
-
 export interface I${toPascalCase(inputs.name)}Input {
   name: string;
 }
 
 export interface I${toPascalCase(inputs.name)}Output {
   name: string;
+}
+
+export interface I${toPascalCase(inputs.name)}Service {
+  execute(${toCamelCase(inputs.name)}Input: I${toPascalCase(
+              inputs.name
+            )}Input): Promise<I${toPascalCase(inputs.name)}Output>;
 }
 
 export class ${toPascalCase(inputs.name)}Service implements I${toPascalCase(

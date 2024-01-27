@@ -34,3 +34,9 @@ functions:
       - httpApi:
           path: /users/{userId}
           method: GET
+  auth/signin:
+    handler: src/server/functions/auth/signin.handler
+    events:
+      - httpApi:
+          path: /auth/signin
+          method: POST
