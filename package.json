@@ -1,0 +1,18 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "serverless offline --reloadHandler --httpPort 3001",
+    "deploy:dev": "serverless deploy --stage dev",
+    "deploy:prod": "serverless deploy --stage prod"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.132",
+    "esbuild": "^0.19.12",
+    "serverless-esbuild": "^1.50.2",
+    "serverless-offline": "^13.3.3",
+    "typescript": "^5.3.3"
+  }
+}

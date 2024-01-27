@@ -1,0 +1,36 @@
+service: godiet
+frameworkVersion: "3"
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  memorySize: 512
+
+custom:
+  esbuild:
+    target: node20
+    format: esm
+    minify: true
+    outputFileExtension: .mjs
+
+functions:
+  hello:
+    handler: src/server/functions/hello.handler
+    memorySize: 128
+    events:
+      - httpApi:
+          path: /
+          method: GET
+  getUserById:
+    handler: src/server/functions/getUserById.handler
+    events:
+      - httpApi:
+          path: /users/{userId}
+          method: GET
