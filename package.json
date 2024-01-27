@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "serverless offline --reloadHandler --httpPort 3001",
     "deploy:dev": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage prod",
     "prepare": "husky",
     "lint:ci": "prettier --check ./src && eslint ./src --ext .ts",
-    "lint:fix": "prettier --write ./src && eslint ./src --ext .ts --fix"
+    "lint:fix": "prettier --write ./src && eslint ./src --ext .ts --fix",
+    "migrations:dev": "npx prisma migrate dev",
+    "migrations:deploy": "npx prisma migrate deploy"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.132",
@@ -23,15 +26,18 @@
     "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",
+    "prisma": "^5.8.1",
     "serverless-esbuild": "^1.50.2",
     "serverless-offline": "^13.3.3",
     "serverless-tscpaths": "^0.0.8",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@prisma/client": "^5.8.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.1",
     "jsonwebtoken": "^9.0.2",
+    "serverless-dotenv-plugin": "^6.0.0",
     "zod": "^3.22.4"
   }
 }

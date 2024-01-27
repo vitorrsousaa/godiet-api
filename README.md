@@ -10,6 +10,57 @@ This template does not include any kind of persistence (database). For more adva
 
 ## Usage
 
+## Installation
+
+```bash
+$ yarn install
+```
+
+## Running the app
+
+```bash
+# start docker
+$ docker run --name fincheck -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5434:5432 -d postgres
+
+# development
+$ yarn run start
+
+# watch mode
+$ yarn run start:dev
+
+# production mode
+$ yarn run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ yarn run test
+
+# e2e tests
+$ yarn run test:e2e
+
+# test coverage
+$ yarn run test:cov
+```
+
+### Create container
+
+After installation of dependencies, its necessary to create a docker container. You can run in any port, but in this example, we will create a container in port 5433.
+
+Podemos rodar o comando
+
+```
+docker-compose up -d
+```
+
+ou
+
+```
+docker run --name godiet_api -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5433:5432 -d postgres
+```
+
 ### Deployment
 
 ```

@@ -1,6 +1,6 @@
+import { Config } from '@/config';
 import { IGenerateToken, IToken, PayloadProps } from '@/interfaces/providers';
 
-import { Config } from '@config';
 import jwt from 'jsonwebtoken';
 
 export class TokenProvider implements IToken {

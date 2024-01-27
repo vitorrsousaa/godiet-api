@@ -1,15 +1,14 @@
 import { AppError } from '@/errors';
 import { IController, IRequest, IResponse } from '@/interfaces/controller';
+import { returnErrorMissingField } from '@/utils';
 
-import { returnErrorMissingField } from 'src/app/utils';
+import { ISignupService, SignupServiceSchema } from '../../services';
 
-import { ISigninService, SigninServiceSchema } from '../../services/Signin';
-
-export class SigninController implements IController {
-  constructor(private readonly signinService: ISigninService) {}
+export class SignupController implements IController {
+  constructor(private readonly signupService: ISignupService) {}
   async handle(request: IRequest): Promise<IResponse> {
     try {
-      const body = returnErrorMissingField(SigninServiceSchema, request.body);
+      const body = returnErrorMissingField(SignupServiceSchema, request.body);
 
       if (!body.success) {
         return {
@@ -18,16 +17,17 @@ export class SigninController implements IController {
         };
       }
 
-      const result = await this.signinService.execute({
+      const service = await this.signupService.execute({
         user: {
           email: 'request.body.email@email.com',
+          name: 'request.body.name',
           password: 'request.body.password',
         },
       });
 
       return {
         statusCode: 200,
-        body: result,
+        body: service,
       };
     } catch (error) {
       if (error instanceof AppError) {
