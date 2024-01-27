@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
+import { IGenerateToken, IToken, PayloadProps } from '@/interfaces/providers';
 
-import { IGenerateToken, IToken, PayloadProps } from "@/interfaces/providers";
-import { Config } from "@config";
+import { Config } from '@config';
+import jwt from 'jsonwebtoken';
 
 export class TokenProvider implements IToken {
   constructor(private readonly config: Config) {}

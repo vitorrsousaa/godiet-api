@@ -1,1 +1,1 @@
-export * from "./returnErrorMissingFields";
+export * from './returnErrorMissingFields';

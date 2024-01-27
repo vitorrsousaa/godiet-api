@@ -1,6 +1,8 @@
-import { IController, IRequest, IResponse } from "@/interfaces/controller";
-import { ISigninService, SigninServiceSchema } from "../../services/Signin";
-import { returnErrorMissingField } from "src/app/utils";
+import { IController, IRequest, IResponse } from '@/interfaces/controller';
+
+import { returnErrorMissingField } from 'src/app/utils';
+
+import { ISigninService, SigninServiceSchema } from '../../services/Signin';
 
 export class SigninController implements IController {
   constructor(private readonly signinService: ISigninService) {}

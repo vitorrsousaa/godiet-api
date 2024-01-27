@@ -1,3 +1,3 @@
-import { Config } from "./environment";
+import { Config } from './environment';
 
 export { Config };

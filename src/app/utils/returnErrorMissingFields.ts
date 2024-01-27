@@ -1,12 +1,12 @@
-import * as z from "zod";
+import { ZodError } from '@/errors';
 
-import { ZodError } from "@/errors";
+import * as z from 'zod';
 
 // z.SafeParseSuccess<z.output<S>>["data"]
 
 interface IReturnErrorMissingFieldOutput<S extends z.ZodType> {
   success: true;
-  data: S extends z.ZodType<infer T> ? z.SafeParseSuccess<T>["data"] : never;
+  data: S extends z.ZodType<infer T> ? z.SafeParseSuccess<T>['data'] : never;
 }
 
 interface IReturnErrorMissingFieldOutputFalse {

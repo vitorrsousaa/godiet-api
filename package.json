@@ -6,13 +6,23 @@
   "scripts": {
     "dev": "serverless offline --reloadHandler --httpPort 3001",
     "deploy:dev": "serverless deploy --stage dev",
-    "deploy:prod": "serverless deploy --stage prod"
+    "deploy:prod": "serverless deploy --stage prod",
+    "prepare": "husky",
+    "lint:ci": "prettier --check ./src && eslint ./src --ext .ts",
+    "lint:fix": "prettier --write ./src && eslint ./src --ext .ts --fix"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.132",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
     "esbuild": "^0.19.12",
+    "eslint": "^8.56.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^9.0.6",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
     "serverless-esbuild": "^1.50.2",
     "serverless-offline": "^13.3.3",
     "serverless-tscpaths": "^0.0.8",

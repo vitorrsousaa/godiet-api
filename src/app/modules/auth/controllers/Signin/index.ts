@@ -1,3 +1,3 @@
-import { SigninController } from "./controller";
+import { SigninController } from './controller';
 
 export { SigninController };
