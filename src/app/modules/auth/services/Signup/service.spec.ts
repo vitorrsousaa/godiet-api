@@ -1,22 +1,25 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ICrypt, IToken } from '@/interfaces/providers';
 import { IUserRepositories } from '@/repositories/user';
 import { clearAllMocks, fn, SpyInstance, spyOn } from '@/tests';
 
-import { ISigninService, SigninService } from './service';
+import { ISignupService, SignupService } from './service';
 
-describe('SignIn service', () => {
-  let service: ISigninService;
+describe('SignUp Service', () => {
+  let service: ISignupService;
   let spy = {
+    'userRepositories.create': {} as SpyInstance<
+      ReturnType<IUserRepositories['create']>
+    >,
     'userRepositories.findUnique': {} as SpyInstance<
       ReturnType<IUserRepositories['findUnique']>
     >,
-    'cryptProvider.compare': {} as SpyInstance<Partial<ICrypt['compare']>>,
-    'tokenProvider.verify': {} as SpyInstance<Partial<IToken['verify']>>,
+    'cryptProvider.compare': {} as SpyInstance<ReturnType<ICrypt['compare']>>,
+    'tokenProvider.verify': {} as SpyInstance<ReturnType<IToken['verify']>>,
   };
 
   beforeEach(() => {
     const userRepositoriesInstance = {
+      create: fn(),
       findUnique: fn(),
     } as unknown as IUserRepositories;
 
@@ -31,6 +34,7 @@ describe('SignIn service', () => {
     } as unknown as IToken;
 
     spy = {
+      'userRepositories.create': spyOn(userRepositoriesInstance, 'create'),
       'userRepositories.findUnique': spyOn(
         userRepositoriesInstance,
         'findUnique'
@@ -39,7 +43,7 @@ describe('SignIn service', () => {
       'tokenProvider.verify': spyOn(tokenProviderInstance, 'verify'),
     };
 
-    service = new SigninService(
+    service = new SignupService(
       userRepositoriesInstance,
       cryptProviderInstance,
       tokenProviderInstance
@@ -50,64 +54,56 @@ describe('SignIn service', () => {
     clearAllMocks();
   });
 
-  it('Should return user when email and password is correctly', async () => {
+  it('Should return user when email is not in use', async () => {
     // Arrange
     const createdAt = new Date();
     const updatedAt = new Date();
-    spy['userRepositories.findUnique'].mockResolvedValue({
-      name: 'any_name',
+    spy['userRepositories.findUnique'].mockResolvedValue(null);
+    spy['userRepositories.create'].mockResolvedValue({
       email: 'any_email',
+      name: 'any_name',
       id: 'any_id',
       password: 'any_password',
       createdAt,
       updatedAt,
     });
-    spy['cryptProvider.compare'].mockResolvedValue(true);
 
     // Act
-    const signIn = await service.execute({
-      user: { email: 'any_email', password: 'any_password' },
+    const result = await service.execute({
+      user: {
+        email: 'any_email',
+        name: 'any_name',
+        password: 'any_password',
+      },
     });
 
     // Assert
-    expect(signIn.accessToken).toBe('generate_token');
+    expect(result.accessToken).toBe('generate_token');
   });
 
-  it('Should throw error when password is incorrectly', async () => {
+  it('Should throw error when email is in use', async () => {
     // Arrange
     const createdAt = new Date();
     const updatedAt = new Date();
     spy['userRepositories.findUnique'].mockResolvedValue({
-      id: 'any_id',
       email: 'any_email',
+      id: 'any_id',
       name: 'any_name',
       password: 'any_password',
       createdAt,
       updatedAt,
     });
 
-    spy['cryptProvider.compare'].mockResolvedValue(false);
-
     // Act
     try {
       await service.execute({
-        user: { email: 'any_email', password: 'any_password' },
+        user: {
+          email: 'any_email',
+          name: 'any_name',
+          password: 'any_password',
+        },
       });
-    } catch (error: any) {
-      // Assert
-      expect(error.message).toBe('User not exists');
-    }
-  });
-
-  it('Should throw error when user not exists', async () => {
-    // Arrange
-    spy['userRepositories.findUnique'].mockResolvedValue(null);
-
-    // Act
-    try {
-      await service.execute({
-        user: { email: 'any_email', password: 'any_password' },
-      });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       // Assert
       expect(error.message).toBe('Invalid credentials');

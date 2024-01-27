@@ -12,7 +12,10 @@
     "lint:ci": "prettier --check ./src && eslint ./src --ext .ts",
     "lint:fix": "prettier --write ./src && eslint ./src --ext .ts --fix",
     "migrations:dev": "npx prisma migrate dev",
-    "migrations:deploy": "npx prisma migrate deploy"
+    "migrations:deploy": "npx prisma migrate deploy",
+    "test": "vitest --coverage",
+    "test:ci": "vitest --no-watch",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.132",
@@ -20,6 +23,9 @@
     "@types/jsonwebtoken": "^9.0.5",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
+    "@vitest/coverage-v8": "^1.2.2",
+    "@vitest/spy": "^1.2.2",
+    "@vitest/ui": "^1.2.2",
     "esbuild": "^0.19.12",
     "eslint": "^8.56.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
@@ -30,7 +36,8 @@
     "serverless-esbuild": "^1.50.2",
     "serverless-offline": "^13.3.3",
     "serverless-tscpaths": "^0.0.8",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   },
   "dependencies": {
     "@prisma/client": "^5.8.1",

@@ -39,10 +39,13 @@
       "@/config": ["src/app/config/index.ts"],
       "@/repositories/*": ["src/app/database/repositories/*"],
       "@/database": ["src/app/database/index.ts"],
+      "@/tests": ["src/app/tests/index.ts"],
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
-    // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
+    "types": [
+      "vitest/globals",
+    ] /* Specify type package names to be included without being referenced in a source file. */,
     // "allowUmdGlobalAccess": true,                     /* Allow accessing UMD globals from modules. */
     // "resolveJsonModule": true /* Enable importing .json files */,
     // "noResolve": true,                                /* Disallow `import`s, `require`s or `<reference>`s from expanding the number of files TypeScript should add to a project. */
