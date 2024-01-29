@@ -12,9 +12,7 @@ describe('Sign up controller', () => {
   let controller: SignupController;
 
   let spy = {
-    'signUpService.execute': {} as SpyInstance<
-      Partial<ISignupService['execute']>
-    >,
+    'signUpService.execute': {} as SpyInstance<ISignupService['execute']>,
   };
 
   beforeEach(() => {
@@ -59,10 +57,7 @@ describe('Sign up controller', () => {
   it('Should return user when fields are correctly', async () => {
     // Arrange
     spy['signUpService.execute'].mockResolvedValue({
-      name: 'any_name',
-      email: 'any_email@email.com',
-      id: 'any_id',
-      token: 'any_token',
+      accessToken: 'any_token',
     });
 
     const mockAuthenticate = {
@@ -78,10 +73,7 @@ describe('Sign up controller', () => {
 
     // Assert
     expect(result.body).toEqual({
-      name: 'any_name',
-      email: 'any_email@email.com',
-      id: 'any_id',
-      token: 'any_token',
+      accessToken: 'any_token',
     });
   });
 });

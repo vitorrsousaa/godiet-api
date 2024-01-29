@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MockInstance } from '@vitest/spy';
 import { vi } from 'vitest';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SpyInstance<T> = MockInstance<any, T>;
+type SpyInstance<T extends (...args: any) => any> = MockInstance<
+  any,
+  ReturnType<T>
+>;
 
 const customClearAllMocks = vi.clearAllMocks;
 const mock = vi.mock;

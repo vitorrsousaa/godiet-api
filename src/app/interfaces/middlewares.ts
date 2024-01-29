@@ -1,7 +1,7 @@
 import { IRequest, IResponse } from './http';
 
 export interface IData {
-  data: Record<string, unknown>;
+  data: Record<string, string>;
 }
 
 export interface IMiddleware {

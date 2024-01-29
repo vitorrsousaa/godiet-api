@@ -1,4 +1,4 @@
-import { IResponse } from '@/interfaces/controller';
+import { IResponse } from '@/interfaces/http';
 
 import { IResponseLambda } from '../interfaces/handlers';
 

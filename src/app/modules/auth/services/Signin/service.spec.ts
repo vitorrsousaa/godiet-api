@@ -9,10 +9,10 @@ describe('SignIn service', () => {
   let service: ISigninService;
   let spy = {
     'userRepositories.findUnique': {} as SpyInstance<
-      ReturnType<IUserRepositories['findUnique']>
+      IUserRepositories['findUnique']
     >,
-    'cryptProvider.compare': {} as SpyInstance<Partial<ICrypt['compare']>>,
-    'tokenProvider.verify': {} as SpyInstance<Partial<IToken['verify']>>,
+    'cryptProvider.compare': {} as SpyInstance<ICrypt['compare']>,
+    'tokenProvider.verify': {} as SpyInstance<IToken['verify']>,
   };
 
   beforeEach(() => {

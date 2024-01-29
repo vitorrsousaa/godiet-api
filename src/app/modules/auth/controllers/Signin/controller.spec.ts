@@ -11,9 +11,7 @@ describe('Sign in controller', () => {
   let controller: SigninController;
 
   const spy = {
-    'signInService.execute': {} as SpyInstance<
-      ReturnType<ISigninService['execute']>
-    >,
+    'signInService.execute': {} as SpyInstance<ISigninService['execute']>,
   };
 
   beforeEach(() => {

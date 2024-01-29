@@ -7,14 +7,12 @@ import { ISignupService, SignupService } from './service';
 describe('SignUp Service', () => {
   let service: ISignupService;
   let spy = {
-    'userRepositories.create': {} as SpyInstance<
-      ReturnType<IUserRepositories['create']>
-    >,
+    'userRepositories.create': {} as SpyInstance<IUserRepositories['create']>,
     'userRepositories.findUnique': {} as SpyInstance<
-      ReturnType<IUserRepositories['findUnique']>
+      IUserRepositories['findUnique']
     >,
-    'cryptProvider.compare': {} as SpyInstance<ReturnType<ICrypt['compare']>>,
-    'tokenProvider.verify': {} as SpyInstance<ReturnType<IToken['verify']>>,
+    'cryptProvider.compare': {} as SpyInstance<ICrypt['compare']>,
+    'tokenProvider.verify': {} as SpyInstance<IToken['verify']>,
   };
 
   beforeEach(() => {

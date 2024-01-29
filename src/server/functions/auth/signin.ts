@@ -7,5 +7,6 @@ export async function handler(event: APIGatewayProxyEventV2) {
   const controller = makeControllerSignin();
 
   const response = await controller.handle(requestAdapter(event));
+
   return responseAdapter(response);
 }
