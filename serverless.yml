@@ -16,15 +16,17 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs20.x
+  runtime: nodejs18.x
   memorySize: 512
 
 custom:
   esbuild:
     target: node20
-    format: esm
+    # format: esm
     minify: true
-    outputFileExtension: .mjs
+    # outputFileExtension: .mjs
+    # banner:
+    #   js: 'import { createRequire } from "module";const require = createRequire(import.meta.url)'
 
 functions:
   getUserById:

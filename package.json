@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "dev": "serverless offline --reloadHandler --httpPort 3001",
     "deploy:dev": "serverless deploy --stage dev",

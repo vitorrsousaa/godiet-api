@@ -9,4 +9,4 @@ services:
       POSTGRES_PASSWORD: 'root'
       POSTGRES_DB: 'godiet'
     ports:
-      - '5433:5432'
+      - '5435:5432'

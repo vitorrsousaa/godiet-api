@@ -19,9 +19,9 @@ export class SignupController implements IController {
 
       const service = await this.signupService.execute({
         user: {
-          email: 'request.body.email@email.com',
-          name: 'request.body.name',
-          password: 'request.body.password',
+          email: body.data.email,
+          name: body.data.name,
+          password: body.data.password,
         },
       });
 

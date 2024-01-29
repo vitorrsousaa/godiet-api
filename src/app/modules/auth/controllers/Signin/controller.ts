@@ -20,8 +20,8 @@ export class SigninController implements IController {
 
       const result = await this.signinService.execute({
         user: {
-          email: 'request.body.email@email.com',
-          password: 'request.body.password',
+          email: body.data.email,
+          password: body.data.password,
         },
       });
 
