@@ -1,2 +1,2 @@
-export * from './controlerAdapter';
+export * from './requestAdapter';
 export * from './responseAdapter';

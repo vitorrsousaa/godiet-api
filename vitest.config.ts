@@ -30,6 +30,8 @@ export default defineConfig({
       '@/providers': path.resolve(__dirname, './src/app/providers'),
       '@/config': path.resolve(__dirname, './src/app/config/index.ts'),
       '@/tests': path.resolve(__dirname, './src/app/tests/index.ts'),
+      '@/entities': path.resolve(__dirname, './src/app/entities'),
+      '@/middlewares': path.resolve(__dirname, './src/app/middlewares'),
       '@/repositories': path.resolve(
         __dirname,
         'src',

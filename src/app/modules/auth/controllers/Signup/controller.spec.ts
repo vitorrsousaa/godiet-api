@@ -1,5 +1,5 @@
 import { ZodError } from '@/errors';
-import { IRequest } from '@/interfaces/controller';
+import { IRequest } from '@/interfaces/http';
 import { clearAllMocks, fn, SpyInstance, spyOn } from '@/tests';
 
 import { ISignupService } from '../../services/Signup';

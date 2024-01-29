@@ -47,3 +47,9 @@ functions:
       - httpApi:
           path: /auth/signup
           method: POST
+  createPatient:
+    handler: src/server/functions/patient/create.handler
+    events:
+      - httpApi:
+          path: /patient
+          method: POST

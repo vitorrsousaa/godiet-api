@@ -1,5 +1,6 @@
 import { AppError } from '@/errors';
-import { IController, IRequest, IResponse } from '@/interfaces/controller';
+import { IController } from '@/interfaces/controller';
+import { IRequest, IResponse } from '@/interfaces/http';
 import { returnErrorMissingField } from '@/utils';
 
 import { ISignupService, SignupServiceSchema } from '../../services';
