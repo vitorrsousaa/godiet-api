@@ -1,9 +1,29 @@
-import {
+(function Template() {
+  const toPascalCase = (str) =>
+    str
+      .replace(/(?:^\w|[A-Z]|\b\w)/g, (fl) => fl.toUpperCase())
+      .replace(/\W+/g, '');
+
+  const toCamelCase = (str) =>
+    toPascalCase(str).replace(/^./, (firstLetter) => firstLetter.toLowerCase());
+
+  return {
+    userInputs: [
+      {
+        title: 'Lambda Name',
+        argumentName: 'name',
+        defaultValue: 'Sample',
+      },
+    ],
+    template: [
+      {
+        type: 'file',
+        name: (inputs) => `${toCamelCase(inputs.name)}.ts`,
+        content: (inputs) => `import {
   controllerAdapter,
   middlewareAdapter,
   responseAdapter,
 } from '@/adapters';
-import { makeControllerCreatePatient } from '@/factories/controllers/patient/makeControllerCreatePatient';
 import { makeMiddlewareAuthentication } from '@/factories/middlewares/makeMiddlewareAuthentication';
 
 import type { APIGatewayProxyEventV2 } from 'aws-lambda';
@@ -19,10 +39,15 @@ export async function handler(event: APIGatewayProxyEventV2) {
   }
 
   const response = await controllerAdapter(
-    makeControllerCreatePatient(),
+    makeController(),
     event,
     responseMiddleware
   );
 
   return responseAdapter(response);
 }
+        `,
+      },
+    ],
+  };
+});

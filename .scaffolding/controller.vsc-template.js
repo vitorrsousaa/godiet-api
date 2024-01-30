@@ -33,9 +33,9 @@ export { ${toPascalCase(inputs.name)}Controller };
           {
             type: 'file',
             name: 'controller.ts',
-            content: (inputs) => `import {
-  IController,
-} from '@/interfaces/controller';
+            content: (
+              inputs
+            ) => `import { IController } from '@/interfaces/controller';
 import { IRequest, IResponse } from '@/interfaces/http';
 
 export class ${toPascalCase(inputs.name)}Controller implements IController {
@@ -73,7 +73,8 @@ export class ${toPascalCase(inputs.name)}Controller implements IController {
             type: 'file',
             name: 'controller.spec.ts',
             content: (inputs) =>
-              `import { IRequest } from '../../../../interfaces/controller';
+              `import { IRequest } from '@/interfaces/http';
+import { clearAllMocks, fn, SpyInstance, spyOn } from '@/tests';
 
 import { ${toPascalCase(inputs.name)}Controller } from './controller';
 
@@ -82,24 +83,29 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
   let controller: ${toPascalCase(inputs.name)}Controller;
 
   let spy = {
-    'service.execute': {} as jest.SpiedFunction<any>,
+    'service.execute': {} as SpyInstance<any>,
   }
 
   beforeEach(() => {
     mockRequest = {
       body: {},
       params: {},
+      accountId: '',
     } as IRequest;
 
+    const service = {
+      execute: fn(),
+    } as unkonwn;
+
     spy = {
-      'service.execute': jest.spyOn(service, 'execute'),
+      'service.execute': spyOn(service, 'execute'),
     }
 
-    controller = new ${toPascalCase(inputs.name)}Controller();
+    controller = new ${toPascalCase(inputs.name)}Controller(service);
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    clearAllMocks();
     mockRequest.body = {};
   })
 

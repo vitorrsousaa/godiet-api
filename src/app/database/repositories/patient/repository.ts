@@ -4,7 +4,7 @@ import { type Prisma, PrismaClient } from '@prisma/client';
 
 export interface IPatientRepositories {
   create(createDTO: Prisma.PatientCreateArgs): Promise<TPatient>;
-  findAll(findAllArgs: Prisma.PatientFindManyArgs): Promise<TPatient[] | null>;
+  findAll(findAllArgs: Prisma.PatientFindManyArgs): Promise<TPatient[]>;
   delete(deleteArgs: Prisma.PatientDeleteArgs): Promise<TPatient | null>;
   update(updateArgs: Prisma.PatientUpdateArgs): Promise<TPatient | null>;
   findUnique(

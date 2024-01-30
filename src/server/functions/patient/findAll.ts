@@ -3,7 +3,7 @@ import {
   middlewareAdapter,
   responseAdapter,
 } from '@/adapters';
-import { makeControllerCreatePatient } from '@/factories/controllers/patient/makeControllerCreatePatient';
+import { makeControllerFindAllPatient } from '@/factories/controllers/patient/makeControllerFindAllPatient';
 import { makeMiddlewareAuthentication } from '@/factories/middlewares/makeMiddlewareAuthentication';
 
 import type { APIGatewayProxyEventV2 } from 'aws-lambda';
@@ -19,7 +19,7 @@ export async function handler(event: APIGatewayProxyEventV2) {
   }
 
   const response = await controllerAdapter(
-    makeControllerCreatePatient(),
+    makeControllerFindAllPatient(),
     event,
     responseMiddleware
   );

@@ -53,6 +53,12 @@ functions:
       - httpApi:
           path: /patient
           method: POST
+  findAllPatients:
+    handler: src/server/functions/patient/findAll.handler
+    events:
+      - httpApi:
+          path: /patient
+          method: GET
   userMe:
     handler: src/server/functions/user/me.handler
     events:
