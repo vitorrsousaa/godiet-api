@@ -14697,7 +14697,7 @@
     "name": "Leite, de vaca, integral",
     "attributes": [
       { "name": "humidity", "qty": 0.2, "unit": "percents" },
-      { "name": "protein", "qty": 2.54 , "unit": "g" },
+      { "name": "protein", "qty": 2.54, "unit": "g" },
       { "name": "lipid", "qty": 2.69, "unit": "g" },
       { "name": "cholesterol", "qty": 10.49, "unit": "mg" },
       { "name": "carbohydrate", "qty": 3.91, "unit": "g" },
@@ -15024,41 +15024,6 @@
       { "name": "monounsaturated_fat", "qty": 6.77666666666667, "unit": "g" },
       { "name": "polyunsaturated_fat", "qty": 0.53, "unit": "g" },
       { "name": "energy", "qty": 359.880462405055, "unit": "kcal" }
-    ]
-  },
-  {
-    "baseQty": 100,
-    "baseUnit": "g",
-    "categoryName": "Leite e derivados",
-    "name": "Maria mole",
-    "attributes": [
-      { "name": "humidity", "qty": 62.4663333333333, "unit": "percents" },
-      { "name": "protein", "qty": 9.62954666666667, "unit": "g" },
-      { "name": "lipid", "qty": 23.441, "unit": "g" },
-      { "name": "cholesterol", "qty": 73.669, "unit": "mg" },
-      { "name": "carbohydrate", "qty": 2.43245333333333, "unit": "g" },
-      { "name": "fiber", "qty": "NA", "unit": "g" },
-      { "name": "ashes", "qty": 2.03066666666667, "unit": "g" },
-      { "name": "calcium", "qty": 259.466666666667, "unit": "mg" },
-      { "name": "magnesium", "qty": 11.6283333333333, "unit": "mg" },
-      { "name": "phosphorus", "qty": 447.880333333333, "unit": "mg" },
-      { "name": "iron", "qty": 0.115, "unit": "mg" },
-      { "name": "sodium", "qty": 557.924666666667, "unit": "mg" },
-      { "name": "potassium", "qty": 93.0643333333333, "unit": "mg" },
-      { "name": "copper", "qty": 0.045, "unit": "mg" },
-      { "name": "zinc", "qty": 1.277, "unit": "mg" },
-      { "name": "retinol", "qty": 194.586666666667, "unit": "mcg" },
-      { "name": "thiamine", "qty": "Tr", "unit": "mg" },
-      { "name": "riboflavin", "qty": 0.190666666666667, "unit": "mg" },
-      { "name": "pyridoxine", "qty": "Tr", "unit": "mg" },
-      { "name": "niacin", "qty": "Tr", "unit": "mg" },
-      { "name": "amino_acids" },
-      { "name": "manganese", "qty": 0.015333333333333, "unit": "mg" },
-      { "name": "vitaminC", "qty": "Tr", "unit": "mg" },
-      { "name": "satured_fat", "qty": 13.7, "unit": "g" },
-      { "name": "monounsaturated_fat", "qty": 6.4, "unit": "g" },
-      { "name": "polyunsaturated_fat", "qty": 0.3, "unit": "g" },
-      { "name": "energy", "qty": 256.578148666667, "unit": "kcal" }
     ]
   },
   {

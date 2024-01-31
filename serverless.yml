@@ -47,6 +47,7 @@ functions:
       - httpApi:
           path: /auth/signup
           method: POST
+
   createPatient:
     handler: src/server/functions/patient/create.handler
     events:
@@ -59,6 +60,21 @@ functions:
       - httpApi:
           path: /patient
           method: GET
+
+  findAllFoods:
+    handler: src/server/functions/food/findAll.handler
+    events:
+      - httpApi:
+          path: /food
+          method: GET
+
+  findAllCategoryName:
+    handler: src/server/functions/categoryName/findAll.handler
+    events:
+      - httpApi:
+          path: /categoryName
+          method: GET
+
   userMe:
     handler: src/server/functions/user/me.handler
     events:

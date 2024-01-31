@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "serverless offline --reloadHandler --httpPort 3001",
-    "deploy:dev": "serverless deploy --stage dev",
-    "deploy:prod": "serverless deploy --stage prod",
+    "deploy:dev": "serverless deploy -v --stage dev",
+    "deploy:prod": "serverless deploy -v --stage prod",
     "prepare": "husky",
     "lint:ci": "prettier --check ./src && eslint ./src --ext .ts",
     "lint:fix": "prettier --write ./src && eslint ./src --ext .ts --fix",
@@ -14,7 +14,11 @@
     "migrations:deploy": "npx prisma migrate deploy",
     "test": "vitest --coverage",
     "test:ci": "vitest --no-watch",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "seed": "npx prisma db seed"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.132",
@@ -35,6 +39,7 @@
     "serverless-esbuild": "^1.50.2",
     "serverless-offline": "^13.3.3",
     "serverless-tscpaths": "^0.0.8",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
   },
