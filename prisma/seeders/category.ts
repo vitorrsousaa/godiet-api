@@ -59,7 +59,6 @@ export function generateCategoryBaseForSeeding() {
         return {
           name: attribute.name,
           qty: (attribute.qty * newBaseQty) / food.baseQty,
-
           unit: attribute.unit,
         };
       }),
@@ -87,9 +86,24 @@ export function generateCategoryBaseForSeeding() {
 
     const newAcc = {
       name: food.categoryName,
-      baseProtein: typeof protein?.qty === 'number' ? protein.qty : 0,
-      baseCarbo: typeof carbo?.qty === 'number' ? carbo.qty : 0,
-      baseFat: typeof fat?.qty === 'number' ? fat?.qty : 0,
+      baseProtein:
+        typeof protein?.qty === 'number'
+          ? Number.isNaN(protein.qty)
+            ? 0
+            : protein.qty
+          : 0,
+      baseCarbo:
+        typeof carbo?.qty === 'number'
+          ? Number.isNaN(carbo.qty)
+            ? 0
+            : carbo.qty
+          : 0,
+      baseFat:
+        typeof fat?.qty === 'number'
+          ? Number.isNaN(fat.qty)
+            ? 0
+            : fat.qty
+          : 0,
       baseEnergy: baseEnergy,
     };
 

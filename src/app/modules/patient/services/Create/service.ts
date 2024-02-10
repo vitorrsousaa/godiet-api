@@ -9,12 +9,7 @@ export const CreatePatientServiceSchema = z.object({
   name: z.string(),
   height: z.number().positive().optional(),
   weight: z.number().positive().optional(),
-  birthDate: z
-    .date()
-    .refine((date) => date <= new Date(), {
-      message: 'Birth date cannot be in the future',
-    })
-    .optional(),
+  birthDate: z.string().optional(),
   gender: GenderEnum.optional(),
 });
 

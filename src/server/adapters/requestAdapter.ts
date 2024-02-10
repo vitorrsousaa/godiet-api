@@ -9,6 +9,7 @@ export function requestAdapter(event: APIGatewayProxyEventV2): IRequest {
     patientId: undefined,
     params: event.pathParameters || {},
     headers: event.headers,
+    queryParams: event.queryStringParameters || {},
   };
 
   return request;

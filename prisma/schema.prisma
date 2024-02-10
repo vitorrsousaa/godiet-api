@@ -17,10 +17,12 @@ model User {
   name     String
   password String
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  hash      Float?    @map("hash")
-  patient   Patient[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  hash      Float?   @map("hash")
+
+  patient      Patient[]
+  PlanningMeal PlanningMeal[]
 
   @@map("users")
 }
@@ -43,6 +45,8 @@ model Patient {
   gender    GenderType?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  planningMeal PlanningMeal[]
 
   @@map("patients")
 }
@@ -67,8 +71,53 @@ model Food {
   name       String @unique
   attributes Json[]
 
-  categoryNameId String       @map("category_name_id") @db.Uuid()
-  categoryName   CategoryName @relation(fields: [categoryNameId], references: [id])
+  categoryNameId String @map("category_name_id") @db.Uuid()
+
+  categoryName CategoryName @relation(fields: [categoryNameId], references: [id])
 
   @@map("foods")
+}
+
+model PlanningMeal {
+  id        String   @id @default(uuid()) @db.Uuid()
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  name      String
+
+  userId    String @map("user_id") @db.Uuid()
+  patientId String @db.Uuid()
+
+  patient Patient? @relation(fields: [patientId], references: [id])
+  user    User?    @relation(fields: [userId], references: [id])
+
+  meals Meal[]
+
+  @@map("planning_meals")
+}
+
+model Meal {
+  id   String   @id @default(uuid()) @db.Uuid()
+  name String
+  time DateTime
+
+  planningMealId String @db.Uuid()
+
+  planningMeal PlanningMeal @relation(fields: [planningMealId], references: [id])
+
+  foods MealFood[]
+
+  @@map("meals")
+}
+
+model MealFood {
+  id      String @id @default(uuid()) @db.Uuid()
+  portion Float
+
+  mealId String @db.Uuid()
+
+  meal Meal @relation(fields: [mealId], references: [id])
+
+  options String[]
+
+  @@map("meal_foods")
 }

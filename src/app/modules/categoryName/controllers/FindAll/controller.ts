@@ -7,20 +7,29 @@ export class FindAllController implements IController {
   constructor(private readonly findAllCategoryNameService: IFindAllService) {}
 
   async handle(request: IRequest): Promise<IResponse> {
-    if (!request.accountId) {
+    try {
+      if (!request.accountId) {
+        return {
+          statusCode: 400,
+          body: {
+            error: 'User not found',
+          },
+        };
+      }
+
+      const categories = await this.findAllCategoryNameService.execute();
+
       return {
-        statusCode: 400,
+        statusCode: 200,
+        body: categories,
+      };
+    } catch {
+      return {
+        statusCode: 500,
         body: {
-          error: 'User not found',
+          error: 'Internal server error',
         },
       };
     }
-
-    const categories = await this.findAllCategoryNameService.execute();
-
-    return {
-      statusCode: 200,
-      body: categories,
-    };
   }
 }

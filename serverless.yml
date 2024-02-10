@@ -65,7 +65,7 @@ functions:
     handler: src/server/functions/food/findAll.handler
     events:
       - httpApi:
-          path: /food
+          path: /foods
           method: GET
 
   findAllCategoryName:

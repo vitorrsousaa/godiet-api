@@ -1,7 +1,8 @@
 import { IController } from '@/interfaces/controller';
 import { IRequest, IResponse } from '@/interfaces/http';
+import { returnErrorMissingField } from '@/utils';
 
-import { IFindAllService } from '../../services/FindAll';
+import { FindAllServiceSchema, IFindAllService } from '../../services/FindAll';
 
 export class FindAllController implements IController {
   constructor(private readonly findAllFoodService: IFindAllService) {}
@@ -15,11 +16,26 @@ export class FindAllController implements IController {
       };
     }
 
+    const result = returnErrorMissingField(
+      FindAllServiceSchema,
+      request.queryParams
+    );
+
+    if (!result.success) {
+      return {
+        statusCode: result.data.statusCode,
+        body: result.data.message,
+      };
+    }
+
+    const service = await this.findAllFoodService.execute({
+      categoryId: result.data.categoryId,
+      portion: result.data.portion as number,
+    });
+
     return {
       statusCode: 200,
-      body: {
-        message: request.body,
-      },
+      body: service,
     };
   }
 }

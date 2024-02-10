@@ -1,4 +1,4 @@
-import { TFood } from '@/entities/food';
+import { TAttribute, TFood } from '@/entities/food';
 
 import { type Prisma, PrismaClient } from '@prisma/client';
 
@@ -9,6 +9,14 @@ interface TFoodDatabase {
   name: string;
   attributes: Prisma.JsonValue[];
   categoryNameId: string;
+  categoryName?: {
+    id: string;
+    baseProtein: number;
+    baseCarbo: number;
+    baseFat: number;
+    baseEnergy: number;
+    name: string;
+  };
 }
 
 export interface IFoodRepositories {
@@ -30,7 +38,8 @@ class FoodRepositories implements IFoodRepositories {
       baseUnit: food.baseUnit,
       categoryNameId: food.categoryNameId,
       name: food.name,
-      attributes: food.attributes as Record<string, unknown>[],
+      attributes: food.attributes as TAttribute[],
+      categoryName: food.categoryName,
     };
   }
 }

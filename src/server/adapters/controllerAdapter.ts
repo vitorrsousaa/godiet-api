@@ -15,6 +15,7 @@ export function controllerAdapter(
     patientId: undefined,
     params: event.pathParameters || {},
     headers: event.headers,
+    queryParams: event.queryStringParameters || {},
   };
 
   const response = controller.handle(request);

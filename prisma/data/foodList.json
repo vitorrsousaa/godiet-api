@@ -16437,16 +16437,16 @@
     "name": "Sal, dietético",
     "attributes": [
       { "name": "humidity", "qty": 0.596666666666667, "unit": "percents" },
-      { "name": "protein", "qty": "NA", "unit": "g" },
-      { "name": "lipid", "qty": "NA", "unit": "g" },
-      { "name": "cholesterol", "qty": "NA", "unit": "mg" },
-      { "name": "carbohydrate", "qty": "NA", "unit": "g" },
-      { "name": "fiber", "qty": "NA", "unit": "g" },
+      { "name": "protein", "qty": 0, "unit": "g" },
+      { "name": "lipid", "qty": 0, "unit": "g" },
+      { "name": "cholesterol", "qty": 0, "unit": "mg" },
+      { "name": "carbohydrate", "qty": 0, "unit": "g" },
+      { "name": "fiber", "qty": 0, "unit": "g" },
       { "name": "ashes", "qty": 99.4033333333334, "unit": "g" },
       { "name": "sodium", "qty": 23431.5216666667, "unit": "mg" },
       { "name": "potassium", "qty": 20467.637, "unit": "mg" },
-      { "name": "retinol", "qty": "NA", "unit": "mcg" },
-      { "name": "energy", "qty": "NA", "unit": "kcal" }
+      { "name": "retinol", "qty": 0, "unit": "mcg" },
+      { "name": "energy", "qty": 0, "unit": "kcal" }
     ]
   },
   {
@@ -16463,7 +16463,7 @@
       { "name": "fiber", "qty": "NA", "unit": "g" },
       { "name": "sodium", "qty": 39943.203, "unit": "mg" },
       { "name": "retinol", "qty": "NA", "unit": "mcg" },
-      { "name": "energy", "qty": "NA", "unit": "kcal" }
+      { "name": "energy", "qty": 0, "unit": "kcal" }
     ]
   },
   {
@@ -18945,7 +18945,7 @@
       { "name": "satured_fat", "qty": 3.14033333333333, "unit": "g" },
       { "name": "monounsaturated_fat", "qty": 1.14766666666667, "unit": "g" },
       { "name": "polyunsaturated_fat", "qty": 0.277333333333333, "unit": "g" },
-      { "name": "energy", "qty": "*", "unit": "kcal" }
+      { "name": "energy", "qty": 0, "unit": "kcal" }
     ]
   },
   {
