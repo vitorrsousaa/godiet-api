@@ -60,6 +60,12 @@ functions:
       - httpApi:
           path: /patient
           method: GET
+  findByPatientId:
+    handler: src/server/functions/patient/findByPatientId.handler
+    events:
+      - httpApi:
+          path: /patient/{patientId}
+          method: GET
 
   findAllFoods:
     handler: src/server/functions/food/findAll.handler
