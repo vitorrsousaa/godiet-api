@@ -87,6 +87,12 @@ functions:
       - httpApi:
           path: /planningMeal/{patientId}
           method: POST
+  findAllPlanningByPatientId:
+    handler: src/server/functions/planningMeal/findByPatientId.handler
+    events:
+      - httpApi:
+          path: /planningMeal/{patientId}
+          method: GET
 
   userMe:
     handler: src/server/functions/user/me.handler

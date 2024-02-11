@@ -1,4 +1,5 @@
 import { type Prisma, PrismaClient } from '@prisma/client';
+import { DefaultArgs } from '@prisma/client/runtime/library';
 
 export interface TPlanningMeal {
   id: string;
@@ -11,6 +12,9 @@ export interface TPlanningMeal {
 
 export interface IPlanningMealRepositories {
   create(createDTO: Prisma.PlanningMealCreateArgs): Promise<TPlanningMeal>;
+  findAll(
+    findAllArgs: Prisma.PlanningMealFindManyArgs
+  ): Promise<TPlanningMeal[]>;
 }
 
 class PlanningMealRepositories implements IPlanningMealRepositories {
@@ -18,6 +22,12 @@ class PlanningMealRepositories implements IPlanningMealRepositories {
 
   async create(createArgs: Prisma.PlanningMealCreateArgs) {
     return this.prismaService.planningMeal.create(createArgs);
+  }
+
+  findAll(
+    findAllArgs: Prisma.PlanningMealFindManyArgs<DefaultArgs>
+  ): Promise<TPlanningMeal[]> {
+    return this.prismaService.planningMeal.findMany(findAllArgs);
   }
 }
 

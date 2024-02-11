@@ -1,9 +1,6 @@
-import { TPatient } from '@/entities/patient';
-import { IPatientRepositories } from '@/repositories/patient';
+import { IPlanningMealRepositories } from '@/repositories/planningMeal';
 
 import * as z from 'zod';
-
-import { PatientNotFound } from '../../errors/PatientNotFound';
 
 export const FindByPatientIdServiceSchema = z.object({
   userId: z.string().uuid(),
@@ -14,7 +11,9 @@ export type TFindByPatientId = z.infer<typeof FindByPatientIdServiceSchema>;
 
 export type IFindByPatientIdInput = TFindByPatientId;
 
-export type IFindByPatientIdOutput = TPatient | null;
+export interface IFindByPatientIdOutput {
+  name: string;
+}
 
 export interface IFindByPatientIdService {
   execute(
@@ -23,24 +22,29 @@ export interface IFindByPatientIdService {
 }
 
 export class FindByPatientIdService implements IFindByPatientIdService {
-  constructor(private readonly patientRepositories: IPatientRepositories) {}
+  constructor(
+    private readonly planningMealRepositories: IPlanningMealRepositories
+  ) {}
 
   async execute(
     findByPatientIdInput: IFindByPatientIdInput
   ): Promise<IFindByPatientIdOutput> {
     const { userId, patientId } = findByPatientIdInput;
 
-    const findPatient = await this.patientRepositories.findUnique({
+    const planning = await this.planningMealRepositories.findAll({
       where: {
-        id: patientId,
-        userId: userId,
+        userId,
+        patientId,
+      },
+      include: {
+        meals: {
+          include: {
+            foods: true,
+          },
+        },
       },
     });
 
-    if (!findPatient) {
-      throw new PatientNotFound();
-    }
-
-    return findPatient;
+    return planning;
   }
 }

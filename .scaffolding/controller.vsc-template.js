@@ -36,6 +36,7 @@ export { ${toPascalCase(inputs.name)}Controller };
             content: (inputs) => `import { AppError } from '@/errors';
 import { IController } from '@/interfaces/controller';
 import { IRequest, IResponse } from '@/interfaces/http';
+import { returnErrorMissingField } from '@/utils';
 
 export class ${toPascalCase(inputs.name)}Controller implements IController {
   constructor() {}
@@ -56,6 +57,18 @@ export class ${toPascalCase(inputs.name)}Controller implements IController {
           body: {
             error: 'Patient not found',
           },
+        };
+      }
+
+      const result = returnErrorMissingField(Schema, {
+        userId: request.accountId,
+        patientId: request.patientId,
+      });
+
+      if (!result.success) {
+        return {
+          statusCode: result.data.statusCode,
+          body: result.data.message,
         };
       }
 
