@@ -6,7 +6,7 @@ export function requestAdapter(event: APIGatewayProxyEventV2): IRequest {
   const request = {
     body: JSON.parse(event.body || '{}'),
     accountId: undefined,
-    patientId: undefined,
+    patientId: event.pathParameters?.patientId || undefined,
     params: event.pathParameters || {},
     headers: event.headers,
     queryParams: event.queryStringParameters || {},

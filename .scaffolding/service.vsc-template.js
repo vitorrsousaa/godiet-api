@@ -2,7 +2,7 @@
   const toPascalCase = (str) =>
     str
       .replace(/(?:^\w|[A-Z]|\b\w)/g, (fl) => fl.toUpperCase())
-      .replace(/\W+/g, "");
+      .replace(/\W+/g, '');
 
   const toCamelCase = (str) =>
     toPascalCase(str).replace(/^./, (firstLetter) => firstLetter.toLowerCase());
@@ -10,19 +10,19 @@
   return {
     userInputs: [
       {
-        title: "Service Name",
-        argumentName: "name",
-        defaultValue: "Sample",
+        title: 'Service Name',
+        argumentName: 'name',
+        defaultValue: 'Sample',
       },
     ],
     template: [
       {
-        type: "folder",
+        type: 'folder',
         name: (inputs) => `${toPascalCase(inputs.name)}`,
         children: [
           {
-            type: "file",
-            name: "index.ts",
+            type: 'file',
+            name: 'index.ts',
             content: (inputs) => `import {
   ${toPascalCase(inputs.name)}Service,
   ${toPascalCase(inputs.name)}ServiceSchema,
@@ -33,16 +33,16 @@
 
 export type { I${toPascalCase(inputs.name)}Service, I${toPascalCase(
               inputs.name
-            )}Input, I${toPascalCase(inputs.name)}Output};
+            )}Input, I${toPascalCase(inputs.name)}Output };
 
-export  { ${toPascalCase(inputs.name)}ServiceSchema };
+export { ${toPascalCase(inputs.name)}ServiceSchema };
 
 export { ${toPascalCase(inputs.name)}Service };
 `,
           },
           {
-            type: "file",
-            name: "service.ts",
+            type: 'file',
+            name: 'service.ts',
             content: (inputs) => `import * as z from 'zod';
 
 export const ${toPascalCase(inputs.name)}ServiceSchema = z.object({
@@ -63,8 +63,8 @@ export interface I${toPascalCase(inputs.name)}Output {
 
 export interface I${toPascalCase(inputs.name)}Service {
   execute(${toCamelCase(inputs.name)}Input: I${toPascalCase(
-              inputs.name
-            )}Input): Promise<I${toPascalCase(inputs.name)}Output>;
+    inputs.name
+  )}Input): Promise<I${toPascalCase(inputs.name)}Output>;
 }
 
 export class ${toPascalCase(inputs.name)}Service implements I${toPascalCase(
@@ -73,8 +73,8 @@ export class ${toPascalCase(inputs.name)}Service implements I${toPascalCase(
   constructor() {}
 
   async execute(${toCamelCase(inputs.name)}Input: I${toPascalCase(
-              inputs.name
-            )}Input): Promise<I${toPascalCase(inputs.name)}Output> {
+    inputs.name
+  )}Input): Promise<I${toPascalCase(inputs.name)}Output> {
     return {
       name: ${toCamelCase(inputs.name)}Input.name,
     };

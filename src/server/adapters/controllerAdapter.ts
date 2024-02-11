@@ -12,7 +12,7 @@ export function controllerAdapter(
   const request: IRequest = {
     body: JSON.parse(event.body || '{}'),
     accountId: middleware?.data?.accountId || undefined,
-    patientId: undefined,
+    patientId: event?.pathParameters?.patientId || undefined,
     params: event.pathParameters || {},
     headers: event.headers,
     queryParams: event.queryStringParameters || {},

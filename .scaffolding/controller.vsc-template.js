@@ -33,38 +33,55 @@ export { ${toPascalCase(inputs.name)}Controller };
           {
             type: 'file',
             name: 'controller.ts',
-            content: (
-              inputs
-            ) => `import { IController } from '@/interfaces/controller';
+            content: (inputs) => `import { AppError } from '@/errors';
+import { IController } from '@/interfaces/controller';
 import { IRequest, IResponse } from '@/interfaces/http';
 
 export class ${toPascalCase(inputs.name)}Controller implements IController {
   constructor() {}
   async handle(request: IRequest): Promise<IResponse> {
-    if (!request.accountId) {
+    try {
+      if (!request.accountId) {
+        return {
+          statusCode: 400,
+          body: {
+            error: 'User not found',
+          },
+        };
+      }
+
+      if (!request.patientId) {
+        return {
+          statusCode: 400,
+          body: {
+            error: 'Patient not found',
+          },
+        };
+      }
+
       return {
-        statusCode: 400,
+        statusCode: 200,
         body: {
-          error: 'User not found',
+          message: request.body,
+        },
+      };
+    } catch (error) {
+      if (error instanceof AppError) {
+        return {
+          statusCode: error.statusCode,
+          body: {
+            error: error.message,
+          },
+        };
+      }
+
+      return {
+        statusCode: 500,
+        body: {
+          error: 'Internal server error',
         },
       };
     }
-
-    if (!request.patientId) {
-      return {
-        statusCode: 400,
-        body: {
-          error: 'Patient not found',
-        },
-      };
-    }
-
-    return {
-      statusCode: 200,
-      body: {
-        message: request.body,
-      },
-    };
   }
 }
 `,

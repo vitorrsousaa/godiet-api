@@ -75,6 +75,13 @@ functions:
           path: /categoryName
           method: GET
 
+  createPlanningMeal:
+    handler: src/server/functions/planningMeal/create.handler
+    events:
+      - httpApi:
+          path: /planningMeal/{patientId}
+          method: POST
+
   userMe:
     handler: src/server/functions/user/me.handler
     events:

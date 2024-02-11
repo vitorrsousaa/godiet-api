@@ -10,6 +10,9 @@ export interface IPatientRepositories {
   findUnique(
     findUniqueArgs: Prisma.PatientFindUniqueArgs
   ): Promise<TPatient | null>;
+  findFirst(
+    findFirstArgs: Prisma.PatientFindFirstArgs
+  ): Promise<TPatient | null>;
 }
 
 class PatientRepositories implements IPatientRepositories {
@@ -33,6 +36,10 @@ class PatientRepositories implements IPatientRepositories {
 
   async update(updateArgs: Prisma.PatientUpdateArgs) {
     return this.prismaService.patient.update(updateArgs);
+  }
+
+  async findFirst(findFirstArgs: Prisma.PatientFindFirstArgs) {
+    return this.prismaService.patient.findFirst(findFirstArgs);
   }
 }
 
