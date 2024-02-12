@@ -59,7 +59,7 @@ describe('Create Patient Service', () => {
     });
 
     const mockCreatePatient = {
-      birthDate: new Date(),
+      birthDate: new Date().toISOString(),
       email: 'any_email',
       name: 'any_name',
     };
@@ -92,7 +92,7 @@ describe('Create Patient Service', () => {
     });
 
     const mockPatient = {
-      birthDate: date,
+      birthDate: date.toISOString(),
       email: 'any_email',
       name: 'any_name',
     };

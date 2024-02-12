@@ -11,9 +11,14 @@ export type TFindByPatientId = z.infer<typeof FindByPatientIdServiceSchema>;
 
 export type IFindByPatientIdInput = TFindByPatientId;
 
-export interface IFindByPatientIdOutput {
+export type IFindByPatientIdOutput = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
   name: string;
-}
+  userId: string;
+  patientId: string;
+}[];
 
 export interface IFindByPatientIdService {
   execute(
