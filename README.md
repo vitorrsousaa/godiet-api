@@ -92,8 +92,28 @@ $ yarn run test:ui
 
 ## Deployment
 
+Podemos realizar o deploy em dois stages.
+
+```bash
+# Deploy stage dev
+$ yarn deploy:dev
+
+# Deploy stage prod
+$ yarn deploy:prod
 ```
-$ serverless deploy
+
+Antes de realizar o deploy, deve-se configurar as variáveis de ambiente utilizando o arquivo `.env`. Siga como exemplo o `.env.example`, e crie um arquivo para cada stage do deploy. Assim como o exemplo abaixo:
+
+```bash
+# Environment stage dev
+(.env.dev)
+AUTH_SECRET='SECRET_DEV'
+```
+
+```bash
+# Environment stage prod
+(.env.prod)
+AUTH_SECRET='SECRET_PROD'
 ```
 
 After deploying, you should see output similar to:
@@ -109,22 +129,3 @@ functions:
 ```
 
 _Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
-
-### Invocation
-
-After successful deployment, you can call the created application via HTTP:
-
-```bash
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-```
-
-Which should result in response similar to the following (removed `input` content for brevity):
-
-```json
-{
-  "message": "Go Serverless v2.0! Your function executed successfully!",
-  "input": {
-    ...
-  }
-}
-```

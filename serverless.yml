@@ -18,11 +18,9 @@ provider:
   name: aws
   runtime: nodejs18.x
   memorySize: 512
-  environment:
-    AUTH_SECRET: ${env:AUTH_SECRET}
-    DATABASE_URL: ${env:DATABASE_URL}
 
 custom:
+  secrets: ${file(.env.prod)}
   esbuild:
     target: node20
     # format: esm
