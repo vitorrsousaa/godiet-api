@@ -7,11 +7,17 @@ import {
   FindByPatientIdServiceSchema,
   IFindByPatientIdService,
 } from '../../services/FindByPatientId';
+import {
+  FindByPlanningIdServiceSchema,
+  IFindByPlanningIdService,
+} from '../../services/FindByPlanningId';
 
-export class FindByPatientIdController implements IController {
+export class FindPlanningController implements IController {
   constructor(
-    private readonly findByPatientIdService: IFindByPatientIdService
+    private readonly findByPatientIdService: IFindByPatientIdService,
+    private readonly findByPlanningIdService: IFindByPlanningIdService
   ) {}
+
   async handle(request: IRequest): Promise<IResponse> {
     try {
       if (!request.accountId) {
@@ -29,6 +35,34 @@ export class FindByPatientIdController implements IController {
           body: {
             error: 'Patient not found',
           },
+        };
+      }
+
+      if (request.queryParams?.planningId) {
+        console.log('planningId', request.queryParams.planningId);
+
+        const result = returnErrorMissingField(FindByPlanningIdServiceSchema, {
+          userId: request.accountId,
+          patientId: request.patientId,
+          planningId: request.queryParams.planningId,
+        });
+
+        if (!result.success) {
+          return {
+            statusCode: result.data.statusCode,
+            body: result.data.message,
+          };
+        }
+
+        const service = await this.findByPlanningIdService.execute({
+          patientId: result.data.patientId,
+          planningId: result.data.planningId,
+          userId: result.data.userId,
+        });
+
+        return {
+          statusCode: 200,
+          body: service,
         };
       }
 
@@ -54,6 +88,7 @@ export class FindByPatientIdController implements IController {
       if (error instanceof AppError) {
         return {
           statusCode: error.statusCode,
+
           body: {
             error: error.message,
           },
@@ -62,6 +97,7 @@ export class FindByPatientIdController implements IController {
 
       return {
         statusCode: 500,
+
         body: {
           error: 'Internal server error',
         },

@@ -55,6 +55,8 @@ export class CreateService implements ICreateService {
       throw new InvalidPatient();
     }
 
+    const fixedDate = new Date('2000-01-01');
+
     return this.planningMealRepositories.create({
       data: {
         name: planningMeal.name,
@@ -63,7 +65,7 @@ export class CreateService implements ICreateService {
         meals: {
           create: planningMeal.meals.map((meal) => ({
             name: meal.name,
-            time: meal.time,
+            time: `${fixedDate.toISOString().split('T')[0]}T${meal.time}:00.000Z`,
             foods: {
               create: meal.foods.map((food) => ({
                 portion: food.portion,
