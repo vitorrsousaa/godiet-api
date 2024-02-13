@@ -8,6 +8,7 @@ import { InvalidPatient } from '../../errors/invalidPatient';
 export const CreateMealFoodSchema = z.object({
   portion: z.number().min(0),
   options: z.array(z.string().uuid()),
+  categoryNameId: z.string().uuid(),
 });
 
 export const CreateMealSchema = z.object({
@@ -70,6 +71,7 @@ export class CreateService implements ICreateService {
               create: meal.foods.map((food) => ({
                 portion: food.portion,
                 options: food.options,
+                categoryNameId: food.categoryNameId,
               })),
             },
           })),

@@ -41,6 +41,13 @@ export class FindByPlanningIdService implements IFindByPlanningIdService {
         patientId,
         userId,
       },
+      include: {
+        meals: {
+          include: {
+            foods: true,
+          },
+        },
+      },
     });
 
     if (!planningMeal) {

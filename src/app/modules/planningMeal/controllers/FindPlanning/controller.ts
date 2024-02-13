@@ -39,8 +39,6 @@ export class FindPlanningController implements IController {
       }
 
       if (request.queryParams?.planningId) {
-        console.log('planningId', request.queryParams.planningId);
-
         const result = returnErrorMissingField(FindByPlanningIdServiceSchema, {
           userId: request.accountId,
           patientId: request.patientId,
