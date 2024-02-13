@@ -14,6 +14,11 @@ export default defineConfig({
       '**/coverage/**',
       '**/src/server/**',
       '**/src/factories/**',
+      '**/docs/**',
+      '**/.serverless/**',
+      '**/esbuild/**',
+      '**/.scaffolding/**',
+      '**/prisma/**',
     ],
     reporters: 'html',
     coverage: {
