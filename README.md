@@ -1,70 +1,119 @@
-# Deploy early
+# goDiet - API
 
-- Caso você tenha feito alguma besteira, você já consegue resolver isso mais cedo
+<h2 id="started">📌 Sobre</h2>
 
-# Serverless Framework Node HTTP API on AWS
+Descrição breve sobre a api.
 
-This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
+Essa é uma API Serverless construída com Typescript utilizando NodeJS como principal tecnologia e postgresSQL como banco de dados.
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples/) which includes Typescript, Mongo, DynamoDB and other examples.
+Nós utilizamos Eslint, Prettier, editorconfig e um StyleGuide integrations com formatação automática. Por favor, baixe essas extensões no seu editor de código.
 
-## Usage
+1. [ESLint](https://github.com/Microsoft/vscode-eslint)
+1. [Prettier](https://github.com/prettier/prettier-vscode)
+1. [Editor config](https://github.com/editorconfig/editorconfig-vscode)
 
-## Installation
+> Para ter certeza que o Prettier formata ao salvar. Adicione `"editor.formatOnSave": true` nas configurações pessoais do seu VSCode.
 
-```bash
-$ yarn install
-```
+## 📋 Pré-requisitos
 
-## Running the app
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: <br />
+→ [Git](https://git-scm.com);<br />
+→ [Node.js](https://nodejs.org/en/);<br />
+→ [Docker](https://www.docker.com/); <br />
 
-```bash
-# start docker
-$ docker run --name fincheck -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5434:5432 -d postgres
-
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
-```
-
-## Test
+## 🎲 Rodando a aplicação
 
 ```bash
-# unit tests
-$ yarn run test
+# Clone este repositório
+$ git clone
 
-# e2e tests
-$ yarn run test:e2e
+# Vá para a pasta da aplicação Mobile
+$ cd godiet-api
 
-# test coverage
-$ yarn run test:cov
+# Instale as dependências
+yarn install
 ```
 
-### Create container
+### Criando container docker
 
-After installation of dependencies, its necessary to create a docker container. You can run in any port, but in this example, we will create a container in port 5433.
+Após a instalaçao das dependências, é necessário criar um container docker. Você pode rodar o container em qualquer porta e configurar no arquivo de variáveis de ambiente.
 
-Podemos rodar o comando
+Caso queira utilizar o script para criação de container, basta rodar o comando abaixo:
 
-```
-docker-compose up -d
-```
-
-ou
-
-```
-docker run --name godiet_api -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5433:5432 -d postgres
+```bash
+# Iniciando container docker
+$ docker-compose up -d
 ```
 
-### Deployment
+### Configurando variáveis de ambiente e prisma
 
+Depois disso, adicione na pasta raíz um arquivo `.env`, de acordo com o `env.example` deste repositório.
+
+Você pode obter mais exemplos de configuração da variável de ambiente para o prisma no link abaixo.
+
+**[Prisma Docs](https://www.prisma.io/docs/guides/development-environment/environment-variables)**
+
+### Aplicando as migrations
+
+Após inicializar o container docker e configurar as variáveis de ambiente, é necessário rodar as migrations para atualizar a imagem postgres criada, e popular o banco de dados com as informações necessárias.
+
+Para isso, utilize os comandos criados no `package.json`.
+
+```bash
+# Crie todas as migrations
+$ yarn migrations:dev
+
+# Popule o banco de dados
+$ yarn seed:dev
 ```
-$ serverless deploy
+
+Logo após, sua aplicação já esta pronta para ser inicializada.
+
+```bash
+# Inicie a aplicação
+$ yarn dev
+```
+
+## ⚙️ Executando os testes
+
+Explicar como executar os testes automatizados para este sistema.
+
+### 🔩 Analise os testes de ponta a ponta
+
+Explique que eles verificam esses testes e porquê.
+
+```bash
+# run tests with coverage
+$ yarn test
+
+# run tests and open vitest ui
+$ yarn run test:ui
+```
+
+## Deployment
+
+Podemos realizar o deploy em dois stages.
+
+```bash
+# Deploy stage dev
+$ yarn deploy:dev
+
+# Deploy stage prod
+$ yarn deploy:prod
+```
+
+Antes de realizar o deploy, deve-se configurar as variáveis de ambiente utilizando o arquivo `.env`. Siga como exemplo o `.env.example`, e crie um arquivo para cada stage do deploy. Assim como o exemplo abaixo:
+
+```bash
+# Environment stage dev
+(.env.dev)
+AUTH_SECRET='SECRET_DEV'
+```
+
+```bash
+# Environment stage prod
+(.env.prod)
+AUTH_SECRET='SECRET_PROD'
 ```
 
 After deploying, you should see output similar to:
@@ -80,55 +129,3 @@ functions:
 ```
 
 _Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
-
-### Invocation
-
-After successful deployment, you can call the created application via HTTP:
-
-```bash
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-```
-
-Which should result in response similar to the following (removed `input` content for brevity):
-
-```json
-{
-  "message": "Go Serverless v2.0! Your function executed successfully!",
-  "input": {
-    ...
-  }
-}
-```
-
-### Local development
-
-You can invoke your function locally by using the following command:
-
-```bash
-serverless invoke local --function hello
-```
-
-Which should result in response similar to the following:
-
-```
-{
-  "statusCode": 200,
-  "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
-}
-```
-
-Alternatively, it is also possible to emulate API Gateway and Lambda locally by using `serverless-offline` plugin. In order to do that, execute the following command:
-
-```bash
-serverless plugin install -n serverless-offline
-```
-
-It will add the `serverless-offline` plugin to `devDependencies` in `package.json` file as well as will add it to `plugins` in `serverless.yml`.
-
-After installation, you can start local emulation with:
-
-```
-serverless offline
-```
-
-To learn more about the capabilities of `serverless-offline`, please refer to its [GitHub repository](https://github.com/dherault/serverless-offline).

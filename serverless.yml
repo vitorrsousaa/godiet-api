@@ -20,6 +20,7 @@ provider:
   memorySize: 512
 
 custom:
+  secrets: ${file(.env.prod)}
   esbuild:
     target: node20
     # format: esm
