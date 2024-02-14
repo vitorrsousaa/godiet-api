@@ -42,6 +42,7 @@ export class CreateController implements IController {
           gender: result.data.gender,
           height: result.data.height,
           weight: result.data.weight,
+          phone: result.data.phone,
         },
       });
 

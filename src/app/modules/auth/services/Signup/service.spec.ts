@@ -72,6 +72,7 @@ describe('SignUp Service', () => {
         email: 'any_email',
         name: 'any_name',
         password: 'any_password',
+        phone: 'any_phone',
       },
     });
 
@@ -99,6 +100,7 @@ describe('SignUp Service', () => {
           email: 'any_email',
           name: 'any_name',
           password: 'any_password',
+          phone: 'any_phone',
         },
       });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
