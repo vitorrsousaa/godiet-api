@@ -15,6 +15,9 @@ export interface IPlanningMealRepositories {
   findAll(
     findAllArgs: Prisma.PlanningMealFindManyArgs
   ): Promise<TPlanningMeal[]>;
+  findFirst(
+    findFirstArgs: Prisma.PlanningMealFindFirstArgs
+  ): Promise<TPlanningMeal | null>;
 }
 
 class PlanningMealRepositories implements IPlanningMealRepositories {
@@ -28,6 +31,12 @@ class PlanningMealRepositories implements IPlanningMealRepositories {
     findAllArgs: Prisma.PlanningMealFindManyArgs<DefaultArgs>
   ): Promise<TPlanningMeal[]> {
     return this.prismaService.planningMeal.findMany(findAllArgs);
+  }
+
+  findFirst(
+    findFirstArgs: Prisma.PlanningMealFindFirstArgs
+  ): Promise<TPlanningMeal | null> {
+    return this.prismaService.planningMeal.findFirst(findFirstArgs);
   }
 }
 

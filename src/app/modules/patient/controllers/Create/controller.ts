@@ -59,6 +59,8 @@ export class CreateController implements IController {
         };
       }
 
+      console.log(error);
+
       return {
         statusCode: 500,
         body: {

@@ -85,7 +85,7 @@ model PlanningMeal {
   name      String
 
   userId    String @map("user_id") @db.Uuid()
-  patientId String @db.Uuid()
+  patientId String @map("patient_id") @db.Uuid()
 
   patient Patient? @relation(fields: [patientId], references: [id])
   user    User?    @relation(fields: [userId], references: [id])
@@ -100,7 +100,7 @@ model Meal {
   name String
   time DateTime
 
-  planningMealId String @db.Uuid()
+  planningMealId String @map("planning_meal_id") @db.Uuid()
 
   planningMeal PlanningMeal @relation(fields: [planningMealId], references: [id])
 
@@ -113,7 +113,8 @@ model MealFood {
   id      String @id @default(uuid()) @db.Uuid()
   portion Float
 
-  mealId String @db.Uuid()
+  mealId         String @map("meal_id") @db.Uuid()
+  categoryNameId String @map("category_name_id") @db.Uuid()
 
   meal Meal @relation(fields: [mealId], references: [id])
 

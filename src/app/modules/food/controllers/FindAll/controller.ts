@@ -16,6 +16,8 @@ export class FindAllController implements IController {
       };
     }
 
+    console.log(request.queryParams);
+
     const result = returnErrorMissingField(
       FindAllServiceSchema,
       request.queryParams

@@ -88,8 +88,8 @@ functions:
       - httpApi:
           path: /planningMeal/{patientId}
           method: POST
-  findAllPlanningByPatientId:
-    handler: src/server/functions/planningMeal/findByPatientId.handler
+  findAllPlanning:
+    handler: src/server/functions/planningMeal/findAll.handler
     events:
       - httpApi:
           path: /planningMeal/{patientId}

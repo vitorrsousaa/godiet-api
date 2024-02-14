@@ -2,6 +2,8 @@ import { IPlanningMealRepositories } from '@/repositories/planningMeal';
 
 import * as z from 'zod';
 
+import { InvalidPlanningId } from '../../errors/invalidPlanningId';
+
 export const FindByPatientIdServiceSchema = z.object({
   userId: z.string().uuid(),
   patientId: z.string().uuid(),
@@ -49,6 +51,10 @@ export class FindByPatientIdService implements IFindByPatientIdService {
         },
       },
     });
+
+    if (!planning) {
+      throw new InvalidPlanningId();
+    }
 
     return planning;
   }
