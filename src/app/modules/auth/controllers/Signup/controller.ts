@@ -23,6 +23,7 @@ export class SignupController implements IController {
           email: body.data.email,
           name: body.data.name,
           password: body.data.password,
+          phone: body.data.phone,
         },
       });
 

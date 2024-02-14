@@ -8,6 +8,7 @@ export const SignupServiceSchema = z.object({
   name: z.string(),
   email: z.string().email({ message: 'Invalid e-mail format' }),
   password: z.string().min(8),
+  phone: z.string().min(8),
 });
 
 export type TCreateUserDTO = z.infer<typeof SignupServiceSchema>;
@@ -33,7 +34,7 @@ export class SignupService implements ISignupService {
 
   async execute(signupInput: ISignupInput): Promise<ISignupOutput> {
     const { user } = signupInput;
-    const { email, name, password } = user;
+    const { email, name, password, phone } = user;
 
     const findUser = await this.userRepositories.findUnique({
       where: {
@@ -45,7 +46,7 @@ export class SignupService implements ISignupService {
     });
 
     if (findUser) {
-      throw new InvalidCredentials();
+      throw new InvalidCredentials('E-mail is already in use', 409);
     }
 
     const hashedPassword = await this.cryptProvider.hash(password);
@@ -55,6 +56,7 @@ export class SignupService implements ISignupService {
         email,
         name,
         password: hashedPassword,
+        phone,
       },
     });
 

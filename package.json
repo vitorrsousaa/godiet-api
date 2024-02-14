@@ -13,8 +13,9 @@
     "migrations:dev": "npx prisma migrate dev",
     "migrations:deploy": "npx prisma migrate deploy",
     "test": "vitest run --coverage",
-    "test:ci": "vitest run --no-watch",
-    "test:ui": "vitest run --ui --api 9527",
+    "test:ci": "vitest run --no-watch --passWithNoTests",
+    "test:ui": "vitest run --ui --api 3001",
+    "test:preview": "npx vite preview --outDir html",
     "typecheck": "tsc --noEmit",
     "seed": "npx prisma db seed"
   },
@@ -44,6 +45,7 @@
     "serverless-tscpaths": "^0.0.8",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
+    "vite": "^5.1.1",
     "vitest": "^1.2.2"
   },
   "dependencies": {

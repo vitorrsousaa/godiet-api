@@ -62,6 +62,7 @@ describe('Create Patient Service', () => {
       birthDate: new Date().toISOString(),
       email: 'any_email',
       name: 'any_name',
+      phone: 'any_phone',
     };
 
     // Act
@@ -95,6 +96,7 @@ describe('Create Patient Service', () => {
       birthDate: date.toISOString(),
       email: 'any_email',
       name: 'any_name',
+      phone: 'any_phone',
     };
 
     // Act

@@ -11,6 +11,7 @@ export const CreatePatientServiceSchema = z.object({
   weight: z.number().positive().optional(),
   birthDate: z.string().optional(),
   gender: GenderEnum.optional(),
+  phone: z.string().min(8),
 });
 
 export type TCreatePatientDTO = z.infer<typeof CreatePatientServiceSchema>;
@@ -35,7 +36,7 @@ export class CreateService implements ICreateService {
 
   async execute(createInput: ICreateInput): Promise<ICreateOutput> {
     const { patient, userId } = createInput;
-    const { birthDate, email, gender, height, name, weight } = patient;
+    const { birthDate, email, gender, height, name, weight, phone } = patient;
 
     const findPatient = await this.patientRepositories.findUnique({
       where: {
@@ -56,6 +57,7 @@ export class CreateService implements ICreateService {
         weight,
         gender,
         userId,
+        phone,
       },
     });
 
