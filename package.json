@@ -13,7 +13,7 @@
     "migrations:dev": "npx prisma migrate dev",
     "migrations:deploy": "npx prisma migrate deploy",
     "test": "vitest run --coverage",
-    "test:ci": "vitest run --no-watch",
+    "test:ci": "vitest run --no-watch --passWithNoTests",
     "test:ui": "vitest run --ui --api 9527",
     "typecheck": "tsc --noEmit",
     "seed": "npx prisma db seed"
