@@ -64,6 +64,7 @@ describe('Sign up controller', () => {
       email: 'any_email@email.com',
       password: 'any_password',
       name: 'any_name',
+      phone: 'any_phone',
     };
 
     mockRequest.body = { ...mockAuthenticate };

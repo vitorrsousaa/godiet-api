@@ -106,7 +106,7 @@ describe('SignUp Service', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       // Assert
-      expect(error.message).toBe('Invalid credentials');
+      expect(error.message).toBe('E-mail is already in use');
     }
   });
 });

@@ -20,7 +20,7 @@ export default defineConfig({
       '**/.scaffolding/**',
       '**/prisma/**',
     ],
-    reporters: 'html',
+    reporters: ['html'],
     coverage: {
       provider: 'v8',
     },

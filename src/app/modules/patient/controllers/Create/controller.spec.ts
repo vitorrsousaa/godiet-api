@@ -72,6 +72,7 @@ describe('CreatePatientController', () => {
       name: 'any_name',
       weight: 80,
       email: 'email@email.com',
+      phone: 'any_phone',
     };
 
     // act
@@ -90,6 +91,7 @@ describe('CreatePatientController', () => {
         name: 'any_name',
         weight: 80,
         email: 'email@email.com',
+        phone: 'any_phone',
       },
       userId: 'any_user_id',
     });
@@ -105,6 +107,7 @@ describe('CreatePatientController', () => {
       name: 'any_name',
       weight: 80,
       email: 'email@email.com',
+      phone: 'any_phone',
     };
 
     spy['createPatientService.execute'].mockResolvedValue({
