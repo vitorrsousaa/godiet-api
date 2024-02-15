@@ -22,8 +22,9 @@ model User {
   updatedAt DateTime @updatedAt
   hash      Float?   @map("hash")
 
-  patient      Patient[]
-  PlanningMeal PlanningMeal[]
+  patient           Patient[]
+  planningMeal      PlanningMeal[]
+  anamnesisTemplate AnamnesisTemplate[]
 
   @@map("users")
 }
@@ -33,6 +34,20 @@ enum GenderType {
   FEM
 
   @@map("gender_types")
+}
+
+model AnamnesisTemplate {
+  id        String   @id @default(uuid()) @db.Uuid()
+  userId    String   @map("user_id") @db.Uuid()
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  text  String
+  title String
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("anamnesis_templates")
 }
 
 model Patient {

@@ -1,3 +1,4 @@
+import { templates } from '@/constants/templateAnamnesis';
 import { SignupService } from '@/modules/auth/services';
 
 import { makeProviderCrypt } from '../providers/makeProviderCrypt';
@@ -8,6 +9,7 @@ export function makeServiceSignup() {
   return new SignupService(
     makeRepositoryUser(),
     makeProviderCrypt(),
-    makeProviderToken()
+    makeProviderToken(),
+    templates
   );
 }

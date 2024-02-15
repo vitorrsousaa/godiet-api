@@ -103,7 +103,8 @@ export class ${toPascalCase(inputs.name)}Controller implements IController {
             type: 'file',
             name: 'controller.spec.ts',
             content: (inputs) =>
-              `import { IRequest } from '@/interfaces/http';
+              `import { AppError } from '@/errors'
+import { IRequest } from '@/interfaces/http';
 import { clearAllMocks, fn, SpyInstance, spyOn } from '@/tests';
 
 import { ${toPascalCase(inputs.name)}Controller } from './controller';
@@ -125,7 +126,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
 
     const service = {
       execute: fn(),
-    } as unkonwn;
+    } as unknown;
 
     spy = {
       'service.execute': spyOn(service, 'execute'),
@@ -139,15 +140,75 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
     mockRequest.body = {};
   })
 
-  it('should be defined', async () => {
+  it('Should throw error  when account id is not provided', async () => {
     // Arrange
 
     // Act
+    const response = await controller.handle(mockRequest);
 
     // Assert
-    expect(controller).toBeDefined();
+    expect(response).toEqual({
+      statusCode: 400,
+      body: {
+        error: 'User not found',
+      },
+    });
   });
 
+  it('Should throw error when is called with incorrect schema ', async () => {
+    // Arrange
+    mockRequest.accountId = 'account_id';
+
+    // Act
+    const response = await controller.handle(mockRequest);
+
+    // Assert
+    expect(response).toEqual({
+      statusCode: 422,
+      body: [
+        {
+          field: 'userId',
+          message: 'Invalid uuid',
+        },
+      ],
+    });
+  });
+
+  it('Should throw error when service throw unknown error', async () => {
+    // Arrange
+    mockRequest.accountId = '4b429c9e-7562-421a-9aa9-669e1b380b7a';
+    spy['service.execute'].mockRejectedValue('Incorrect Error');
+
+    // Act
+    const response = await controller.handle(mockRequest);
+
+    // Assert
+    expect(response).toEqual({
+      statusCode: 500,
+      body: {
+        error: 'Internal server error',
+      },
+    });
+  });
+
+  it('Should throw error when service throw app error', async () => {
+    // Arrange
+    mockRequest.accountId = '4b429c9e-7562-421a-9aa9-669e1b380b7a';
+    spy['service.execute'].mockRejectedValue(
+      new AppError('Incorrect Error', 400)
+    );
+
+    // Act
+    const response = await controller.handle(mockRequest);
+
+    // Assert
+    expect(response).toEqual({
+      statusCode: 400,
+      body: {
+        error: 'Incorrect Error',
+      },
+    });
+  });
 });
 `,
           },

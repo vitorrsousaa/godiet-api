@@ -45,6 +45,7 @@ export default defineConfig({
         'repositories'
       ),
       '@/database': path.resolve(__dirname, 'src', 'app', 'database'),
+      '@/constants': path.resolve(__dirname, 'src', 'app', 'constants'),
     },
   },
 });

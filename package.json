@@ -14,7 +14,7 @@
     "migrations:deploy": "npx prisma migrate deploy",
     "test": "vitest run --coverage",
     "test:ci": "vitest run --no-watch --passWithNoTests",
-    "test:ui": "vitest run --ui --api 3001",
+    "test:ui": "vitest --ui --api 3001 --coverage",
     "test:preview": "npx vite preview --outDir html",
     "typecheck": "tsc --noEmit",
     "seed": "npx prisma db seed"
