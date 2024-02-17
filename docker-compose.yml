@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  postgres:
+  database:
     container_name: godiet_api
     image: postgres
     environment:
@@ -10,3 +10,13 @@ services:
       POSTGRES_DB: 'godiet'
     ports:
       - '5435:5432'
+
+  database_tests:
+    container_name: godiet_tests
+    image: postgres
+    environment:
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_DB: 'godiet_tests'
+    ports:
+      - '5436:5432'

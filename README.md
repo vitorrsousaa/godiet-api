@@ -42,8 +42,10 @@ Caso queira utilizar o script para criação de container, basta rodar o comando
 
 ```bash
 # Iniciando container docker
-$ docker-compose up -d
+$ docker-compose up -d database
 ```
+
+Por padrão, o container vai ser criado na porta `5435:5432`, mas você pode ficar livre para alterar a porta do container. Lembrando de alterar também o `DATABASE_URL` do arquivo `.env`.
 
 ### Configurando variáveis de ambiente e prisma
 
@@ -90,6 +92,10 @@ $ yarn test
 $ yarn run test:ui
 ```
 
+### Testes de integração
+
+Por padrão, o container do ambiente de testes vai ser criado na porta `5436:5432`, mas você pode ficar livre para alterar a porta do container. Lembrando de alterar também o `DATABASE_URL` do arquivo `.env`.
+
 ## Deployment
 
 Podemos realizar o deploy em dois stages.
@@ -129,3 +135,6 @@ functions:
 ```
 
 _Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
+
+Dar permissão para o script
+`chmod +x scripts/run-integration.sh`

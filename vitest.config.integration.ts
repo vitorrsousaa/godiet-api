@@ -1,29 +1,14 @@
+// vitest.config.integration.ts
 import path from 'path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    exclude: [
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/cypress/**',
-      '**/.{idea,git,cache,output,temp}/**',
-      '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
-      '**/src/app/tests/**/index.ts',
-      '**/html/**',
-      '**/coverage/**',
-      '**/src/factories/**',
-      '**/docs/**',
-      '**/.serverless/**',
-      '**/esbuild/**',
-      '**/.scaffolding/**',
-      '**/prisma/**',
-    ],
-    reporters: ['html', 'basic'],
-    coverage: {
-      provider: 'v8',
-    },
-    globals: true,
+    include: ['src/**/*.test.ts', '!src/tests'],
+    setupFiles: ['src/tests/helpers/setup.ts'],
+  },
+
+  resolve: {
     alias: {
       '@/modules': path.resolve(__dirname, './src/app/modules'),
       '@/interfaces': path.resolve(__dirname, './src/app/interfaces'),
