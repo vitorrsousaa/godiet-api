@@ -16,6 +16,7 @@
     "test:ci": "vitest run --no-watch --passWithNoTests",
     "test:ui": "vitest --ui --api 3001 --coverage",
     "test:preview": "npx vite preview --outDir html",
+    "test-integration": "docker-compose -f docker-compose.yml run --rm test",
     "typecheck": "tsc --noEmit",
     "seed": "npx prisma db seed"
   },

@@ -158,6 +158,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
   it('Should throw error when is called with incorrect schema ', async () => {
     // Arrange
     mockRequest.accountId = 'account_id';
+    // Includes all fields that are required
 
     // Act
     const response = await controller.handle(mockRequest);
@@ -178,6 +179,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
     // Arrange
     mockRequest.accountId = '4b429c9e-7562-421a-9aa9-669e1b380b7a';
     spy['service.execute'].mockRejectedValue('Incorrect Error');
+    // Includes all fields that are required
 
     // Act
     const response = await controller.handle(mockRequest);
@@ -197,6 +199,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
     spy['service.execute'].mockRejectedValue(
       new AppError('Incorrect Error', 400)
     );
+    // Includes all fields that are required
 
     // Act
     const response = await controller.handle(mockRequest);

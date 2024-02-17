@@ -95,6 +95,20 @@ functions:
           path: /planningMeal/{patientId}
           method: GET
 
+  createAnamnesisTemplate:
+    handler: src/server/functions/anamnesisTemplate/create.handler
+    events:
+      - httpApi:
+          path: /anamnesisTemplate
+          method: POST
+
+  findAllAnamnesisTemplate:
+    handler: src/server/functions/anamnesisTemplate/findAll.handler
+    events:
+      - httpApi:
+          path: /anamnesisTemplate
+          method: GET
+
   userMe:
     handler: src/server/functions/user/me.handler
     events:
