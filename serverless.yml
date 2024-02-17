@@ -132,6 +132,12 @@ functions:
       - httpApi:
           path: /anamnesis/{patientId}
           method: PUT
+  deleteAnamnesis:
+    handler: src/server/functions/anamnesis/delete.handler
+    events:
+      - httpApi:
+          path: /anamnesis/{patientId}
+          method: DELETE
 
   userMe:
     handler: src/server/functions/user/me.handler
