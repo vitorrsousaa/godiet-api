@@ -30,7 +30,7 @@ export class DeleteController implements IController {
       const result = returnErrorMissingField(DeleteServiceSchema, {
         userId: request.accountId,
         patientId: request.patientId,
-        anamnesisId: request.body.id,
+        anamnesisId: request.params.anamnesisId,
       });
 
       if (!result.success) {

@@ -57,8 +57,8 @@ describe('DeleteController', () => {
     mockRequest.accountId = 'account_id';
     // Includes all fields that are required
     mockRequest.patientId = 'cc4c275f-923b-4b6c-b3e1-952b30f88f42';
-    mockRequest.body = {
-      id: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
+    mockRequest.params = {
+      anamnesisId: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
     };
 
     // Act
@@ -82,8 +82,8 @@ describe('DeleteController', () => {
     spy['service.execute'].mockRejectedValue('Incorrect Error');
     // Includes all fields that are required
     mockRequest.patientId = 'cc4c275f-923b-4b6c-b3e1-952b30f88f42';
-    mockRequest.body = {
-      id: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
+    mockRequest.params = {
+      anamnesisId: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
     };
 
     // Act
@@ -106,8 +106,8 @@ describe('DeleteController', () => {
     );
     // Includes all fields that are required
     mockRequest.patientId = 'cc4c275f-923b-4b6c-b3e1-952b30f88f42';
-    mockRequest.body = {
-      id: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
+    mockRequest.params = {
+      anamnesisId: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
     };
 
     // Act
@@ -127,8 +127,8 @@ describe('DeleteController', () => {
     mockRequest.accountId = '4b429c9e-7562-421a-9aa9-669e1b380b7a';
     mockRequest.patientId = '4b429c9e-7562-421a-9aa9-669e1b380b7a';
     spy['service.execute'].mockResolvedValue(null);
-    mockRequest.body = {
-      id: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
+    mockRequest.params = {
+      anamnesisId: '4b429c9e-7562-421a-9aa9-669e1b380b7a',
     };
 
     // Act

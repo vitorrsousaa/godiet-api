@@ -136,7 +136,7 @@ functions:
     handler: src/server/functions/anamnesis/delete.handler
     events:
       - httpApi:
-          path: /anamnesis/{patientId}
+          path: /anamnesis/{patientId}/{anamnesisId}
           method: DELETE
 
   userMe:
