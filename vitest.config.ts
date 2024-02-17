@@ -18,6 +18,7 @@ export default defineConfig({
       '**/esbuild/**',
       '**/.scaffolding/**',
       '**/prisma/**',
+      '**/src/tests/**',
     ],
     reporters: ['html', 'basic'],
     coverage: {

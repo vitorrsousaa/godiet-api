@@ -15,6 +15,10 @@ export interface IAnamnesisTemplateRepository {
   findMany(
     findManyAnamnesisTemplateArgs: Prisma.AnamnesisTemplateFindManyArgs
   ): Promise<TAnamnesisTemplate[]>;
+
+  delete(
+    deleteAnamnesisTemplateArgs: Prisma.AnamnesisTemplateDeleteArgs
+  ): Promise<TAnamnesisTemplate>;
 }
 
 export class AnamnesisTemplateRepositories
@@ -41,6 +45,14 @@ export class AnamnesisTemplateRepositories
   ) {
     return this.prismaService.anamnesisTemplate.findMany(
       findManyAnamnesisTemplateArgs
+    );
+  }
+
+  async delete(
+    deleteAnamnesisTemplateArgs: Prisma.AnamnesisTemplateDeleteArgs
+  ) {
+    return this.prismaService.anamnesisTemplate.delete(
+      deleteAnamnesisTemplateArgs
     );
   }
 }

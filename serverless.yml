@@ -101,13 +101,18 @@ functions:
       - httpApi:
           path: /anamnesisTemplate
           method: POST
-
   findAllAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/findAll.handler
     events:
       - httpApi:
           path: /anamnesisTemplate
           method: GET
+  deleteAnamnesisTemplate:
+    handler: src/server/functions/anamnesisTemplate/delete.handler
+    events:
+      - httpApi:
+          path: /anamnesisTemplate/{anamnesisId}
+          method: DELETE
 
   userMe:
     handler: src/server/functions/user/me.handler
