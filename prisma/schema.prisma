@@ -25,6 +25,7 @@ model User {
   patient           Patient[]
   planningMeal      PlanningMeal[]
   anamnesisTemplate AnamnesisTemplate[]
+  anamnesis         Anamnesis[]
 
   @@map("users")
 }
@@ -34,6 +35,22 @@ enum GenderType {
   FEM
 
   @@map("gender_types")
+}
+
+model Anamnesis {
+  id        String   @id @default(uuid()) @db.Uuid()
+  userId    String   @map("user_id") @db.Uuid()
+  patientId String   @map("patient_id") @db.Uuid()
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  text  String
+  title String
+
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("anamnesis")
 }
 
 model AnamnesisTemplate {
@@ -64,6 +81,7 @@ model Patient {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   planningMeal PlanningMeal[]
+  anamnesis    Anamnesis[]
 
   @@map("patients")
 }

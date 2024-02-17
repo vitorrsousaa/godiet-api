@@ -140,7 +140,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
     mockRequest.body = {};
   })
 
-  it('Should throw error  when account id is not provided', async () => {
+  it('Should throw error when account id is not provided', async () => {
     // Arrange
 
     // Act
@@ -159,6 +159,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
     // Arrange
     mockRequest.accountId = 'account_id';
     // Includes all fields that are required
+    mockRequest.patientId = 'cc4c275f-923b-4b6c-b3e1-952b30f88f42';
 
     // Act
     const response = await controller.handle(mockRequest);
@@ -180,6 +181,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
     mockRequest.accountId = '4b429c9e-7562-421a-9aa9-669e1b380b7a';
     spy['service.execute'].mockRejectedValue('Incorrect Error');
     // Includes all fields that are required
+    mockRequest.patientId = 'cc4c275f-923b-4b6c-b3e1-952b30f88f42';
 
     // Act
     const response = await controller.handle(mockRequest);
@@ -200,6 +202,7 @@ describe('${toPascalCase(inputs.name)}Controller', () => {
       new AppError('Incorrect Error', 400)
     );
     // Includes all fields that are required
+    mockRequest.patientId = 'cc4c275f-923b-4b6c-b3e1-952b30f88f42';
 
     // Act
     const response = await controller.handle(mockRequest);

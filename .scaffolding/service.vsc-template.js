@@ -46,16 +46,15 @@ export { ${toPascalCase(inputs.name)}Service };
             content: (inputs) => `import * as z from 'zod';
 
 export const ${toPascalCase(inputs.name)}ServiceSchema = z.object({
-  name: z.string(),
+  userId: z.string().uuid(),
+  patientId: z.string().uuid(),
 });
 
 export type T${toPascalCase(inputs.name)} = z.infer<typeof ${toPascalCase(
               inputs.name
             )}ServiceSchema>;
 
-export interface I${toPascalCase(inputs.name)}Input {
-  name: string;
-}
+export type I${toPascalCase(inputs.name)}Input = T${toPascalCase(inputs.name)};
 
 export interface I${toPascalCase(inputs.name)}Output {
   name: string;

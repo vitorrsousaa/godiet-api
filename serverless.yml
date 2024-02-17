@@ -114,6 +114,25 @@ functions:
           path: /anamnesisTemplate/{anamnesisId}
           method: DELETE
 
+  createAnamnesis:
+    handler: src/server/functions/anamnesis/create.handler
+    events:
+      - httpApi:
+          path: /anamnesis/{patientId}
+          method: POST
+  findAllAnamnesis:
+    handler: src/server/functions/anamnesis/findAll.handler
+    events:
+      - httpApi:
+          path: /anamnesis/{patientId}
+          method: GET
+  updateAnamnesis:
+    handler: src/server/functions/anamnesis/update.handler
+    events:
+      - httpApi:
+          path: /anamnesis/{patientId}
+          method: PUT
+
   userMe:
     handler: src/server/functions/user/me.handler
     events:
