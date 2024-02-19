@@ -1,3 +1,4 @@
+import { ITemplates } from '@/constants/templateAnamnesis';
 import { InvalidCredentials } from '@/errors';
 import { ICrypt, IToken } from '@/interfaces/providers';
 import { IUserRepositories } from '@/repositories/user';
@@ -29,7 +30,8 @@ export class SignupService implements ISignupService {
   constructor(
     private userRepositories: IUserRepositories,
     private readonly cryptProvider: ICrypt,
-    private readonly tokenProvider: IToken
+    private readonly tokenProvider: IToken,
+    private readonly templateAnamnesis: ITemplates[]
   ) {}
 
   async execute(signupInput: ISignupInput): Promise<ISignupOutput> {
@@ -57,6 +59,11 @@ export class SignupService implements ISignupService {
         name,
         password: hashedPassword,
         phone,
+        anamnesisTemplate: {
+          createMany: {
+            data: this.templateAnamnesis,
+          },
+        },
       },
     });
 

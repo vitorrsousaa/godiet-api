@@ -31,6 +31,13 @@ describe('SignUp Service', () => {
       verify: fn(),
     } as unknown as IToken;
 
+    const templatesInstance = [
+      {
+        title: 'any_title',
+        text: 'any_text',
+      },
+    ];
+
     spy = {
       'userRepositories.create': spyOn(userRepositoriesInstance, 'create'),
       'userRepositories.findUnique': spyOn(
@@ -44,7 +51,8 @@ describe('SignUp Service', () => {
     service = new SignupService(
       userRepositoriesInstance,
       cryptProviderInstance,
-      tokenProviderInstance
+      tokenProviderInstance,
+      templatesInstance
     );
   });
 

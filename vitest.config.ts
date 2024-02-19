@@ -12,15 +12,15 @@ export default defineConfig({
       '**/src/app/tests/**/index.ts',
       '**/html/**',
       '**/coverage/**',
-      '**/src/server/**',
       '**/src/factories/**',
       '**/docs/**',
       '**/.serverless/**',
       '**/esbuild/**',
       '**/.scaffolding/**',
       '**/prisma/**',
+      '**/src/tests/**',
     ],
-    reporters: ['html'],
+    reporters: ['html', 'basic'],
     coverage: {
       provider: 'v8',
     },
@@ -45,6 +45,7 @@ export default defineConfig({
         'repositories'
       ),
       '@/database': path.resolve(__dirname, 'src', 'app', 'database'),
+      '@/constants': path.resolve(__dirname, 'src', 'app', 'constants'),
     },
   },
 });
