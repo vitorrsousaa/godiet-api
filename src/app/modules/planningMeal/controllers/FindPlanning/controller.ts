@@ -83,6 +83,7 @@ export class FindPlanningController implements IController {
         body: service,
       };
     } catch (error) {
+      console.log(error);
       if (error instanceof AppError) {
         return {
           statusCode: error.statusCode,

@@ -6,5 +6,9 @@ export function responseAdapter(response: IResponse): IResponseLambda {
   return {
     statusCode: response.statusCode,
     body: JSON.stringify(response.body),
+    headers: {
+      'Access-Control-Allow-Origin': 'https://godiet.com.br',
+      'Access-Control-Allow-Credentials': true,
+    },
   };
 }
