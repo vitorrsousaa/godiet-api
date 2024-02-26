@@ -1,6 +1,12 @@
+import { makeRepositoryFood } from '@/factories/repositories/food/makeRepositoryFood';
 import { makeRepositoryPlanningMeal } from '@/factories/repositories/planningMeal/makeRepositoryPlanningMeal';
+import { makeFoodUtils } from '@/factories/utils/makeFoodUtils';
 import { FindByPlanningIdService } from '@/modules/planningMeal/services/FindByPlanningId';
 
 export function makeServiceFindByPlanningId() {
-  return new FindByPlanningIdService(makeRepositoryPlanningMeal());
+  return new FindByPlanningIdService(
+    makeRepositoryPlanningMeal(),
+    makeRepositoryFood(),
+    makeFoodUtils()
+  );
 }

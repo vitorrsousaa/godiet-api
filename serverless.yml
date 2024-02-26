@@ -36,18 +36,21 @@ functions:
       - httpApi:
           path: /users/{userId}
           method: GET
+          cors: true
   authSignin:
     handler: src/server/functions/auth/signin.handler
     events:
       - httpApi:
           path: /auth/signin
           method: POST
+          cors: true
   authSignup:
     handler: src/server/functions/auth/signup.handler
     events:
       - httpApi:
           path: /auth/signup
           method: POST
+          cors: true
 
   createPatient:
     handler: src/server/functions/patient/create.handler
@@ -55,18 +58,21 @@ functions:
       - httpApi:
           path: /patient
           method: POST
+          cors: true
   findAllPatients:
     handler: src/server/functions/patient/findAll.handler
     events:
       - httpApi:
           path: /patient
           method: GET
+          cors: true
   findByPatientId:
     handler: src/server/functions/patient/findByPatientId.handler
     events:
       - httpApi:
           path: /patient/{patientId}
           method: GET
+          cors: true
 
   findAllFoods:
     handler: src/server/functions/food/findAll.handler
@@ -74,6 +80,7 @@ functions:
       - httpApi:
           path: /foods
           method: GET
+          cors: true
 
   findAllCategoryName:
     handler: src/server/functions/categoryName/findAll.handler
@@ -81,6 +88,7 @@ functions:
       - httpApi:
           path: /categoryName
           method: GET
+          cors: true
 
   createPlanningMeal:
     handler: src/server/functions/planningMeal/create.handler
@@ -88,12 +96,14 @@ functions:
       - httpApi:
           path: /planningMeal/{patientId}
           method: POST
+          cors: true
   findAllPlanning:
     handler: src/server/functions/planningMeal/findAll.handler
     events:
       - httpApi:
           path: /planningMeal/{patientId}
           method: GET
+          cors: true
 
   createAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/create.handler
@@ -101,18 +111,21 @@ functions:
       - httpApi:
           path: /anamnesisTemplate
           method: POST
+          cors: true
   findAllAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/findAll.handler
     events:
       - httpApi:
           path: /anamnesisTemplate
           method: GET
+          cors: true
   deleteAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/delete.handler
     events:
       - httpApi:
           path: /anamnesisTemplate/{anamnesisId}
           method: DELETE
+          cors: true
 
   createAnamnesis:
     handler: src/server/functions/anamnesis/create.handler
@@ -120,24 +133,28 @@ functions:
       - httpApi:
           path: /anamnesis/{patientId}
           method: POST
+          cors: true
   findAllAnamnesis:
     handler: src/server/functions/anamnesis/findAll.handler
     events:
       - httpApi:
           path: /anamnesis/{patientId}
           method: GET
+          cors: true
   updateAnamnesis:
     handler: src/server/functions/anamnesis/update.handler
     events:
       - httpApi:
           path: /anamnesis/{patientId}
           method: PUT
+          cors: true
   deleteAnamnesis:
     handler: src/server/functions/anamnesis/delete.handler
     events:
       - httpApi:
           path: /anamnesis/{patientId}/{anamnesisId}
           method: DELETE
+          cors: true
 
   userMe:
     handler: src/server/functions/user/me.handler
@@ -145,3 +162,4 @@ functions:
       - httpApi:
           path: /user/me
           method: GET
+          cors: true
