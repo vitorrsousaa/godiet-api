@@ -6,7 +6,7 @@ export interface IPatientRepositories {
   create(createDTO: Prisma.PatientCreateArgs): Promise<TPatient>;
   findAll(findAllArgs: Prisma.PatientFindManyArgs): Promise<TPatient[]>;
   delete(deleteArgs: Prisma.PatientDeleteArgs): Promise<TPatient | null>;
-  update(updateArgs: Prisma.PatientUpdateArgs): Promise<TPatient | null>;
+  update(updateArgs: Prisma.PatientUpdateArgs): Promise<TPatient>;
   findUnique(
     findUniqueArgs: Prisma.PatientFindUniqueArgs
   ): Promise<TPatient | null>;

@@ -25,6 +25,12 @@ provider:
         - 'http://localhost:5173'
       allowedHeaders:
         - '*'
+      allowedMethods:
+        - PUT
+        - GET
+        - DELETE
+        - POST
+        - OPTIONS
 
 custom:
   secrets: ${file(.env.prod)}
@@ -64,20 +70,24 @@ functions:
       - httpApi:
           path: /patient
           method: POST
-
   findAllPatients:
     handler: src/server/functions/patient/findAll.handler
     events:
       - httpApi:
           path: /patient
           method: GET
-
   findByPatientId:
     handler: src/server/functions/patient/findByPatientId.handler
     events:
       - httpApi:
           path: /patient/{patientId}
           method: GET
+  updatePatient:
+    handler: src/server/functions/patient/update.handler
+    events:
+      - httpApi:
+          path: /patient/{patientId}
+          method: PUT
 
   findAllFoods:
     handler: src/server/functions/food/findAll.handler

@@ -9,6 +9,7 @@ export function responseAdapter(response: IResponse): IResponseLambda {
     headers: {
       'Access-Control-Allow-Origin': 'https://godiet.com.br',
       'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Methods': 'POST,PATCH,PUT,DELETE,GET,OPTIONS,HEAD',
     },
   };
 }
