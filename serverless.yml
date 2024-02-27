@@ -43,7 +43,16 @@ functions:
       - httpApi:
           path: /auth/signin
           method: POST
-          cors: true
+          cors:
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentias: true
+            origin: 'https://godiet.com.br'
   authSignup:
     handler: src/server/functions/auth/signup.handler
     events:
