@@ -53,8 +53,6 @@
     "vitest": "^1.2.2"
   },
   "dependencies": {
-    "@middy/core": "^5.2.4",
-    "@middy/http-cors": "^5.2.4",
     "@prisma/client": "^5.8.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.1",
