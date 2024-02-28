@@ -7,6 +7,7 @@
     "dev": "serverless offline --reloadHandler --httpPort 3001",
     "deploy:dev": "serverless deploy --stage dev --verbose",
     "deploy:prod": "serverless deploy --stage prod --verbose",
+    "deployment": "bash ./scripts/deployment.sh",
     "prepare": "husky",
     "lint:ci": "prettier --check ./src && eslint ./src --ext .ts",
     "lint:fix": "prettier --write ./src && eslint ./src --ext .ts --fix",
@@ -17,7 +18,7 @@
     "test:ui": "vitest --ui --api 3001 --coverage",
     "test:preview": "npx vite preview --outDir html",
     "test:int": "bash ./scripts/run-integration.sh",
-    "test:int:ui": "./scripts/run-integration.sh --ui",
+    "test:int:ui": "bash ./scripts/run-integration.sh --ui",
     "typecheck": "tsc --noEmit",
     "seed": "npx prisma db seed"
   },
