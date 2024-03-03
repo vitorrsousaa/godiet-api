@@ -101,7 +101,6 @@ Para manter um histórico de commits claro e consistente, adotamos um padrão pa
 `test` – including new or correcting previous tests
 `perf` – performance improvements
 `ci` – continuous integration related
-`build` – changes that affect the build system or external dependencies
 `revert` – reverts a previous commit
 
 Exemplos:
