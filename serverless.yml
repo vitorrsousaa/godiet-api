@@ -43,13 +43,6 @@ custom:
     #   js: 'import { createRequire } from "module";const require = createRequire(import.meta.url)'
 
 functions:
-  getUserById:
-    handler: src/server/functions/getUserById.handler
-    events:
-      - httpApi:
-          path: /users/{userId}
-          method: GET
-
   authSignin:
     handler: src/server/functions/auth/signin.handler
     events:
@@ -88,6 +81,12 @@ functions:
       - httpApi:
           path: /patient/{patientId}
           method: PUT
+  deletePatient:
+    handler: src/server/functions/patient/delete.handler
+    events:
+      - httpApi:
+          path: /patient/{patientId}
+          method: DELETE
 
   findAllFoods:
     handler: src/server/functions/food/findAll.handler

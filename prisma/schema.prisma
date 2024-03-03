@@ -122,8 +122,8 @@ model PlanningMeal {
   userId    String @map("user_id") @db.Uuid()
   patientId String @map("patient_id") @db.Uuid()
 
-  patient Patient? @relation(fields: [patientId], references: [id])
-  user    User?    @relation(fields: [userId], references: [id])
+  patient Patient? @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  user    User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   meals Meal[]
 
@@ -137,7 +137,7 @@ model Meal {
 
   planningMealId String @map("planning_meal_id") @db.Uuid()
 
-  planningMeal PlanningMeal @relation(fields: [planningMealId], references: [id])
+  planningMeal PlanningMeal @relation(fields: [planningMealId], references: [id], onDelete: Cascade)
 
   foods MealFood[]
 
@@ -151,7 +151,7 @@ model MealFood {
   mealId         String @map("meal_id") @db.Uuid()
   categoryNameId String @map("category_name_id") @db.Uuid()
 
-  meal Meal @relation(fields: [mealId], references: [id])
+  meal Meal @relation(fields: [mealId], references: [id], onDelete: Cascade)
 
   options String[]
 
