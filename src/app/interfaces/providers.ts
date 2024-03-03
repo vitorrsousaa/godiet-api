@@ -13,5 +13,5 @@ export type PayloadProps = {
 
 export interface IToken {
   generate: ({ id }: IGenerateToken, duration?: number) => string;
-  verify: (token: string) => PayloadProps;
+  verify: (token: string) => Promise<PayloadProps>;
 }

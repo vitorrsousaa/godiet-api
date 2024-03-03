@@ -15,7 +15,7 @@ export class TokenProvider implements IToken {
     });
   }
 
-  verify(token: string) {
+  async verify(token: string) {
     const result = jwt.verify(token, this.config.AUTH_SECRET);
     return result as PayloadProps;
   }

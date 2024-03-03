@@ -21,10 +21,15 @@ export class AuthenticationMiddleware implements IMiddleware {
       const [bearer, token] = authorization.split(' ');
 
       if (bearer !== 'Bearer') {
-        throw new Error();
+        return {
+          statusCode: 401,
+          body: {
+            error: 'Invalid access token',
+          },
+        };
       }
 
-      const payload = this.tokenProvider.verify(token);
+      const payload = await this.tokenProvider.verify(token);
 
       return {
         data: {
