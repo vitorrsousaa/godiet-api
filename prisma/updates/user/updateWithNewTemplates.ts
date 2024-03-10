@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-import { templates } from '../../app/constants/templateAnamnesis';
+import { templates } from '../../../src/app/constants/templateAnamnesis';
 
 const prisma = new PrismaClient();
 
