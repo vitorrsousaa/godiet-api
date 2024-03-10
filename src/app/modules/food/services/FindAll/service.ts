@@ -7,19 +7,19 @@ import { IFoodUtils } from '../../utils/food';
 
 export const FindAllServiceSchema = z.object({
   categoryId: z.string().uuid().or(z.undefined()),
-  portion: z
-    .string()
-    .refine((value) => {
-      if (value === undefined) {
-        return true;
-      }
+  // portion: z
+  //   .string()
+  //   .refine((value) => {
+  //     if (value === undefined) {
+  //       return true;
+  //     }
 
-      const parsed = parseFloat(value);
+  //     const parsed = parseFloat(value);
 
-      return !isNaN(parsed);
-    })
-    .transform((value) => parseFloat(value))
-    .or(z.undefined()),
+  //     return !isNaN(parsed);
+  //   })
+  //   .transform((value) => parseFloat(value))
+  //   .or(z.undefined()),
 });
 
 export type TFindAll = z.infer<typeof FindAllServiceSchema>;
@@ -38,22 +38,7 @@ export class FindAllService implements IFindAllService {
   ) {}
 
   async execute(findAllInput: IFindAllInput): Promise<IFindAllOutput> {
-    const { categoryId, portion } = findAllInput;
-
-    if (categoryId && portion) {
-      const foods = await this.foodRepositories.findAll({
-        where: {
-          categoryNameId: categoryId,
-        },
-        include: {
-          categoryName: true,
-        },
-      });
-
-      return foods.map((food) =>
-        this.foodUtils.getFoodByPortion(food, portion)
-      );
-    }
+    const { categoryId } = findAllInput;
 
     if (categoryId) {
       const tes = await this.foodRepositories.findAll({

@@ -16,8 +16,6 @@ export class FindAllController implements IController {
       };
     }
 
-    console.log(request.queryParams);
-
     const result = returnErrorMissingField(
       FindAllServiceSchema,
       request.queryParams
@@ -32,7 +30,6 @@ export class FindAllController implements IController {
 
     const service = await this.findAllFoodService.execute({
       categoryId: result.data.categoryId,
-      portion: result.data.portion as number,
     });
 
     return {
