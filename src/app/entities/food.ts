@@ -5,6 +5,10 @@ export type TAttribute = {
   name: string;
   unit: string;
 };
+export type TMeasure = {
+  qty: number;
+  name: string;
+};
 
 export type TFood = {
   id: string;
@@ -14,4 +18,5 @@ export type TFood = {
   categoryNameId: string;
   attributes?: TAttribute[];
   categoryName?: TCategoryName;
+  measures: TMeasure[];
 };
