@@ -105,6 +105,7 @@ model Food {
   baseQty    Float  @map("base_qty")
   name       String @unique
   attributes Json[]
+  measures   Json[] @default([])
 
   categoryNameId String @map("category_name_id") @db.Uuid()
 
