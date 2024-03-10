@@ -1,7 +1,7 @@
 import { TCategoryName } from './categoryName';
 
 export type TAttribute = {
-  qty: number | string;
+  qty: number;
   name: string;
   unit: string;
 };
