@@ -74,7 +74,7 @@ class FoodRepositories implements IFoodRepositories {
       name: food.name,
       attributes: food.attributes as TAttribute[],
       categoryName: food.categoryName,
-      measures: food.measures as TMeasure[],
+      measures: food.measures.sort() as TMeasure[],
     };
   }
 }
