@@ -108,7 +108,12 @@ functions:
       - httpApi:
           path: /planningMeal/{patientId}
           method: POST
-
+  deletePlanningMeal:
+    handler: src/server/functions/planningMeal/delete.handler
+    events:
+      - httpApi:
+          path: /planningMeal/{patientId}
+          method: DELETE
   findAllPlanning:
     handler: src/server/functions/planningMeal/findAll.handler
     events:
