@@ -157,7 +157,7 @@ model MealFood {
   mealId String @map("meal_id") @db.Uuid()
 
   food Food @relation(fields: [foodId], references: [id])
-  meal Meal @relation(fields: [mealId], references: [id])
+  meal Meal @relation(fields: [mealId], references: [id], onDelete: Cascade)
 
   @@map("meal_foods")
 }
