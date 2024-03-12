@@ -6,15 +6,26 @@ import * as z from 'zod';
 import { InvalidPatient } from '../../errors/invalidPatient';
 
 export const CreateMealFoodSchema = z.object({
-  portion: z.number().min(0),
-  options: z.array(z.string().uuid()),
-  categoryNameId: z.string().uuid(),
+  qty: z.number().min(0),
+  measure: z.object({
+    name: z.string(),
+    qty: z.number().min(0),
+  }),
+  options: z.array(
+    z.object({
+      foodId: z.string().uuid(),
+      foodName: z.string(),
+      measure: z.string(),
+      qty: z.number().min(0),
+    })
+  ),
+  foodId: z.string().uuid(),
 });
 
 export const CreateMealSchema = z.object({
   name: z.string(),
   time: z.string(),
-  foods: z.array(CreateMealFoodSchema),
+  mealFoods: z.array(CreateMealFoodSchema),
 });
 
 export const CreatePlanningServiceSchema = z.object({
@@ -22,13 +33,17 @@ export const CreatePlanningServiceSchema = z.object({
   meals: z.array(CreateMealSchema),
 });
 
+export const CreateServiceSchema = z.object({
+  userId: z.string().uuid(),
+  patientId: z.string().uuid(),
+  planningMeal: CreatePlanningServiceSchema,
+});
+
 export type TCreatePlanningMeal = z.infer<typeof CreatePlanningServiceSchema>;
 
-export interface ICreateInput {
-  planningMeal: TCreatePlanningMeal;
-  patientId: string;
-  userId: string;
-}
+export type TCreateServiceInput = z.infer<typeof CreateServiceSchema>;
+
+export type ICreateInput = TCreateServiceInput;
 
 export interface ICreateOutput {
   name: string;
@@ -67,11 +82,12 @@ export class CreateService implements ICreateService {
           create: planningMeal.meals.map((meal) => ({
             name: meal.name,
             time: `${fixedDate.toISOString().split('T')[0]}T${meal.time}:00.000Z`,
-            foods: {
-              create: meal.foods.map((food) => ({
-                portion: food.portion,
-                options: food.options,
-                categoryNameId: food.categoryNameId,
+            mealFoods: {
+              create: meal.mealFoods.map((mealFood) => ({
+                measure: mealFood.measure,
+                qty: mealFood.qty,
+                options: mealFood.options,
+                foodId: mealFood.foodId,
               })),
             },
           })),
@@ -80,7 +96,11 @@ export class CreateService implements ICreateService {
       include: {
         meals: {
           include: {
-            foods: true,
+            mealFoods: {
+              include: {
+                food: true,
+              },
+            },
           },
         },
       },

@@ -105,10 +105,13 @@ model Food {
   baseQty    Float  @map("base_qty")
   name       String @unique
   attributes Json[]
+  measures   Json[] @default([])
 
   categoryNameId String @map("category_name_id") @db.Uuid()
 
   categoryName CategoryName @relation(fields: [categoryNameId], references: [id])
+
+  mealFood MealFood[]
 
   @@map("foods")
 }
@@ -139,21 +142,22 @@ model Meal {
 
   planningMeal PlanningMeal @relation(fields: [planningMealId], references: [id], onDelete: Cascade)
 
-  foods MealFood[]
+  mealFoods MealFood[]
 
   @@map("meals")
 }
 
 model MealFood {
   id      String @id @default(uuid()) @db.Uuid()
-  portion Float
+  measure Json
+  qty     Float
+  options Json[] @default([])
 
-  mealId         String @map("meal_id") @db.Uuid()
-  categoryNameId String @map("category_name_id") @db.Uuid()
+  foodId String @map("food_id") @db.Uuid()
+  mealId String @map("meal_id") @db.Uuid()
 
-  meal Meal @relation(fields: [mealId], references: [id], onDelete: Cascade)
-
-  options String[]
+  food Food @relation(fields: [foodId], references: [id])
+  meal Meal @relation(fields: [mealId], references: [id])
 
   @@map("meal_foods")
 }

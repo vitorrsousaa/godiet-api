@@ -1,6 +1,6 @@
 import {
-  CreatePlanningServiceSchema,
   CreateService,
+  CreateServiceSchema,
   ICreateInput,
   ICreateOutput,
   ICreateService,
@@ -8,6 +8,6 @@ import {
 
 export type { ICreateInput, ICreateOutput, ICreateService };
 
-export { CreatePlanningServiceSchema };
+export { CreateServiceSchema };
 
 export { CreateService };

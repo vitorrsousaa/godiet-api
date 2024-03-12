@@ -1,0 +1,751 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-03-12T18:10:16.109Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.6",
+  "resources": [
+    {
+      "_id": "req_70ae1b9751824c82b32403c94ada2ebb",
+      "parentId": "fld_374230f3709349baa98593602694de41",
+      "modified": 1708191142283,
+      "created": 1708191095915,
+      "url": "{{ _.baseURL }}/anamnesisTemplate",
+      "name": "create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"titulo da anamnses\",\n\t\"text\": \"conteúdo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwODE5MTExNCwiZXhwIjoxNzIxMTUxMTE0fQ.Q71M9oFJ7hSm3M9pryjcvjwIXyxB_igVZZ6kFJdubsk"
+      },
+      "metaSortKey": -1707241735202,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_374230f3709349baa98593602694de41",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1708115015342,
+      "created": 1708115015342,
+      "name": "Anamnesis Template",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1708115015342,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "parentId": null,
+      "modified": 1706368416242,
+      "created": 1706368416242,
+      "name": "goDiet",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_544e611062ad41309d0054e6c8bd3344",
+      "parentId": "fld_374230f3709349baa98593602694de41",
+      "modified": 1708115203916,
+      "created": 1708115199972,
+      "url": "{{ _.baseURL }}/anamnesisTemplate",
+      "name": "find all",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1OGFlNDVhLWRhNzktNDYyYS04NWQ3LWEwODNjYjBkNzQ3NyIsImlhdCI6MTcwODExNDk5OSwiZXhwIjoxNzIxMDc0OTk5fQ.zu3AgMi-7AZ0pAzRwvyD4s7S_gy5AmpI_NM1sdJHBPc"
+      },
+      "metaSortKey": -1707241735102,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_56a36c7d933e41aab203efd91a468fbd",
+      "parentId": "fld_374230f3709349baa98593602694de41",
+      "modified": 1708191172195,
+      "created": 1708191152868,
+      "url": "{{ _.baseURL }}/anamnesisTemplate/86a96a88-6399-4b2f-9773-dfd982ff3fea",
+      "name": "delete",
+      "description": "",
+      "method": "DELETE",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwODE5MTExNCwiZXhwIjoxNzIxMTUxMTE0fQ.Q71M9oFJ7hSm3M9pryjcvjwIXyxB_igVZZ6kFJdubsk"
+      },
+      "metaSortKey": -1706805081343,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d30a7912d29547008841fe7cecbd656e",
+      "parentId": "fld_afdab00d87c043d4a8aeb86203fafbc4",
+      "modified": 1708199068283,
+      "created": 1708198648955,
+      "url": "{{ _.baseURL }}/anamnesis/865c2e23-24d1-4ac0-af0a-4e4d56344156",
+      "name": "create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"titulo da anamnses\",\n\t\"text\": \"conteúdo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwODE5OTAyNSwiZXhwIjoxNzIxMTU5MDI1fQ.UPcRo04OIZNhbxHvG_S3QNXXZIqz5hY7AzJR0nhbdaI"
+      },
+      "metaSortKey": -1707241735202,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_afdab00d87c043d4a8aeb86203fafbc4",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1708198648703,
+      "created": 1708198648703,
+      "name": "Anamnesis",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1707241720196,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_6b6a0610c0e0491086842715c1233632",
+      "parentId": "fld_afdab00d87c043d4a8aeb86203fafbc4",
+      "modified": 1708199871865,
+      "created": 1708199835428,
+      "url": "{{ _.baseURL }}/anamnesis/865c2e23-24d1-4ac0-af0a-4e4d56344156",
+      "name": "update",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"id\": \"935fb45e-3775-4df0-8024-629101218e24\",\n\t\"title\": \"novo titulo da anamnses\",\n\t\"text\": \"novo conteúdo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwODE5OTAyNSwiZXhwIjoxNzIxMTU5MDI1fQ.UPcRo04OIZNhbxHvG_S3QNXXZIqz5hY7AzJR0nhbdaI"
+      },
+      "metaSortKey": -1707241735152,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6c98c542e66441afbb4134ac14f53836",
+      "parentId": "fld_afdab00d87c043d4a8aeb86203fafbc4",
+      "modified": 1708199443805,
+      "created": 1708198648707,
+      "url": "{{ _.baseURL }}/anamnesis/865c2e23-24d1-4ac0-af0a-4e4d56344156",
+      "name": "find all",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwODE5OTAyNSwiZXhwIjoxNzIxMTU5MDI1fQ.UPcRo04OIZNhbxHvG_S3QNXXZIqz5hY7AzJR0nhbdaI"
+      },
+      "metaSortKey": -1707241735102,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b2ab6f91b735499498bee5ef706bb3c0",
+      "parentId": "fld_afdab00d87c043d4a8aeb86203fafbc4",
+      "modified": 1708200939069,
+      "created": 1708198648959,
+      "url": "{{ _.baseURL }}/anamnesis/865c2e23-24d1-4ac0-af0a-4e4d56344156/935fb45e-3775-4df0-8024-629101218e24",
+      "name": "delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "Insomnia/2023.5.6" }],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwODE5MTExNCwiZXhwIjoxNzIxMTUxMTE0fQ.Q71M9oFJ7hSm3M9pryjcvjwIXyxB_igVZZ6kFJdubsk"
+      },
+      "metaSortKey": -1706805081343,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2ff7e86312d4474a9949ba40c3b75eb5",
+      "parentId": "fld_b4a70a7c896841f2a6d0221b6a23f03f",
+      "modified": 1708429647354,
+      "created": 1706368427484,
+      "url": "{{ _.baseURL }}/auth/signin",
+      "name": "signin",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"vitor@email.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1706368427484,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_b4a70a7c896841f2a6d0221b6a23f03f",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1706368425050,
+      "created": 1706368425050,
+      "name": "Authentication",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1706368425050,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_dfb1a3b5711e4d9db8b3a8ab71938c6b",
+      "parentId": "fld_b4a70a7c896841f2a6d0221b6a23f03f",
+      "modified": 1709495033742,
+      "created": 1706384949292,
+      "url": "{{ _.baseURL }}/auth/signup",
+      "name": "signup",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"vitor2@email.com\",\n\t\"password\": \"29081241\",\n\t\"name\":\"Vitor\",\n\t\"phone\": \"21998217563\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1702922909500.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_769261afe5d6465a814c3930edddb3f2",
+      "parentId": "fld_1e3bd98e964f461994e5a837d73587ab",
+      "modified": 1709495047486,
+      "created": 1706561663438,
+      "url": "{{ _.baseURL }}/patient",
+      "name": "create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"paciente5@email.com\",\n\t\"name\": \"Jonas oliveira\",\n\t\"gender\": \"MASC\",\n\t\"birthDate\": \"2024-01-29T21:32:44.293Z\"\n\t,\"phone\": \"21987512345\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlkM2RmMGQ0LTliZjgtNDMwOS1iMDc1LTkxYjlkNWU4YjYxMiIsImlhdCI6MTcwOTQ5NTAzNSwiZXhwIjoxNzIyNDU1MDM1fQ.RsLQ1U0Ol2tLoHtODMmm92_cUWC8rtGxRcnQKqAtL7c"
+      },
+      "metaSortKey": -1706368427484,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_1e3bd98e964f461994e5a837d73587ab",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1706561663434,
+      "created": 1706561663434,
+      "name": "Patient",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1699797416082.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_383eb19e96f74d8d96cf2dd25b2e1019",
+      "parentId": "fld_1e3bd98e964f461994e5a837d73587ab",
+      "modified": 1709065543752,
+      "created": 1709065079487,
+      "url": "{{ _.baseURL }}/patient/6aea38c5-37d9-4e4b-99bc-d98e7e9dfaec",
+      "name": "update",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"paciente4@email.com\",\n\t\"name\": \"Paciente 4\",\n\t\"gender\": \"MASC\",\n\t\"phone\": \"21987512347\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwOTA2NTQxNywiZXhwIjoxNzIyMDI1NDE3fQ.mqurzMAFL_zjlYSbSx8rr2rJWduN8X_4ufwPtykGkuY"
+      },
+      "metaSortKey": -1705507047988.125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7747bd98c25e4100b7a2a5c9cec30409",
+      "parentId": "fld_1e3bd98e964f461994e5a837d73587ab",
+      "modified": 1710237621815,
+      "created": 1706561663444,
+      "url": "{{ _.baseURL }}/patient",
+      "name": "find all",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzBmMzE4LWNiYzQtNDVmMC04ZjgyLTM1YmJmNzQ2ZGMyOSIsImlhdCI6MTcxMDIzNzYxMywiZXhwIjoxNzIzMTk3NjEzfQ.yRYGFzCWp3ToT_4TgVLlTQG0T843uCpMJyqiCkr6PAI"
+      },
+      "metaSortKey": -1702922909500.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_fee5f2abc0774220955a2ec2f1b1f57e",
+      "parentId": "fld_1e3bd98e964f461994e5a837d73587ab",
+      "modified": 1707913577304,
+      "created": 1707671865366,
+      "url": "{{ _.baseURL }}/patient/3802a046-7ebe-4333-9d33-8293faa7e628",
+      "name": "find by patient id",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlkZmJmOTcxLWU1MDktNGU0NS04Y2M2LWQ4NjA4ZWFkZTcxYiIsImlhdCI6MTcwNzkxMjY0MywiZXhwIjoxNzIwODcyNjQzfQ.v9tuOaJM0InALt6g8iNLZpe8tNoWPwdgazkabB39KYw"
+      },
+      "metaSortKey": -1701200150508.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a3547b3eca304eada78ed91227d8bc36",
+      "parentId": "fld_1e3bd98e964f461994e5a837d73587ab",
+      "modified": 1709495059068,
+      "created": 1709494048483,
+      "url": "{{ _.baseURL }}/patient/f335a61f-c15a-47c3-a1d2-bd14c100df41",
+      "name": "delete",
+      "description": "",
+      "method": "DELETE",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwOTQ5NDA1NSwiZXhwIjoxNzIyNDU0MDU1fQ.Ve643MaooEYtXr2_lznANQRROmV5JgqptH4fAigLiT4"
+      },
+      "metaSortKey": -1700338771012.875,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_dca1e97448194bb9a272736b035f741c",
+      "parentId": "fld_56f6f4a1679d467ab1a21673508ff0be",
+      "modified": 1710238579708,
+      "created": 1707674860291,
+      "url": "{{ _.baseURL }}/planningMeal/cc24adf6-f8f0-4a07-8cab-0cfc161971f1",
+      "name": "find all by patient id",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzBmMzE4LWNiYzQtNDVmMC04ZjgyLTM1YmJmNzQ2ZGMyOSIsImlhdCI6MTcxMDIzNzYxMywiZXhwIjoxNzIzMTk3NjEzfQ.yRYGFzCWp3ToT_4TgVLlTQG0T843uCpMJyqiCkr6PAI"
+      },
+      "metaSortKey": -1706368427584,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_56f6f4a1679d467ab1a21673508ff0be",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1707601830902,
+      "created": 1707601830902,
+      "name": "Planning Meal",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1698154663840.625,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_079b4692a91c48ba84dd6f6458ccf892",
+      "parentId": "fld_56f6f4a1679d467ab1a21673508ff0be",
+      "modified": 1710238945439,
+      "created": 1707839155718,
+      "url": "{{ _.baseURL }}/planningMeal/cc24adf6-f8f0-4a07-8cab-0cfc161971f1",
+      "name": "find unique by patient id",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [
+        {
+          "id": "pair_c699fa37964649c1bb5d97400ae36292",
+          "name": "planningId",
+          "value": "953ff41e-b0a3-49bb-b630-5a9681d32b4c",
+          "description": ""
+        }
+      ],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzBmMzE4LWNiYzQtNDVmMC04ZjgyLTM1YmJmNzQ2ZGMyOSIsImlhdCI6MTcxMDIzNzYxMywiZXhwIjoxNzIzMTk3NjEzfQ.yRYGFzCWp3ToT_4TgVLlTQG0T843uCpMJyqiCkr6PAI"
+      },
+      "metaSortKey": -1706368427534,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_be98b8bb15084b3095be2e372a5b6dcd",
+      "parentId": "fld_56f6f4a1679d467ab1a21673508ff0be",
+      "modified": 1709499673224,
+      "created": 1709498810483,
+      "url": "{{ _.baseURL }}/planningMeal/6aea38c5-37d9-4e4b-99bc-d98e7e9dfaec",
+      "name": "delete",
+      "description": "",
+      "method": "DELETE",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [
+        {
+          "id": "pair_c699fa37964649c1bb5d97400ae36292",
+          "name": "planningMealId",
+          "value": "46459507-5516-43ef-965c-f091b2c0f02c",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNGMyNzVmLTkyM2ItNGI2Yy1iM2UxLTk1MmIzMGY4OGY0MiIsImlhdCI6MTcwOTQ5NDA1NSwiZXhwIjoxNzIyNDU0MDU1fQ.Ve643MaooEYtXr2_lznANQRROmV5JgqptH4fAigLiT4"
+      },
+      "metaSortKey": -1706368427509,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_bdd371ca5c844a0a8601d15d9d4438b2",
+      "parentId": "fld_56f6f4a1679d467ab1a21673508ff0be",
+      "modified": 1710238681325,
+      "created": 1707601830905,
+      "url": "{{ _.baseURL }}/planningMeal/cc24adf6-f8f0-4a07-8cab-0cfc161971f1",
+      "name": "create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Plano alimentar novo \",\n\t\"meals\": [\n\t\t{\n\t\t\t\"name\": \"Refeição 01\",\n\t\t\t\"time\": \"20:00\",\n\t\t\t\"mealFoods\": [\n\t\t\t\t{\n\t\t\t\t\t\"foodId\": \"e3e3a30f-186c-44f4-a09d-fc2ac152c286\",\n\t\t\t\t\t\"qty\": 100 ,\n\t\t\t\t\t\"measure\":{\n\t\t\t\t\t\t\"name\": \"Colher de sopa\",\"qty\": 12\n\t\t\t\t\t},\n\t\t\t\t\t\"portion\": 3,\n\t\t\t\t\t\"options\":[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"foodId\":\"c3213c1e-34a8-4391-ab8c-62e7128bf2a8\",\n\t\t\t\t\t\t\t\"foodName\":\"Abacaxi\",\n\t\t\t\t\t\t\t\"measure\": \"Fatia média\",\n\t\t\t\t\t\t\t\"qty\": 3\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t},\t{\n\t\t\t\"name\": \"Refeição 02\",\n\t\t\t\"time\": \"10:00\",\n\t\t\t\"mealFoods\": [\n\t\t\t\t\n\t\t\t\t{\n\t\t\t\t\t\"foodId\":\"d078ee9c-baa6-4cd8-b8f7-5b3c78f0ed03\",\n\t\t\t\t\t\"qty\": 100 ,\n\t\t\t\t\t\"measure\":{\n\t\t\t\t\t\t\"name\": \"Colher de sopa\",\"qty\": 12\n\t\t\t\t\t},\n\t\t\t\t\t\"portion\": 3,\n\t\t\t\t\t\"options\":[\n\t\t\t\t\t\t\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzBmMzE4LWNiYzQtNDVmMC04ZjgyLTM1YmJmNzQ2ZGMyOSIsImlhdCI6MTcxMDIzNzYxMywiZXhwIjoxNzIzMTk3NjEzfQ.yRYGFzCWp3ToT_4TgVLlTQG0T843uCpMJyqiCkr6PAI"
+      },
+      "metaSortKey": -1706368427484,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_62d197d2e54e4159a2b972e8de8ced6e",
+      "parentId": "fld_25c2dc5b9f5c4c9dbe8922ca99c66b8c",
+      "modified": 1707843738011,
+      "created": 1706739793140,
+      "url": "{{ _.baseURL }}/foods",
+      "name": "find all",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU1OGFlNDVhLWRhNzktNDYyYS04NWQ3LWEwODNjYjBkNzQ3NyIsImlhdCI6MTcwNzg0MzcyNSwiZXhwIjoxNzIwODAzNzI1fQ.JifYSd06pmdre8IpHG5Rx23eBxRpbkMCRRiKjlaF-Ls"
+      },
+      "metaSortKey": -1706368427484,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_25c2dc5b9f5c4c9dbe8922ca99c66b8c",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1706739793136,
+      "created": 1706739793136,
+      "name": "food",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1694869159356.875,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_c85b52842ed247b88656caa0fe707ac2",
+      "parentId": "fld_25c2dc5b9f5c4c9dbe8922ca99c66b8c",
+      "modified": 1707602592768,
+      "created": 1706741016579,
+      "url": "{{ _.baseURL }}/foods?categoryId=f750b084-add0-4f9f-bc6a-b390e3d6f4f0",
+      "name": "find all by category",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQxOTEyZTQwLTRmMGQtNGFlMy1iYmEyLThmNjZkN2VmYTE5YyIsImlhdCI6MTcwNzYwMTc5NSwiZXhwIjoxNzIwNTYxNzk1fQ.lSeg4_ZevHaeWRZ10kzNxZVASerZikvSTp1NKY-DK8U"
+      },
+      "metaSortKey": -1704645668492.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8ce81bf885554c9faff1942c58fd3685",
+      "parentId": "fld_25c2dc5b9f5c4c9dbe8922ca99c66b8c",
+      "modified": 1706889210252,
+      "created": 1706819172506,
+      "url": "{{ _.baseURL }}/foods?categoryId=17863e9d-ec56-4d5e-9a4f-dda3569d20a1&portion=2",
+      "name": "find all by category with portion",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.6" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiNzg1YjdiLTJmYzMtNDdjZi1hMzQzLTEwMDk3MDA4OTUxYiIsImlhdCI6MTcwNjg3MjgwNiwiZXhwIjoxNzE5ODMyODA2fQ.krl5Xwfgr1CEzLVwLWNj41SW1SZxTbmilwcWEqxAFh0"
+      },
+      "metaSortKey": -1703784288996.375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_ac36988e71cf578cb850eeaa47024c1bcf8daf5b",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1706369083322,
+      "created": 1706368416266,
+      "name": "Base Environment",
+      "data": { "baseURL": "http://localhost:3001" },
+      "dataPropertyOrder": { "&": ["baseURL"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1706368416266,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_ac36988e71cf578cb850eeaa47024c1bcf8daf5b",
+      "parentId": "wrk_6441ab7597534db68dd1ca7b6dcf3105",
+      "modified": 1706368416285,
+      "created": 1706368416285,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    }
+  ]
+}

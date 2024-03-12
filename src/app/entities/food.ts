@@ -1,9 +1,13 @@
 import { TCategoryName } from './categoryName';
 
 export type TAttribute = {
-  qty: number | string;
+  qty: number;
   name: string;
   unit: string;
+};
+export type TMeasure = {
+  qty: number;
+  name: string;
 };
 
 export type TFood = {
@@ -14,4 +18,5 @@ export type TFood = {
   categoryNameId: string;
   attributes?: TAttribute[];
   categoryName?: TCategoryName;
+  measures: TMeasure[];
 };
