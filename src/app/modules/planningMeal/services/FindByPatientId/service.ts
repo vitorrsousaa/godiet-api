@@ -38,24 +38,28 @@ export class FindByPatientIdService implements IFindByPatientIdService {
   ): Promise<IFindByPatientIdOutput> {
     const { userId, patientId } = findByPatientIdInput;
 
-    const planning = await this.planningMealRepositories.findAll({
-      where: {
-        userId,
-        patientId,
-      },
-      include: {
-        meals: {
-          include: {
-            foods: true,
+    try {
+      const planning = await this.planningMealRepositories.findAll({
+        where: {
+          userId,
+          patientId,
+        },
+        include: {
+          meals: {
+            include: {
+              mealFoods: {
+                include: {
+                  food: true,
+                },
+              },
+            },
           },
         },
-      },
-    });
+      });
 
-    if (!planning) {
+      return planning;
+    } catch {
       throw new InvalidPlanningId();
     }
-
-    return planning;
   }
 }
