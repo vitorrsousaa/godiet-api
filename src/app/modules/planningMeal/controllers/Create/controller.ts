@@ -3,11 +3,7 @@ import { IController } from '@/interfaces/controller';
 import { IRequest, IResponse } from '@/interfaces/http';
 import { returnErrorMissingField } from '@/utils';
 
-import { DataBaseIdSchema } from '../../entities/DatabaseUUID';
-import {
-  CreatePlanningServiceSchema,
-  ICreateService,
-} from '../../services/Create';
+import { CreateServiceSchema, ICreateService } from '../../services/Create';
 
 export class CreateController implements IController {
   constructor(private readonly createPlanningMealService: ICreateService) {}
@@ -31,13 +27,10 @@ export class CreateController implements IController {
         };
       }
 
-      const result = returnErrorMissingField(
-        CreatePlanningServiceSchema,
-        request.body
-      );
-
-      const patient = returnErrorMissingField(DataBaseIdSchema, {
-        id: request.patientId,
+      const result = returnErrorMissingField(CreateServiceSchema, {
+        userId: request.accountId,
+        patientId: request.patientId,
+        planningMeal: request.body,
       });
 
       if (!result.success) {
@@ -47,20 +40,10 @@ export class CreateController implements IController {
         };
       }
 
-      if (!patient.success) {
-        return {
-          statusCode: patient.data.statusCode,
-          body: patient.data.message,
-        };
-      }
-
       const service = await this.createPlanningMealService.execute({
-        patientId: patient.data.id,
-        userId: request.accountId,
-        planningMeal: {
-          name: result.data.name,
-          meals: result.data.meals,
-        },
+        patientId: result.data.patientId,
+        userId: result.data.userId,
+        planningMeal: result.data.planningMeal,
       });
 
       return {
