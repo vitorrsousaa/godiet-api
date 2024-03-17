@@ -26,6 +26,7 @@ model User {
   planningMeal      PlanningMeal[]
   anamnesisTemplate AnamnesisTemplate[]
   anamnesis         Anamnesis[]
+  favoriteMeal      FavoriteMeal[]
 
   @@map("users")
 }
@@ -153,11 +154,25 @@ model MealFood {
   qty     Float
   options Json[] @default([])
 
-  foodId String @map("food_id") @db.Uuid()
-  mealId String @map("meal_id") @db.Uuid()
+  foodId         String  @map("food_id") @db.Uuid()
+  mealId         String? @map("meal_id") @db.Uuid()
+  favoriteMealId String? @map("favorite_meal_id") @db.Uuid()
 
-  food Food @relation(fields: [foodId], references: [id])
-  meal Meal @relation(fields: [mealId], references: [id], onDelete: Cascade)
+  food         Food          @relation(fields: [foodId], references: [id])
+  meal         Meal?         @relation(fields: [mealId], references: [id])
+  favoriteMeal FavoriteMeal? @relation(fields: [favoriteMealId], references: [id])
 
   @@map("meal_foods")
+}
+
+model FavoriteMeal {
+  id     String @id @default(uuid()) @db.Uuid()
+  name   String
+  userId String @map("user_id") @db.Uuid()
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  mealFoods MealFood[]
+
+  @@map("favorite_meal")
 }
