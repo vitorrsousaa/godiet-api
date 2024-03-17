@@ -88,6 +88,25 @@ functions:
           path: /patient/{patientId}
           method: DELETE
 
+  findAllFavoriteMeal:
+    handler: src/server/functions/favoriteMeal/findAll.handler
+    events:
+      - httpApi:
+          path: /favoriteMeal
+          method: GET
+  deleteFavoriteMeal:
+    handler: src/server/functions/favoriteMeal/delete.handler
+    events:
+      - httpApi:
+          path: /favoriteMeal/{favoriteMealId}
+          method: DELETE
+  createFavoriteMeal:
+    handler: src/server/functions/favoriteMeal/create.handler
+    events:
+      - httpApi:
+          path: /favoriteMeal
+          method: POST
+
   findAllFoods:
     handler: src/server/functions/food/findAll.handler
     events:
