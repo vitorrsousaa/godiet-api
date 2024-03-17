@@ -25,6 +25,7 @@ export function generateFoodBaseForSeeding(categories: Category[]) {
       name: food.name,
       attributes: food.attributes,
       categoryNameId: findCategory.id,
+      measures: food.measures,
     };
   });
 
