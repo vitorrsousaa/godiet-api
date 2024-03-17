@@ -16,7 +16,7 @@ export type TFood = {
   baseQty: number;
   baseUnit: string;
   categoryNameId: string;
-  attributes?: TAttribute[];
+  attributes: TAttribute[];
   categoryName?: TCategoryName;
   measures: TMeasure[];
 };
