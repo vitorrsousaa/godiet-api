@@ -1,28 +1,43 @@
+import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
+
 import * as z from 'zod';
+
+import { InvalidFavoriteMeal } from '../../errors/InvalidFavoriteMeal';
 
 export const DeleteServiceSchema = z.object({
   userId: z.string().uuid(),
-  patientId: z.string().uuid(),
+  favoriteMealId: z.string().uuid(),
 });
 
 export type TDelete = z.infer<typeof DeleteServiceSchema>;
 
 export type IDeleteInput = TDelete;
 
-export interface IDeleteOutput {
-  name: string;
-}
+export type IDeleteOutput = null;
 
 export interface IDeleteService {
   execute(deleteInput: IDeleteInput): Promise<IDeleteOutput>;
 }
 
 export class DeleteService implements IDeleteService {
-  constructor() {}
+  constructor(
+    private readonly favoriteMealRepositories: IFavoriteMealRepositories
+  ) {}
 
   async execute(deleteInput: IDeleteInput): Promise<IDeleteOutput> {
-    return {
-      name: deleteInput.name,
-    };
+    const { favoriteMealId, userId } = deleteInput;
+
+    try {
+      await this.favoriteMealRepositories.delete({
+        where: {
+          id: favoriteMealId,
+          userId,
+        },
+      });
+
+      return null;
+    } catch {
+      throw new InvalidFavoriteMeal();
+    }
   }
 }
