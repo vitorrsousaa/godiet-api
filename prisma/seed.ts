@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 // import { generateCategoryBaseForSeeding } from './seeders/category';
 import { generateCategoryBaseForSeeding } from './seeders/category';
 import { generateFoodBaseForSeeding } from './seeders/food';
+import { fixUnits } from './updates/foods/fixUnit';
 
 const prisma = new PrismaClient();
 
@@ -39,6 +40,8 @@ async function main() {
   await prisma.food.createMany({
     data: foodList,
   });
+
+  await fixUnits();
 }
 
 main()
