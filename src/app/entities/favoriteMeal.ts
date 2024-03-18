@@ -12,5 +12,5 @@ export interface TMealFood {
 export interface TFavoriteMeal {
   name: string;
   id: string;
-  mealFoods: TMealFood[];
+  mealFoods?: TMealFood[];
 }
