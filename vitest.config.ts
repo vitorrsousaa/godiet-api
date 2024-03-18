@@ -28,7 +28,7 @@ export default defineConfig({
     alias: {
       '@/modules': path.resolve(__dirname, './src/app/modules'),
       '@/interfaces': path.resolve(__dirname, './src/app/interfaces'),
-      '@/adapters': path.resolve(__dirname, './src/adapters'),
+      '@/adapters': path.resolve(__dirname, './src/server/adapters'),
       '@/factories': path.resolve(__dirname, './src/factories'),
       '@/utils': path.resolve(__dirname, './src/app/utils/index.ts'),
       '@/errors': path.resolve(__dirname, './src/app/errors/index.ts'),
