@@ -4,10 +4,10 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    include: ['src/**/*.test.ts', '!src/tests'],
+    include: ['src/**/*.test.ts', '!src/tests', 'src/tests/*.test.ts'],
     setupFiles: ['src/tests/helpers/setup.ts'],
+    globals: true,
   },
-
   resolve: {
     alias: {
       '@/modules': path.resolve(__dirname, './src/app/modules'),
