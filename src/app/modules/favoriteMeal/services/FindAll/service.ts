@@ -1,4 +1,4 @@
-import { TFavoriteMeal } from '@/entities/favoriteMeal';
+import { TFavoriteMeal, TMealFood } from '@/entities/favoriteMeal';
 import { TAttribute, TMeasure } from '@/entities/food';
 import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
 
@@ -25,6 +25,8 @@ interface CalculateAttributesInput {
   measure: TMeasure;
 }
 
+type TFavoriteMealFoodWithMealFood = TFavoriteMeal & { mealFoods: TMealFood[] };
+
 function calculateAttributes(
   calculateAttributesInput: CalculateAttributesInput
 ): TAttribute {
@@ -47,7 +49,7 @@ export class FindAllService implements IFindAllService {
   async execute(findAllInput: IFindAllInput): Promise<IFindAllOutput> {
     const { userId } = findAllInput;
 
-    const allFavorites = await this.favoriteMealRepositories.findAll({
+    const allFavorites = (await this.favoriteMealRepositories.findAll({
       where: {
         userId,
       },
@@ -58,12 +60,14 @@ export class FindAllService implements IFindAllService {
           },
         },
       },
-    });
+    })) as TFavoriteMealFoodWithMealFood[];
 
     return allFavorites.map(this.mapperMealFoods);
   }
 
-  private mapperMealFoods(favoriteMeal: TFavoriteMeal): TFavoriteMeal {
+  private mapperMealFoods(
+    favoriteMeal: TFavoriteMealFoodWithMealFood
+  ): TFavoriteMeal {
     const { mealFoods } = favoriteMeal;
 
     const newMealFoods = mealFoods.map((mealFood) => {

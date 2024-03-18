@@ -18,7 +18,7 @@ export type TFindByPlanningId = z.infer<typeof FindByPlanningIdServiceSchema>;
 
 export type IFindByPlanningIdInput = TFindByPlanningId;
 
-export type IFindByPlanningIdOutput = unknown | null;
+export type IFindByPlanningIdOutput = TPlanningMeal | null;
 
 export interface IFindByPlanningIdService {
   execute(
