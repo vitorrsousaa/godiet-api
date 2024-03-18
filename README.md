@@ -94,7 +94,19 @@ $ yarn run test:ui
 
 ### Testes de integração
 
-Por padrão, o container do ambiente de testes vai ser criado na porta `5436:5432`, mas você pode ficar livre para alterar a porta do container. Lembrando de alterar também o `DATABASE_URL` do arquivo `.env`.
+Por padrão, o container do ambiente de testes vai ser criado na porta definida no `env`. Através da propriedade `DATABASE_TEST_URL`.
+
+```bash
+# run tests integration
+$ yarn test:int
+
+# run tests and open vitest ui
+$ yarn test:int:ui
+```
+
+#### Estrutura
+
+Os testes de integração devem ser criados na pasta `tests`, localizada dentro `/src`.
 
 ## Deployment
 
