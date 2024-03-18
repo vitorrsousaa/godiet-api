@@ -17,12 +17,14 @@ export DATABASE_URL=$DATABASE_TEST_URL
 
 npx prisma migrate dev --name init
 
+npx prisma generate
+
 echo '🟢 - Migrations are ready...'
 if [ "$#" -eq  "0" ]
   then
-    npm test ./src/tests/auth.test.ts
+    npx vitest run --config ./vitest.config.integration.ts
 else
-    npm vitest run -c ./vitest.config.integration.ts --ui
+    npm vitest run -config ./vitest.config.integration.ts --ui
 fi
 
 docker-compose stop database_tests
