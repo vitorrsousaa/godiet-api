@@ -14,13 +14,17 @@ git checkout main
 # Atualiza a branch main com as últimas alterações do repositório remoto
 git pull origin main
 
-# Muda de volta para a branch develop (ou a branch que estava antes)
-git merge develop
+echo '🟡 - Merging changes from origin/develop...'
 
-# Faz o merge da develop com a main
-git merge main
+git merge origin/develop
 
-echo '🟢 - Merge concluded...'
+echo '🟢 - Merged with develop branch'
+
+echo '🟡 - Pushing modifications for remote branch...'
+
+git push origin main
+
+echo '🟢 - Application published with successfull'
 
 echo '🟡 - Running migrations...'
 
@@ -32,4 +36,9 @@ echo '🟡 - Starting deployment...'
 
 npm run deploy:prod
 
-echo '🟢 - Deployment concluded'
+echo '🟡 - Updating develop branch...'
+
+git checkout develop
+git merge main
+
+echo '🟢 - Deployment finished'
