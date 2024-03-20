@@ -53,6 +53,16 @@ describe('Update patient service', () => {
       userId: 'any_user_id',
       weight: 70,
     });
+    spy['patientRepositories.findFirst'].mockResolvedValue({
+      birthDate: date,
+      email: 'any_email',
+      gender: 'MASC',
+      height: 1.7,
+      id: 'any_patient_id',
+      name: 'any_name',
+      userId: 'any_user_id',
+      weight: 70,
+    });
 
     const mockUpdatePatient = {
       name: 'any_name',
