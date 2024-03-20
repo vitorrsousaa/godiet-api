@@ -5,6 +5,7 @@ import * as z from 'zod';
 
 import { UpdatePatientSchema } from '../../dtos/update-patient-dto';
 import { PatientAlreadyExists } from '../../errors/PatientAlreadyExists';
+import { PatientNotFound } from '../../errors/PatientNotFound';
 
 export const UpdateServiceSchema = z.object({
   userId: z.string().uuid(),
@@ -60,10 +61,24 @@ export class UpdateService implements IUpdateService {
   private async validatePatient(
     validatePatientParams: IValidatePatientServiceParams
   ) {
-    const { patientId, patientEmail } = validatePatientParams;
+    const { patientId, patientEmail, userId } = validatePatientParams;
     return Promise.all([
       this.validateHasPatientWithEmail(patientEmail, patientId),
+      this.validateOwnershipPatient(patientId, userId),
     ]);
+  }
+
+  private async validateOwnershipPatient(patientId: string, userId: string) {
+    const patient = await this.patientRepositories.findFirst({
+      where: {
+        id: patientId,
+        userId,
+      },
+    });
+
+    if (!patient) {
+      throw new PatientNotFound();
+    }
   }
 
   private async validateHasPatientWithEmail(email: string, id: string) {
