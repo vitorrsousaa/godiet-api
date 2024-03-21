@@ -1890,7 +1890,8 @@
     "name": "Pão, de soja",
     "measures": [
       { "name": "gramas", "qty": 1 },
-      { "name": "Fatia média", "qty": 25 }
+      { "name": "Fatia média", "qty": 25 },
+      { "name": "Unidade", "qty": 50 }
     ],
     "attributes": [
       { "name": "humidity", "qty": 26.0333333333333, "unit": "percents" },
@@ -2042,7 +2043,8 @@
     "name": "Pão, trigo, francês",
     "measures": [
       { "name": "gramas", "qty": 1 },
-      { "name": "Fatia média", "qty": 25 }
+      { "name": "Fatia média", "qty": 25 },
+      { "name": "Unidade", "qty": 50 }
     ],
     "attributes": [
       { "name": "humidity", "qty": 28.4833333333333, "unit": "percents" },
@@ -2079,7 +2081,8 @@
     "name": "Pão, trigo, sovado",
     "measures": [
       { "name": "gramas", "qty": 1 },
-      { "name": "Fatia média", "qty": 25 }
+      { "name": "Fatia média", "qty": 25 },
+      { "name": "Unidade", "qty": 50 }
     ],
     "attributes": [
       { "name": "humidity", "qty": 25.7633333333333, "unit": "percents" },
