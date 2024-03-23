@@ -150,6 +150,7 @@ model Meal {
 
 model MealFood {
   id      String @id @default(uuid()) @db.Uuid()
+  name    String @default("null")
   measure Json
   qty     Float
   options Json[] @default([])
