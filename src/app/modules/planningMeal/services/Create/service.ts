@@ -19,6 +19,7 @@ export const CreateMealFoodSchema = z.object({
       qty: z.number().min(0),
     })
   ),
+  name: z.string(),
   foodId: z.string().uuid(),
 });
 
@@ -84,6 +85,7 @@ export class CreateService implements ICreateService {
             time: `${fixedDate.toISOString().split('T')[0]}T${meal.time}:00.000Z`,
             mealFoods: {
               create: meal.mealFoods.map((mealFood) => ({
+                name: mealFood.name,
                 measure: mealFood.measure,
                 qty: mealFood.qty,
                 options: mealFood.options,
