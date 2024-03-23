@@ -27,9 +27,11 @@ echo '🟡 - Running migrations...'
 
 dotenv -e .env.prod -- npx prisma migrate deploy
 
-echo '🟢 - Migrations are ready...'
+echo '🟢 - Migrations are ready'
 
 echo '🟡 - Starting deployment...'
+
+npm run deploy:prod
 
 echo '🟡 - Updating develop branch...'
 
