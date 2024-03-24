@@ -7,24 +7,18 @@ interface CalculateAttributesInput {
   measure: TMeasure;
 }
 
-export interface IFoodUtils {
-  calculateAttributes(
-    calculateAttributesInput: CalculateAttributesInput
-  ): TAttribute;
-}
+type CalculateAttributesOutput = TAttribute;
 
-export class FoodUtils implements IFoodUtils {
-  public calculateAttributes(
-    calculateAttributesInput: CalculateAttributesInput
-  ): TAttribute {
-    const { attribute, baseQty, qty, measure } = calculateAttributesInput;
+export function calculateAttributes(
+  calculateAttributesInput: CalculateAttributesInput
+): CalculateAttributesOutput {
+  const { attribute, baseQty, qty, measure } = calculateAttributesInput;
 
-    const totalQty = qty * measure.qty;
+  const totalQty = qty * measure.qty;
 
-    return {
-      name: attribute.name,
-      unit: attribute.unit,
-      qty: (attribute.qty * totalQty) / baseQty,
-    };
-  }
+  return {
+    name: attribute.name,
+    unit: attribute.unit,
+    qty: (attribute.qty * totalQty) / baseQty,
+  };
 }
