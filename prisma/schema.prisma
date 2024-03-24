@@ -153,7 +153,6 @@ model MealFood {
   name    String @default("null")
   measure Json
   qty     Float
-  options Json[] @default([])
 
   foodId         String  @map("food_id") @db.Uuid()
   mealId         String? @map("meal_id") @db.Uuid()

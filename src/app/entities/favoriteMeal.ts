@@ -4,7 +4,6 @@ export interface TMealFood {
   id: string;
   measure: TMeasure;
   qty: number;
-  options: [];
   foodId: string;
   food: TFood;
 }

@@ -11,14 +11,6 @@ export const CreateMealFoodSchema = z.object({
     name: z.string(),
     qty: z.number().min(0),
   }),
-  options: z.array(
-    z.object({
-      foodId: z.string().uuid(),
-      foodName: z.string(),
-      measure: z.string(),
-      qty: z.number().min(0),
-    })
-  ),
   name: z.string(),
   foodId: z.string().uuid(),
 });
@@ -88,7 +80,6 @@ export class CreateService implements ICreateService {
                 name: mealFood.name,
                 measure: mealFood.measure,
                 qty: mealFood.qty,
-                options: mealFood.options,
                 foodId: mealFood.foodId,
               })),
             },
