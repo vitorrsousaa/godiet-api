@@ -1,5 +1,5 @@
 import { TFavoriteMeal, TMealFood } from '@/entities/favoriteMeal';
-import { IFoodUtils } from '@/modules/food/utils/food';
+import { calculateAttributes } from '@/modules/food/utils/food';
 import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
 
 import * as z from 'zod';
@@ -22,11 +22,10 @@ type TFavoriteMealFoodWithMealFood = TFavoriteMeal & { mealFoods: TMealFood[] };
 
 export class FindAllService implements IFindAllService {
   constructor(
-    private readonly favoriteMealRepositories: IFavoriteMealRepositories,
-    private readonly foodUtils: IFoodUtils
+    private readonly favoriteMealRepositories: IFavoriteMealRepositories
   ) {}
 
-  async execute(findAllInput: IFindAllInput): Promise<IFindAllOutput> {
+  execute = async (findAllInput: IFindAllInput): Promise<IFindAllOutput> => {
     const { userId } = findAllInput;
 
     const allFavorites = (await this.favoriteMealRepositories.findAll({
@@ -43,7 +42,7 @@ export class FindAllService implements IFindAllService {
     })) as TFavoriteMealFoodWithMealFood[];
 
     return allFavorites.map(this.mapperMealFoods);
-  }
+  };
 
   private mapperMealFoods(
     favoriteMeal: TFavoriteMealFoodWithMealFood
@@ -59,7 +58,7 @@ export class FindAllService implements IFindAllService {
         food: {
           ...restOfFoods,
           attributes: attributes.map((attribute) =>
-            this.foodUtils.calculateAttributes({
+            calculateAttributes({
               attribute,
               baseQty: food.baseQty,
               qty: mealFood.qty,

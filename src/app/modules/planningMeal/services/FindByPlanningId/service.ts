@@ -1,5 +1,4 @@
 import { TPlanningMeal } from '@/entities/planningMeal';
-import { IFoodUtils } from '@/modules/food/utils/food';
 import { IPlanningMealRepositories } from '@/repositories/planningMeal';
 
 import * as z from 'zod';
@@ -26,8 +25,7 @@ export interface IFindByPlanningIdService {
 
 export class FindByPlanningIdService implements IFindByPlanningIdService {
   constructor(
-    private readonly planningMealRepositories: IPlanningMealRepositories,
-    private readonly foodUtils: IFoodUtils
+    private readonly planningMealRepositories: IPlanningMealRepositories
   ) {}
 
   async execute(

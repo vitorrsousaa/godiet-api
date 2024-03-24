@@ -3,23 +3,8 @@ import { IFoodRepositories } from '@/repositories/food';
 
 import * as z from 'zod';
 
-import { IFoodUtils } from '../../utils/food';
-
 export const FindAllServiceSchema = z.object({
   categoryId: z.string().uuid().or(z.undefined()),
-  // portion: z
-  //   .string()
-  //   .refine((value) => {
-  //     if (value === undefined) {
-  //       return true;
-  //     }
-
-  //     const parsed = parseFloat(value);
-
-  //     return !isNaN(parsed);
-  //   })
-  //   .transform((value) => parseFloat(value))
-  //   .or(z.undefined()),
 });
 
 export type TFindAll = z.infer<typeof FindAllServiceSchema>;
@@ -32,10 +17,7 @@ export interface IFindAllService {
 }
 
 export class FindAllService implements IFindAllService {
-  constructor(
-    private readonly foodRepositories: IFoodRepositories,
-    private readonly foodUtils: IFoodUtils
-  ) {}
+  constructor(private readonly foodRepositories: IFoodRepositories) {}
 
   async execute(findAllInput: IFindAllInput): Promise<IFindAllOutput> {
     const { categoryId } = findAllInput;
