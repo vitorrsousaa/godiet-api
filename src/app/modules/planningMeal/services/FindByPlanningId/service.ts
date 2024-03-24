@@ -1,8 +1,6 @@
+import { TPlanningMeal } from '@/entities/planningMeal';
 import { IFoodUtils } from '@/modules/food/utils/food';
-import {
-  IPlanningMealRepositories,
-  TPlanningMeal,
-} from '@/repositories/planningMeal';
+import { IPlanningMealRepositories } from '@/repositories/planningMeal';
 
 import * as z from 'zod';
 

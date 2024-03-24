@@ -1,3 +1,5 @@
+import { TPlanningMeal } from '@/entities/planningMeal';
+import { IFoodUtils } from '@/modules/food/utils/food';
 import { IPlanningMealRepositories } from '@/repositories/planningMeal';
 
 import * as z from 'zod';
@@ -13,14 +15,9 @@ export type TFindByPatientId = z.infer<typeof FindByPatientIdServiceSchema>;
 
 export type IFindByPatientIdInput = TFindByPatientId;
 
-export type IFindByPatientIdOutput = {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  name: string;
-  userId: string;
-  patientId: string;
-}[];
+export type TPlanningOutput = TPlanningMeal;
+
+export type IFindByPatientIdOutput = TPlanningOutput[];
 
 export interface IFindByPatientIdService {
   execute(
@@ -30,7 +27,8 @@ export interface IFindByPatientIdService {
 
 export class FindByPatientIdService implements IFindByPatientIdService {
   constructor(
-    private readonly planningMealRepositories: IPlanningMealRepositories
+    private readonly planningMealRepositories: IPlanningMealRepositories,
+    private readonly foodUtils: IFoodUtils
   ) {}
 
   async execute(
@@ -39,7 +37,7 @@ export class FindByPatientIdService implements IFindByPatientIdService {
     const { userId, patientId } = findByPatientIdInput;
 
     try {
-      const planning = await this.planningMealRepositories.findAll({
+      const planning = (await this.planningMealRepositories.findAll({
         where: {
           userId,
           patientId,
@@ -55,7 +53,7 @@ export class FindByPatientIdService implements IFindByPatientIdService {
             },
           },
         },
-      });
+      })) as unknown as TPlanningOutput[];
 
       return planning;
     } catch {
