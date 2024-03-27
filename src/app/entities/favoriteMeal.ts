@@ -1,12 +1,4 @@
-import { TFood, TMeasure } from './food';
-
-export interface TMealFood {
-  id: string;
-  measure: TMeasure;
-  qty: number;
-  foodId: string;
-  food: TFood;
-}
+import { TMealFood } from './mealFood';
 
 export interface TFavoriteMeal {
   name: string;

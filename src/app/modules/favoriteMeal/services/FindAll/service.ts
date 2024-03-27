@@ -1,4 +1,5 @@
-import { TFavoriteMeal, TMealFood } from '@/entities/favoriteMeal';
+import { TFavoriteMeal } from '@/entities/favoriteMeal';
+import { TMealFood } from '@/entities/mealFood';
 import { calculateAttributes } from '@/modules/food/utils/food';
 import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
 

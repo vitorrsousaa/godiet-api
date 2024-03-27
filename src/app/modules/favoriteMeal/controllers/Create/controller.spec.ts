@@ -22,6 +22,7 @@ describe('CreateController', () => {
         qty: 10,
         measure: { qty: 5, name: 'Colher' },
         foodId: 'cc4c275f-923b-4b6c-b3e1-952b30f88f42',
+        name: 'food-name',
       },
     ],
   };
