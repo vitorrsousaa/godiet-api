@@ -1,5 +1,5 @@
 import { TFavoriteMeal, TMealFood } from '@/entities/favoriteMeal';
-import { TAttribute, TMeasure } from '@/entities/food';
+import { calculateAttributes } from '@/modules/food/utils/food';
 import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
 
 import * as z from 'zod';
@@ -18,35 +18,14 @@ export interface IFindAllService {
   execute(findAllInput: IFindAllInput): Promise<IFindAllOutput>;
 }
 
-interface CalculateAttributesInput {
-  baseQty: number;
-  attribute: TAttribute;
-  qty: number;
-  measure: TMeasure;
-}
-
 type TFavoriteMealFoodWithMealFood = TFavoriteMeal & { mealFoods: TMealFood[] };
-
-function calculateAttributes(
-  calculateAttributesInput: CalculateAttributesInput
-): TAttribute {
-  const { attribute, baseQty, qty, measure } = calculateAttributesInput;
-
-  const totalQty = qty * measure.qty;
-
-  return {
-    name: attribute.name,
-    unit: attribute.unit,
-    qty: (attribute.qty * totalQty) / baseQty,
-  };
-}
 
 export class FindAllService implements IFindAllService {
   constructor(
     private readonly favoriteMealRepositories: IFavoriteMealRepositories
   ) {}
 
-  async execute(findAllInput: IFindAllInput): Promise<IFindAllOutput> {
+  execute = async (findAllInput: IFindAllInput): Promise<IFindAllOutput> => {
     const { userId } = findAllInput;
 
     const allFavorites = (await this.favoriteMealRepositories.findAll({
@@ -63,7 +42,7 @@ export class FindAllService implements IFindAllService {
     })) as TFavoriteMealFoodWithMealFood[];
 
     return allFavorites.map(this.mapperMealFoods);
-  }
+  };
 
   private mapperMealFoods(
     favoriteMeal: TFavoriteMealFoodWithMealFood

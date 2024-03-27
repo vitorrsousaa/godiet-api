@@ -63,7 +63,6 @@ export class FindPlanningController implements IController {
           body: service,
         };
       }
-
       const result = returnErrorMissingField(FindByPatientIdServiceSchema, {
         userId: request.accountId,
         patientId: request.patientId,
@@ -87,7 +86,6 @@ export class FindPlanningController implements IController {
       if (error instanceof AppError) {
         return {
           statusCode: error.statusCode,
-
           body: {
             error: error.message,
           },
@@ -96,7 +94,6 @@ export class FindPlanningController implements IController {
 
       return {
         statusCode: 500,
-
         body: {
           error: 'Internal server error',
         },

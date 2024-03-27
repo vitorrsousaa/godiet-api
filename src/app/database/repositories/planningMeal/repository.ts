@@ -1,14 +1,7 @@
+import { TPlanningMeal } from '@/entities/planningMeal';
+
 import { type Prisma, PrismaClient } from '@prisma/client';
 import { DefaultArgs } from '@prisma/client/runtime/library';
-
-export interface TPlanningMeal {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  name: string;
-  userId: string;
-  patientId: string;
-}
 
 export interface IPlanningMealRepositories {
   create(createDTO: Prisma.PlanningMealCreateArgs): Promise<TPlanningMeal>;
