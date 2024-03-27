@@ -20,7 +20,7 @@ export default defineConfig({
       '**/prisma/**',
       '**/src/tests/**',
     ],
-    reporters: ['html', 'basic'],
+    reporters: ['basic'],
     coverage: {
       provider: 'v8',
     },
