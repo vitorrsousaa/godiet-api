@@ -8,6 +8,7 @@ plugins:
 
 package:
   individually: true
+  excludeDevDependencies: true
   patterns:
     - '!node_modules/.prisma/client/libquery_engine-*'
     - 'node_modules/.prisma/client/libquery_engine-rhel-*'
