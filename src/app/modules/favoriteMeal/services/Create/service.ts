@@ -1,23 +1,7 @@
+import { CreateMealFoodSchema } from '@/entities/mealFood';
 import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
 
 import * as z from 'zod';
-
-export const CreateMealFoodSchema = z.object({
-  qty: z.number().min(0),
-  measure: z.object({
-    name: z.string(),
-    qty: z.number().min(0),
-  }),
-  options: z.array(
-    z.object({
-      foodId: z.string().uuid(),
-      foodName: z.string(),
-      measure: z.string(),
-      qty: z.number().min(0),
-    })
-  ),
-  foodId: z.string().uuid(),
-});
 
 export const CreateFavoriteMeal = z.object({
   name: z.string(),
@@ -58,8 +42,8 @@ export class CreateService implements ICreateService {
           create: mealFoods.map((mealFood) => ({
             foodId: mealFood.foodId,
             measure: mealFood.measure,
-            options: mealFood.options,
             qty: mealFood.qty,
+            name: mealFood.name,
           })),
         },
       },
