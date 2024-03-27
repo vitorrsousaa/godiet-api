@@ -57,6 +57,7 @@ describe('Create favorite meal service', () => {
               name: 'measure-name',
               qty: 2,
             },
+            name: 'meal-food-name',
             foodId: 'food-id',
           },
         ],
