@@ -1,5 +1,6 @@
-import { TFavoriteMeal, TMealFood } from '@/entities/favoriteMeal';
+import { TFavoriteMeal } from '@/entities/favoriteMeal';
 import { TAttribute, TMeasure } from '@/entities/food';
+import { TMealFood } from '@/entities/mealFood';
 import { IFavoriteMealRepositories } from '@/repositories/favoritesMeal';
 
 import * as z from 'zod';
