@@ -18,6 +18,7 @@
     "test:ui": "vitest --ui --api 3001 --coverage",
     "test:preview": "npx vite preview --outDir html",
     "test:int": "bash ./scripts/run-integration.sh",
+    "test:int:ci": "bash ./scripts/run-integration-ci.sh",
     "test:int:ui": "bash ./scripts/run-integration.sh --ui",
     "typecheck": "tsc --noEmit",
     "seed": "npx prisma db seed"

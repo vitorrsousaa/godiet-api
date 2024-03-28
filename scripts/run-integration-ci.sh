@@ -26,3 +26,7 @@ if [ "$#" -eq  "0" ]
 else
     npx vitest run -config ./vitest.config.integration.ts --ui
 fi
+
+docker-compose stop database_tests
+
+docker-compose rm -f database_tests
