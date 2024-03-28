@@ -24,5 +24,5 @@ if [ "$#" -eq  "0" ]
   then
     npx vitest run --config ./vitest.config.integration.ts
 else
-    npx vitest run -config ./vitest.config.integration.ts --ui
+    npx vitest run --config ./vitest.config.integration.ts --ui
 fi
