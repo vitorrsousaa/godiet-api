@@ -19,15 +19,6 @@ export class CreateController implements IController {
         };
       }
 
-      if (!request.patientId) {
-        return {
-          statusCode: 400,
-          body: {
-            error: 'Patient not found',
-          },
-        };
-      }
-
       const result = returnErrorMissingField(CreateServiceSchema, {
         userId: request.accountId,
         observation: {

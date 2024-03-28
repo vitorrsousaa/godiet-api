@@ -141,20 +141,25 @@ functions:
           path: /planningMeal/{patientId}
           method: GET
 
+  createObservationTemplate:
+    handler: src/server/functions/observationTemplate/create.handler
+    events:
+      - httpApi:
+          path: /observation-template
+          method: POST
+
   createAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/create.handler
     events:
       - httpApi:
           path: /anamnesisTemplate
           method: POST
-
   findAllAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/findAll.handler
     events:
       - httpApi:
           path: /anamnesisTemplate
           method: GET
-
   deleteAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/delete.handler
     events:
