@@ -2,6 +2,7 @@
 import { TObservationTemplate } from '@/entities/observationTemplate';
 
 import { type Prisma, PrismaClient } from '@prisma/client';
+import { DefaultArgs } from '@prisma/client/runtime/library';
 
 export interface IObservationTemplateRepository {
   create(
@@ -15,6 +16,9 @@ export interface IObservationTemplateRepository {
   ): Promise<TObservationTemplate[]>;
   delete(
     deleteObservationTemplateArgs: Prisma.ObservationTemplateDeleteArgs
+  ): Promise<TObservationTemplate>;
+  update(
+    updateObservationTemplateArgs: Prisma.ObservationTemplateUpdateArgs
   ): Promise<TObservationTemplate>;
 }
 
@@ -52,6 +56,13 @@ export class ObservationTemplateRepositories
   ) {
     return this.prismaService.observationTemplate.delete(
       deleteObservationTemplateArgs
+    );
+  }
+  async update(
+    updateObservationTemplateArgs: Prisma.ObservationTemplateUpdateArgs<DefaultArgs>
+  ): Promise<TObservationTemplate> {
+    return this.prismaService.observationTemplate.update(
+      updateObservationTemplateArgs
     );
   }
 }
