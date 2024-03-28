@@ -101,12 +101,32 @@ Por padrão, o container do ambiente de testes vai ser criado na porta definida 
 $ yarn test:int
 
 # run tests and open vitest ui
-$ yarn test:int:ui
+$ yarn test:int --ui
 ```
+
+#### Configuração inicial
+
+Ao utilizar o script acima, deve-se criar um container docker na porta que foi definida na variável `DATABASE_TEST_URL`, atualizar o banco com as migrations e rodar os testes de integração
 
 #### Estrutura
 
 Os testes de integração devem ser criados na pasta `tests`, localizada dentro `/src`.
+
+O teste de integração deve ser criado com o intuito de verificar o retorno do handler, e se ta conforme esperado caso o usuário passe todos os parametros corretamente.
+
+As verificações de tipo e se as respostas que devemos encaminhar caso o `body` não esteja com todas as propriedades corretas deve ser testado dentro dos testes unitários do controller
+
+#### Entidades
+
+O teste vai ser rodado na `ci`, e ao final, o container é deletado, removendo todas as migrations e atualizações feitas nos testes. Porém, também podemos rodar os individualmente ou fora da `pipeline`.
+
+E por isso, deve-se adicionar no `setup` dos testes para deletar as entidades a cada suit de teste. O `vitest` já esta configurado para implementar este setup, basta acessar o arquivo `reset-db.ts` e adicionar a função `deleteMany`para a entidade que foi adicionada na aplicação. Como no exemplo abaixo:
+
+```js
+export default async () => {
+  await prisma.$transaction([prisma.user.deleteMany()]);
+};
+```
 
 ## Deployment
 
