@@ -3,55 +3,32 @@ import { describe, expect, it } from 'vitest';
 
 import { handler } from '../server/functions/auth/signup';
 
-import prisma from './helpers/prisma';
+import { IInvoke, Invoke } from './helpers/invokeFunction';
 
 describe('/auth', async () => {
   describe('[POST] /auth/signup', async () => {
-    // tests will go here
-    it('Shoudl correctly', async () => {
-      const user = await prisma.user.create({
-        data: {
-          email: 'joaozinho@email.com',
-          password: '123456789',
-          name: 'Joãozinho',
-        },
-      });
-      console.log(user);
+    let invoke: IInvoke;
 
-      expect(user.name).toBe('Joãozinho');
+    beforeAll(async () => {
+      invoke = new Invoke(handler, 'POST /auth/signup');
     });
 
     it('Should signup', async () => {
-      const response = await handler({
-        headers: {},
-        isBase64Encoded: false,
-        rawPath: '/auth/signup',
-        rawQueryString: '',
-        routeKey: 'POST /auth/signup',
-        version: '2.0',
-        requestContext: {
-          accountId: 'offlineContext_accountId',
-          apiId: 'offlineContext_apiId',
-          domainName: 'offlineContext_domainName',
-          domainPrefix: 'offlineContext_domainPrefix',
-          http: {
-            method: 'POST',
-            path: '/auth/signup',
-            protocol: 'HTTP/1.1',
-            sourceIp: '::1',
-            userAgent: 'Insomnia/2023.5.6',
-          },
-          requestId: 'offlineContext_resourceId',
-          routeKey: 'POST /auth/signup',
-          stage: '$default',
-          time: '18/Mar/2024:08:31:44 -0300',
-          timeEpoch: 1710761504185,
-        },
-      });
+      const body = {
+        email: 'joaozinho@email.com',
+        password: '123456789',
+        name: 'Joãozinho',
+        phone: '123456789',
+      };
+      const response = await invoke.execute({ body });
 
       console.log(response);
 
       expect(Boolean(response)).toBeTruthy();
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toMatchObject({
+        accessToken: expect.any(String),
+      });
     });
   });
 });
