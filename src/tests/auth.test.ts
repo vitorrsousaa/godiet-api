@@ -22,8 +22,6 @@ describe('/auth', async () => {
       };
       const response = await invoke.execute({ body });
 
-      console.log(response);
-
       expect(Boolean(response)).toBeTruthy();
       expect(response.statusCode).toBe(200);
       expect(response.body).toMatchObject({
