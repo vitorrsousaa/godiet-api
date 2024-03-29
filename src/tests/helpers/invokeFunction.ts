@@ -4,8 +4,9 @@ import {
 } from '../../server/interfaces/handlers';
 
 type InvokeHandlerFnParams = {
-  body: Record<string, unknown>;
+  body?: Record<string, unknown>;
   headers?: Record<string, string>;
+  params?: Record<string, string | undefined>;
 };
 
 type InvokeHandlerFnOutput = {
@@ -34,14 +35,15 @@ export class Invoke implements IInvoke {
     this.method = method;
   }
 
-  async execute(params: InvokeHandlerFnParams) {
-    const { body, headers } = params;
+  async execute(input: InvokeHandlerFnParams) {
+    const { body = {}, headers, params } = input;
 
     const defaultEvent = this.getDefaultEvent();
     const event = {
       ...defaultEvent,
       body: this.setBodyToJSON(body),
       headers: headers || {},
+      params: params || {},
     };
 
     const response = await this.handler(event);
