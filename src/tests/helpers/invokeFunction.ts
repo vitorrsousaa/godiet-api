@@ -43,7 +43,7 @@ export class Invoke implements IInvoke {
       ...defaultEvent,
       body: this.setBodyToJSON(body),
       headers: headers || {},
-      params: params || {},
+      pathParameters: params || {},
     };
 
     const response = await this.handler(event);
