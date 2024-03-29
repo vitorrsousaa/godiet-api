@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { handler as handlerSignUp } from '../server/functions/auth/signup';
 import { handler as handlerCreate } from '../server/functions/observationTemplate/create';
 import { handler as handlerDelete } from '../server/functions/observationTemplate/delete';
+import { handler as handlerFindAll } from '../server/functions/observationTemplate/findAll';
 
 import { IInvoke, Invoke } from './helpers/invokeFunction';
 
@@ -72,23 +73,64 @@ describe('/observation-template', () => {
         headers: { authorization: `Bearer ${accessToken}` },
       });
 
-      console.log({ created });
-
       observationTemplateId = created.body.id as string;
     });
 
     it('Should delete observation template', async () => {
-      console.log({ observationTemplateId });
       const response = await invoke.execute({
         body: {},
         headers: { authorization: `Bearer ${accessToken}` },
         params: { id: observationTemplateId },
       });
 
-      console.log({ response: response.body });
-
       expect(response.statusCode).toBe(201);
       expect(response.body).toBeNull();
+    });
+  });
+
+  describe('[GET] /observation-template', async () => {
+    let invoke: IInvoke;
+
+    beforeAll(async () => {
+      invoke = new Invoke(handlerFindAll, 'GET /observation-template');
+    });
+
+    it('Should return empty array when not exists observation templates', async () => {
+      const response = await invoke.execute({
+        body: {},
+        headers: { authorization: `Bearer ${accessToken}` },
+      });
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toMatchObject([]);
+    });
+
+    it('Should return all observation templates', async () => {
+      const invokeCreate = new Invoke(
+        handlerCreate,
+        'POST /observation-template'
+      );
+      const body = {
+        title: 'Title',
+        text: 'Text',
+      };
+      await invokeCreate.execute({
+        body,
+        headers: { authorization: `Bearer ${accessToken}` },
+      });
+      const response = await invoke.execute({
+        body: {},
+        headers: { authorization: `Bearer ${accessToken}` },
+      });
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body.length).toEqual(1);
+      expect(response.body).toMatchObject([
+        {
+          text: 'Text',
+          title: 'Title',
+        },
+      ]);
     });
   });
 });

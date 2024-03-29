@@ -153,6 +153,12 @@ functions:
       - httpApi:
           path: /observation-template/{id}
           method: DELETE
+  findAllObservationTemplate:
+    handler: src/server/functions/observationTemplate/findAll.handler
+    events:
+      - httpApi:
+          path: /observation-template
+          method: GET
 
   createAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/create.handler
