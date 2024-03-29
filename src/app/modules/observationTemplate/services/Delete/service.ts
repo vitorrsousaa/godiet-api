@@ -2,7 +2,7 @@ import { IObservationTemplateRepository } from '@/repositories/observationTempla
 
 import * as z from 'zod';
 
-import { ObservationTemplateNotFound } from '../../errors/notFoun';
+import { ObservationTemplateNotFound } from '../../errors/notFound';
 
 export const DeleteServiceSchema = z.object({
   userId: z.string().uuid(),

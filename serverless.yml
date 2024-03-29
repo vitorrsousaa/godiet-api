@@ -147,6 +147,12 @@ functions:
       - httpApi:
           path: /observation-template
           method: POST
+  deleteObservationTemplate:
+    handler: src/server/functions/observationTemplate/delete.handler
+    events:
+      - httpApi:
+          path: /observation-template/{id}
+          method: DELETE
 
   createAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/create.handler
