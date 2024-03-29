@@ -5,6 +5,7 @@ import { handler as handlerSignUp } from '../server/functions/auth/signup';
 import { handler as handlerCreate } from '../server/functions/observationTemplate/create';
 import { handler as handlerDelete } from '../server/functions/observationTemplate/delete';
 import { handler as handlerFindAll } from '../server/functions/observationTemplate/findAll';
+import { handler as handlerUpdate } from '../server/functions/observationTemplate/update';
 
 import { IInvoke, Invoke } from './helpers/invokeFunction';
 
@@ -131,6 +132,51 @@ describe('/observation-template', () => {
           title: 'Title',
         },
       ]);
+    });
+  });
+
+  describe('[PUT] /observation-template', async () => {
+    let invoke: IInvoke;
+    let observationTemplateId: string;
+
+    beforeAll(async () => {
+      invoke = new Invoke(handlerUpdate, 'PUT /observation-template');
+    });
+
+    beforeEach(async () => {
+      const invokeCreate = new Invoke(
+        handlerCreate,
+        'POST /observation-template'
+      );
+      const body = {
+        title: 'Title',
+        text: 'Text',
+      };
+      const created = await invokeCreate.execute({
+        body,
+        headers: { authorization: `Bearer ${accessToken}` },
+      });
+
+      observationTemplateId = created.body.id as string;
+    });
+
+    it('Should update observation template', async () => {
+      const body = {
+        title: 'Title Updated',
+        text: 'Text Updated',
+        id: observationTemplateId,
+      };
+      const response = await invoke.execute({
+        body,
+        headers: { authorization: `Bearer ${accessToken}` },
+      });
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toMatchObject({
+        id: observationTemplateId,
+        title: 'Title Updated',
+        text: 'Text Updated',
+      });
     });
   });
 });

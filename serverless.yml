@@ -159,6 +159,12 @@ functions:
       - httpApi:
           path: /observation-template
           method: GET
+  updateObservationTemplate:
+    handler: src/server/functions/observationTemplate/update.handler
+    events:
+      - httpApi:
+          path: /observation-template
+          method: PUT
 
   createAnamnesisTemplate:
     handler: src/server/functions/anamnesisTemplate/create.handler
