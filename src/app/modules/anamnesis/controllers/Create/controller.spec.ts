@@ -148,7 +148,7 @@ describe('CreateController', () => {
 
     // Assert
     expect(response).toEqual({
-      statusCode: 200,
+      statusCode: 201,
       body: {
         id: 'cfa64408-ba83-4311-be71-e865f7d63535',
         userId: '529e7968-7300-4b63-a582-eda5eb4c7508',

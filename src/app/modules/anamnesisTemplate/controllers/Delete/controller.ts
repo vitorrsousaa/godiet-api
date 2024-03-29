@@ -36,7 +36,7 @@ export class DeleteController implements IController {
       });
 
       return {
-        statusCode: 201,
+        statusCode: 204,
         body: service,
       };
     } catch (error) {

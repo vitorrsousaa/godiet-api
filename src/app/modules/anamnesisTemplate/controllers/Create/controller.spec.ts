@@ -141,7 +141,7 @@ describe('CreateController', () => {
 
     // Assert
     expect(response).toEqual({
-      statusCode: 200,
+      statusCode: 201,
       body: {
         createdAt: date,
         updatedAt: date,

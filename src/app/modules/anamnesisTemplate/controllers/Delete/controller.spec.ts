@@ -130,7 +130,7 @@ describe('DeleteController', () => {
 
     // Assert
     expect(response).toEqual({
-      statusCode: 201,
+      statusCode: 204,
       body: null,
     });
   });

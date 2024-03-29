@@ -9,7 +9,7 @@ import { handler as handlerUpdate } from '../server/functions/observationTemplat
 
 import { IInvoke, Invoke } from './helpers/invokeFunction';
 
-describe('/observation-template', () => {
+describe('Observation template - integration', () => {
   let accessToken: string;
 
   beforeEach(async () => {
@@ -43,7 +43,7 @@ describe('/observation-template', () => {
         headers: { authorization: `Bearer ${accessToken}` },
       });
 
-      expect(response.statusCode).toBe(200);
+      expect(response.statusCode).toBe(201);
       expect(response.body).toMatchObject({
         id: expect.any(String),
         title: 'Title',
@@ -84,7 +84,7 @@ describe('/observation-template', () => {
         params: { id: observationTemplateId },
       });
 
-      expect(response.statusCode).toBe(201);
+      expect(response.statusCode).toBe(204);
       expect(response.body).toBeNull();
     });
   });

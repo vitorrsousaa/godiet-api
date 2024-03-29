@@ -47,7 +47,7 @@ export class CreateController implements IController {
       });
 
       return {
-        statusCode: 200,
+        statusCode: 201,
         body: service,
       };
     } catch (error) {
