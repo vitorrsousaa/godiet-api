@@ -27,8 +27,6 @@ export class UpdateController implements IController {
         };
       }
 
-      console.log(request.body);
-
       const result = returnErrorMissingField(UpdateServiceSchema, {
         userId: request.accountId,
         patientId: request.patientId,
