@@ -134,6 +134,13 @@ functions:
       - httpApi:
           path: /planningMeal/{patientId}
           method: DELETE
+  updatePlanningMeal:
+    handler: src/server/functions/planningMeal/update.handler
+    events:
+      - httpApi:
+          path: /planningMeal/{patientId}
+          method: PUT
+
   findAllPlanning:
     handler: src/server/functions/planningMeal/findAll.handler
     events:
