@@ -24,6 +24,7 @@ export const CreateMealSchema = z.object({
 export const CreatePlanningServiceSchema = z.object({
   name: z.string(),
   meals: z.array(CreateMealSchema),
+  createdAt: z.optional(z.string()),
 });
 
 export const CreateServiceSchema = z.object({
@@ -69,6 +70,7 @@ export class CreateService implements ICreateService {
     return this.planningMealRepositories.create({
       data: {
         name: planningMeal.name,
+        createdAt: planningMeal?.createdAt,
         patientId,
         userId,
         meals: {
