@@ -65,9 +65,9 @@ export class FindByPatientIdService implements IFindByPatientIdService {
         },
       })) as unknown as TPlanningOutput[];
 
-      const planningMealsWithCalculated = plannings.map(
-        this.mapperPlanningMeal
-      );
+      const planningMealsWithCalculated = plannings
+        .map(this.mapperPlanningMeal)
+        .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
 
       return planningMealsWithCalculated.map(this.getCalculateSummary);
     } catch (error) {

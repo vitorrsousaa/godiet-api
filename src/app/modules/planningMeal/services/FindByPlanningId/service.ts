@@ -53,6 +53,8 @@ export class FindByPlanningIdService implements IFindByPlanningIdService {
         },
       })) as unknown as TPlanningMeal;
 
+      if (!planningMeal) throw new InvalidPlanningId();
+
       return planningMeal;
     } catch {
       throw new InvalidPlanningId();

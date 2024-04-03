@@ -12,6 +12,7 @@ export interface IPlanningMealRepositories {
     findFirstArgs: Prisma.PlanningMealFindFirstArgs
   ): Promise<TPlanningMeal | null>;
   delete(deleteArgs: Prisma.PlanningMealDeleteArgs): Promise<TPlanningMeal>;
+  update(updateArgs: Prisma.PlanningMealUpdateArgs): Promise<TPlanningMeal>;
 }
 
 class PlanningMealRepositories implements IPlanningMealRepositories {
@@ -35,6 +36,10 @@ class PlanningMealRepositories implements IPlanningMealRepositories {
 
   async delete(deleteArgs: Prisma.PlanningMealDeleteArgs) {
     return this.prismaService.planningMeal.delete(deleteArgs);
+  }
+
+  update(updateArgs: Prisma.PlanningMealUpdateArgs) {
+    return this.prismaService.planningMeal.update(updateArgs);
   }
 }
 
