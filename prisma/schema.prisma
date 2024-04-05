@@ -102,19 +102,6 @@ model Patient {
   @@map("patients")
 }
 
-model CategoryName {
-  id          String @id @default(uuid()) @db.Uuid()
-  baseProtein Float  @map("base_protein")
-  baseCarbo   Float  @map("base_carbo")
-  baseFat     Float  @map("base_fat")
-  baseEnergy  Float  @map("base_energy")
-  name        String @unique
-
-  food Food[]
-
-  @@map("category_name")
-}
-
 model Food {
   id         String @id @default(uuid()) @db.Uuid()
   baseUnit   String @map("base_unit")
@@ -123,9 +110,7 @@ model Food {
   attributes Json[]
   measures   Json[] @default([])
 
-  categoryNameId String @map("category_name_id") @db.Uuid()
-
-  categoryName CategoryName @relation(fields: [categoryNameId], references: [id])
+  categoryName String
 
   mealFood MealFood[]
 

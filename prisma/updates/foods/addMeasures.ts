@@ -42,5 +42,3 @@ export async function addMeasures() {
   console.log('Updated:', countUpdated);
   console.log('With error:', foodsWithoutMeasures);
 }
-
-addMeasures();

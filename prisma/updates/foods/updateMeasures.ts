@@ -1,8 +1,20 @@
 import { PrismaClient } from '@prisma/client';
 
+import type { Prisma } from '@prisma/client';
+
 import foodList from '../../data/foodList.json';
 
 const prisma = new PrismaClient();
+
+export function updateMeasuresForEachFood(measures: Prisma.InputJsonObject[]) {
+  const removeUnnecessaryMeasures = measures.filter(
+    (measure) => measure.name !== 'a vontade'
+  );
+
+  removeUnnecessaryMeasures.push({ name: 'gramas', qty: 1 });
+
+  return removeUnnecessaryMeasures;
+}
 
 export async function main() {
   console.log('initializing....');

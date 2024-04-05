@@ -4,6 +4,18 @@ import type { Prisma } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+export function fixUnitForEachFood(attributes: Prisma.InputJsonObject[]) {
+  return attributes.map((attribute) => {
+    const { qty, name, unit } = attribute;
+
+    return {
+      name,
+      unit,
+      qty: typeof qty === 'string' ? (Number(qty) ? Number(qty) : 0) : qty,
+    };
+  });
+}
+
 export async function fixUnits() {
   const foods = await prisma.food.findMany();
 
@@ -54,5 +66,3 @@ export async function fixUnits() {
 
   console.log('With error:', foodsWithoutMeasures);
 }
-
-fixUnits();

@@ -1,7 +1,5 @@
 import * as z from 'zod';
 
-import { TCategoryName } from './categoryName';
-
 export const MeasureSchema = z.object({
   qty: z.number().min(0),
   name: z.string(),
@@ -19,8 +17,7 @@ export type TFood = {
   name: string;
   baseQty: number;
   baseUnit: string;
-  categoryNameId: string;
   attributes: TAttribute[];
-  categoryName?: TCategoryName;
+  categoryName: string;
   measures: TMeasure[];
 };
