@@ -24,6 +24,7 @@ provider:
       allowedOrigins:
         - 'https://godiet.com.br'
         - 'http://localhost:5173'
+        - 'https://app.godiet.com.br'
       allowedHeaders:
         - '*'
       allowedMethods:
