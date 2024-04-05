@@ -10,15 +10,7 @@ interface TFoodDatabase {
   name: string;
   attributes: Prisma.JsonValue[];
   measures: Prisma.JsonValue[];
-  categoryNameId: string;
-  categoryName?: {
-    id: string;
-    baseProtein: number;
-    baseCarbo: number;
-    baseFat: number;
-    baseEnergy: number;
-    name: string;
-  };
+  categoryName: string;
 }
 
 export interface IFoodRepositories {
@@ -70,7 +62,6 @@ class FoodRepositories implements IFoodRepositories {
       id: food.id,
       baseQty: food.baseQty,
       baseUnit: food.baseUnit,
-      categoryNameId: food.categoryNameId,
       name: food.name,
       attributes: food.attributes as TAttribute[],
       categoryName: food.categoryName,

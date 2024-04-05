@@ -28,9 +28,7 @@ export class FindAllController implements IController {
       };
     }
 
-    const service = await this.findAllFoodService.execute({
-      categoryId: result.data.categoryId,
-    });
+    const service = await this.findAllFoodService.execute();
 
     return {
       statusCode: 200,

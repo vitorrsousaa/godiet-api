@@ -116,13 +116,6 @@ functions:
           path: /foods
           method: GET
 
-  findAllCategoryName:
-    handler: src/server/functions/categoryName/findAll.handler
-    events:
-      - httpApi:
-          path: /categoryName
-          method: GET
-
   createPlanningMeal:
     handler: src/server/functions/planningMeal/create.handler
     events:
