@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  IPatientRepositories,
-  PatientRepositories,
-} from '@/repositories/patient';
+import { IPatientRepositories } from '@/repositories/patient';
 import { clearAllMocks, fn, SpyInstance, spyOn } from '@/tests';
 
 import { CreateService, ICreateService } from './service';
@@ -23,7 +20,7 @@ describe('Create Patient Service', () => {
     const patientRepositoriesInstance = {
       create: fn(),
       findUnique: fn(),
-    } as unknown as PatientRepositories;
+    } as unknown as IPatientRepositories;
 
     spy = {
       'patientRepositories.create': spyOn(
