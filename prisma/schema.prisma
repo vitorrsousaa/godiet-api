@@ -22,12 +22,13 @@ model User {
   updatedAt DateTime @updatedAt
   hash      Float?   @map("hash")
 
-  patient             Patient[]
-  planningMeal        PlanningMeal[]
-  anamnesisTemplate   AnamnesisTemplate[]
-  anamnesis           Anamnesis[]
-  favoriteMeal        FavoriteMeal[]
-  observationTemplate ObservationTemplate[]
+  patient              Patient[]
+  planningMeal         PlanningMeal[]
+  anamnesisTemplate    AnamnesisTemplate[]
+  anamnesis            Anamnesis[]
+  favoriteMeal         FavoriteMeal[]
+  observationTemplate  ObservationTemplate[]
+  favoritePlanningMeal FavoritePlanningMeal[]
 
   @@map("users")
 }
@@ -143,7 +144,9 @@ model Meal {
 
   planningMeal PlanningMeal @relation(fields: [planningMealId], references: [id], onDelete: Cascade)
 
-  mealFoods MealFood[]
+  mealFoods              MealFood[]
+  favoritePlanningMeal   FavoritePlanningMeal? @relation(fields: [favoritePlanningMealId], references: [id])
+  favoritePlanningMealId String?               @db.Uuid()
 
   @@map("meals")
 }
@@ -175,4 +178,17 @@ model FavoriteMeal {
   mealFoods MealFood[]
 
   @@map("favorite_meal")
+}
+
+model FavoritePlanningMeal {
+  id        String   @id @default(uuid()) @db.Uuid()
+  createdAt DateTime @default(now()) @map("created_at")
+  name      String
+
+  userId String @map("user_id") @db.Uuid()
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  meals Meal[]
+
+  @@map("favorite_planning_meal")
 }
