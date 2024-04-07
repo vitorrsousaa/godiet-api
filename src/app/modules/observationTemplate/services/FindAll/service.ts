@@ -24,10 +24,11 @@ export class FindAllService implements IFindAllService {
 
   async execute(findAllInput: IFindAllInput): Promise<IFindAllOutput> {
     const { userId } = findAllInput;
-    return this.observationTemplateRepositories.findMany({
+    const response = await this.observationTemplateRepositories.findMany({
       where: {
         userId,
       },
     });
+    return response.sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1));
   }
 }
