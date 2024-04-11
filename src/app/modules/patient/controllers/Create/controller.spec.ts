@@ -47,9 +47,7 @@ describe('CreatePatientController', () => {
     mockRequest.body = {
       birthDate: 'any_birthDate',
       gender: 'MASC',
-      height: 1.8,
       name: 'any_name',
-      weight: 80,
     };
 
     // Act
@@ -68,9 +66,7 @@ describe('CreatePatientController', () => {
     mockRequest.body = {
       birthDate: date.toString(),
       gender: 'MASC',
-      height: 1.8,
       name: 'any_name',
-      weight: 80,
       email: 'email@email.com',
       phone: 'any_phone',
     };
@@ -87,9 +83,7 @@ describe('CreatePatientController', () => {
       patient: {
         birthDate: date.toString(),
         gender: 'MASC',
-        height: 1.8,
         name: 'any_name',
-        weight: 80,
         email: 'email@email.com',
         phone: 'any_phone',
       },
@@ -103,9 +97,7 @@ describe('CreatePatientController', () => {
     mockRequest.body = {
       birthDate: 'Fri Oct 26 2023',
       gender: 'MASC',
-      height: 1.8,
       name: 'any_name',
-      weight: 80,
       email: 'email@email.com',
       phone: 'any_phone',
     };

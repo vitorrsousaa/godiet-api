@@ -37,11 +37,9 @@ describe('Delete patient service', () => {
       birthDate: new Date(),
       email: 'any_email',
       gender: 'MASC',
-      height: 1.7,
       id: 'any_id',
       name: 'any_name',
       userId: 'any_user_id',
-      weight: 70,
     });
 
     // Act

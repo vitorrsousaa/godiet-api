@@ -7,8 +7,6 @@ import * as z from 'zod';
 export const CreatePatientServiceSchema = z.object({
   email: z.string().email({ message: 'Invalid e-mail format' }),
   name: z.string(),
-  height: z.number().positive().optional(),
-  weight: z.number().positive().optional(),
   birthDate: z.string().optional(),
   gender: GenderEnum.optional(),
   phone: z.string().min(8),
@@ -36,7 +34,7 @@ export class CreateService implements ICreateService {
 
   async execute(createInput: ICreateInput): Promise<ICreateOutput> {
     const { patient, userId } = createInput;
-    const { birthDate, email, gender, height, name, weight, phone } = patient;
+    const { birthDate, email, gender, name, phone } = patient;
 
     const findPatient = await this.patientRepositories.findUnique({
       where: {
@@ -52,9 +50,7 @@ export class CreateService implements ICreateService {
       data: {
         birthDate,
         email,
-        height,
         name,
-        weight,
         gender,
         userId,
         phone,

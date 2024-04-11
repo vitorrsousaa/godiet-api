@@ -34,7 +34,7 @@ export class UpdateService implements IUpdateService {
 
   async execute(updateInput: IUpdateInput): Promise<IUpdateOutput> {
     const { patient, userId, patientId } = updateInput;
-    const { email, birthDate, gender, height, weight } = patient;
+    const { email, birthDate, gender } = patient;
 
     await this.validatePatient({
       userId,
@@ -49,8 +49,6 @@ export class UpdateService implements IUpdateService {
       data: {
         birthDate,
         gender,
-        height,
-        weight,
         email,
       },
     });

@@ -47,21 +47,17 @@ describe('Update patient service', () => {
       birthDate: date,
       email: 'any_email',
       gender: 'MASC',
-      height: 1.7,
       id: 'any_id',
       name: 'any_name',
       userId: 'any_user_id',
-      weight: 70,
     });
     spy['patientRepositories.findFirst'].mockResolvedValue({
       birthDate: date,
       email: 'any_email',
       gender: 'MASC',
-      height: 1.7,
       id: 'any_patient_id',
       name: 'any_name',
       userId: 'any_user_id',
-      weight: 70,
     });
 
     const mockUpdatePatient = {
@@ -82,11 +78,9 @@ describe('Update patient service', () => {
       birthDate: date,
       email: 'any_email',
       gender: 'MASC',
-      height: 1.7,
       id: 'any_id',
       name: 'any_name',
       userId: 'any_user_id',
-      weight: 70,
     });
   });
 
@@ -96,17 +90,14 @@ describe('Update patient service', () => {
       birthDate: new Date(),
       email: 'any_email',
       gender: 'MASC',
-      height: 1.7,
       id: 'any_id',
       name: 'any_name',
       userId: 'any_user_id',
-      weight: 70,
     });
 
     const mockUpdatePatient = {
       name: 'any_name',
       email: 'any_email@email.com',
-      height: 200,
     };
 
     // Act

@@ -51,8 +51,6 @@ describe('Create Patient Service', () => {
       id: 'any_id',
       name: 'any_name',
       userId: 'any_user_id',
-      height: null,
-      weight: null,
     });
 
     const mockCreatePatient = {
@@ -82,8 +80,6 @@ describe('Create Patient Service', () => {
       birthDate: date,
       email: 'any_email',
       gender: 'MASC',
-      height: 80,
-      weight: 80,
       name: 'any_name',
       id: 'any_id',
       userId: 'any_user_id',
@@ -107,8 +103,6 @@ describe('Create Patient Service', () => {
       birthDate: date,
       email: 'any_email',
       gender: 'MASC',
-      height: 80,
-      weight: 80,
       name: 'any_name',
       id: 'any_id',
       userId: 'any_user_id',
