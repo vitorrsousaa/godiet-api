@@ -5,8 +5,6 @@ import { GenderEnum } from './gender';
 export const PatientSchema = z.object({
   email: z.string().email({ message: 'Invalid e-mail format' }),
   name: z.string(),
-  height: z.number().positive().nullable(),
-  weight: z.number().positive().nullable(),
   birthDate: z
     .string()
     .pipe(z.coerce.date())
