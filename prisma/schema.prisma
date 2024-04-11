@@ -91,8 +91,6 @@ model Patient {
   name      String
   phone     String      @default("null")
   birthDate DateTime?
-  weight    Float?
-  height    Float?
   gender    GenderType?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

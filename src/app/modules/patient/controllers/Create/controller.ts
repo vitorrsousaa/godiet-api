@@ -40,8 +40,6 @@ export class CreateController implements IController {
           name: result.data.name,
           birthDate: result.data.birthDate,
           gender: result.data.gender,
-          height: result.data.height,
-          weight: result.data.weight,
           phone: result.data.phone,
         },
       });
