@@ -21,3 +21,16 @@ ts-node ./prisma/updates/foods/addMeasures.ts
 # Atualiza a unidade de medida dos attributos
 ts-node ./prisma/updates/foods/fixUnit.ts
 ```
+
+## Branch feature/GODIET-98-observation-add-default-template-of-observation-when-the-user-create-account | 12/04/2024
+
+> Foi adicionado um campo de `observationTemplate` para o model de user.
+
+### Upgrade steps
+
+- Necessário rodar os comandos abaixo.
+
+```bash
+# atualiza as measures no DB
+ts-node ./prisma/updates/user/updateWithObservationTemplates.ts
+```
