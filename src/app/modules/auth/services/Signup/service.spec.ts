@@ -52,6 +52,7 @@ describe('SignUp Service', () => {
       userRepositoriesInstance,
       cryptProviderInstance,
       tokenProviderInstance,
+      templatesInstance,
       templatesInstance
     );
   });

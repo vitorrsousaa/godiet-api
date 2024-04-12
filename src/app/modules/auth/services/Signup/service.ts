@@ -31,7 +31,8 @@ export class SignupService implements ISignupService {
     private userRepositories: IUserRepositories,
     private readonly cryptProvider: ICrypt,
     private readonly tokenProvider: IToken,
-    private readonly templateAnamnesis: ITemplates[]
+    private readonly templateAnamnesis: ITemplates[],
+    private readonly observationTemplate: ITemplates[]
   ) {}
 
   async execute(signupInput: ISignupInput): Promise<ISignupOutput> {
@@ -62,6 +63,11 @@ export class SignupService implements ISignupService {
         anamnesisTemplate: {
           createMany: {
             data: this.templateAnamnesis,
+          },
+        },
+        observationTemplate: {
+          createMany: {
+            data: this.observationTemplate,
           },
         },
       },

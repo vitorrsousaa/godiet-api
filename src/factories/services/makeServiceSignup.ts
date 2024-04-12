@@ -1,3 +1,4 @@
+import { templates as observationTemplate } from '@/constants/observationTemplate';
 import { templates } from '@/constants/templateAnamnesis';
 import { SignupService } from '@/modules/auth/services';
 
@@ -10,6 +11,7 @@ export function makeServiceSignup() {
     makeRepositoryUser(),
     makeProviderCrypt(),
     makeProviderToken(),
-    templates
+    templates,
+    observationTemplate
   );
 }
