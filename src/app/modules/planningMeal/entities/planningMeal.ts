@@ -13,6 +13,7 @@ export const CreateMealFoodSchema = z.object({
 export const CreateMealSchema = z.object({
   name: z.string(),
   time: z.string(),
+  observation: z.string(),
   mealFoods: z.array(CreateMealFoodSchema),
 });
 

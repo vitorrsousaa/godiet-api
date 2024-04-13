@@ -18,6 +18,7 @@ export const CreateMealFoodSchema = z.object({
 export const CreateMealSchema = z.object({
   name: z.string(),
   time: z.string(),
+  observation: z.string(),
   mealFoods: z.array(CreateMealFoodSchema),
 });
 
@@ -77,6 +78,7 @@ export class CreateService implements ICreateService {
           create: planningMeal.meals.map((meal) => ({
             name: meal.name,
             time: `${fixedDate.toISOString().split('T')[0]}T${meal.time}:00.000Z`,
+            observation: meal.observation,
             mealFoods: {
               create: meal.mealFoods.map((mealFood) => ({
                 name: mealFood.name,
