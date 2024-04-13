@@ -134,9 +134,10 @@ model PlanningMeal {
 }
 
 model Meal {
-  id   String   @id @default(uuid()) @db.Uuid()
-  name String
-  time DateTime
+  id          String   @id @default(uuid()) @db.Uuid()
+  name        String
+  time        DateTime
+  observation String?
 
   planningMealId String @map("planning_meal_id") @db.Uuid()
 
