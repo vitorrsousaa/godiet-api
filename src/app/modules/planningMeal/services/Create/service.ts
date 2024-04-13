@@ -3,30 +3,8 @@ import { IPlanningMealRepositories } from '@/repositories/planningMeal';
 
 import * as z from 'zod';
 
+import { CreatePlanningServiceSchema } from '../../entities/planningMeal';
 import { InvalidPatient } from '../../errors/invalidPatient';
-
-export const CreateMealFoodSchema = z.object({
-  qty: z.number().min(0),
-  measure: z.object({
-    name: z.string(),
-    qty: z.number().min(0),
-  }),
-  name: z.string(),
-  foodId: z.string().uuid(),
-});
-
-export const CreateMealSchema = z.object({
-  name: z.string(),
-  time: z.string(),
-  observation: z.string(),
-  mealFoods: z.array(CreateMealFoodSchema),
-});
-
-export const CreatePlanningServiceSchema = z.object({
-  name: z.string(),
-  meals: z.array(CreateMealSchema),
-  createdAt: z.optional(z.string()),
-});
 
 export const CreateServiceSchema = z.object({
   userId: z.string().uuid(),

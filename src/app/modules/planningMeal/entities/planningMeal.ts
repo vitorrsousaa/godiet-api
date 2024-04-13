@@ -20,4 +20,5 @@ export const CreateMealSchema = z.object({
 export const CreatePlanningServiceSchema = z.object({
   name: z.string(),
   meals: z.array(CreateMealSchema),
+  createdAt: z.optional(z.string()),
 });
